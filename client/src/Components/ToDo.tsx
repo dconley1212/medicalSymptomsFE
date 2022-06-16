@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Tasks } from "./model";
+import SpecificTask from "./SpecificTask";
 
 const ToDo: React.FC = () => {
   const [task, setTask] = useState<string>("");
@@ -39,8 +40,8 @@ const ToDo: React.FC = () => {
         </label>
         <button type="submit">Add</button>
       </form>
-      {tasks.map((task: Tasks) => {
-        return <ul>{task.task}</ul>;
+      {tasks.map((eachTask) => {
+        return <SpecificTask eachTask={eachTask} />;
       })}
     </div>
   );
