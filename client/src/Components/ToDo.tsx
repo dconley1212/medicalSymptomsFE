@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Tasks } from "./model";
 import SpecificTask from "./SpecificTask";
+import styled from "styled-components";
 
+const Title = styled.h1`
+  font-family: "Oxygen", sans-serif;
+`;
 const ToDo: React.FC = () => {
   const [task, setTask] = useState<string>("");
   const [tasks, setTasks] = useState<Tasks[]>([]);
@@ -28,7 +32,7 @@ const ToDo: React.FC = () => {
   };
   return (
     <div>
-      <h1>Todo</h1>
+      <Title>Todo's</Title>
       <form onSubmit={handleSubmit}>
         <label>
           <input

@@ -53,7 +53,6 @@ import ToDo from "./ToDo";
 function App() {
   return (
     <div className="App">
-      Hello World
       <ToDo />
     </div>
   );
