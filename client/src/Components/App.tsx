@@ -51,7 +51,12 @@ import ToDo from "./ToDo";
 // let lotsOfPeople: Person[];
 
 function App() {
-  return <div className="App">Hello World</div>;
+  return (
+    <div className="App">
+      Hello World
+      <ToDo />
+    </div>
+  );
 }
 
 export default App;
