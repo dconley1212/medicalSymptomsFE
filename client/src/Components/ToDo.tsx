@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Tasks } from "./model";
 import SpecificTask from "./SpecificTask";
 import styled from "styled-components";
@@ -30,8 +30,8 @@ const InputStyled = styled.input`
   transition: 0.2s;
   box-shadow: inset 0 0 4px black;
   &:focus {
-      box-shadow: 0 0 10px 1000px rgba(0,0,0)
-      outline: none;
+    box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.5);
+    outline: none;
   }
 `;
 
@@ -53,6 +53,8 @@ const ToDo: React.FC = () => {
   const [task, setTask] = useState<string>("");
   const [tasks, setTasks] = useState<Tasks[]>([]);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   console.log(task);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,6 +72,7 @@ const ToDo: React.FC = () => {
           isDone: false,
         },
       ]);
+      inputRef.current?.blur();
       setTask("");
     }
   };
@@ -79,6 +82,7 @@ const ToDo: React.FC = () => {
       <FormStyled onSubmit={handleSubmit}>
         <label>
           <InputStyled
+            ref={inputRef}
             onChange={handleChange}
             type="input"
             placeholder="Add a Task"
