@@ -3,9 +3,21 @@ import { Tasks } from "./model";
 import SpecificTask from "./SpecificTask";
 import styled from "styled-components";
 
-const Title = styled.h1`
-  font-family: "Oxygen", sans-serif;
+const StyledWrapper = styled.div`
+  width: 100%;
 `;
+
+const Title = styled.h1`
+  font-family: "Oxygen", cursive;
+  color: #fffafa;
+  text-transform: uppercase;
+`;
+const FormStyled = styled.form``;
+const InputStyled = styled.input`
+  border-radius: 9px;
+  padding: 0.8rem;
+`;
+
 const ToDo: React.FC = () => {
   const [task, setTask] = useState<string>("");
   const [tasks, setTasks] = useState<Tasks[]>([]);
@@ -31,23 +43,23 @@ const ToDo: React.FC = () => {
     }
   };
   return (
-    <div>
-      <Title>Todo's</Title>
-      <form onSubmit={handleSubmit}>
+    <StyledWrapper>
+      <Title>My Goals!</Title>
+      <FormStyled onSubmit={handleSubmit}>
         <label>
-          <input
+          <InputStyled
             onChange={handleChange}
             type="input"
             placeholder="Add a Task"
             value={task}
-          ></input>
+          ></InputStyled>
         </label>
         <button type="submit">Add</button>
-      </form>
+      </FormStyled>
       {tasks.map((eachTask) => {
         return <SpecificTask eachTask={eachTask} />;
       })}
-    </div>
+    </StyledWrapper>
   );
 };
 export default ToDo;

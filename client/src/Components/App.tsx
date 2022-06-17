@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import ToDo from "./ToDo";
+import styled from "styled-components";
 
 // let name: string;
 // let age: number;
@@ -50,11 +51,19 @@ import ToDo from "./ToDo";
 
 // let lotsOfPeople: Person[];
 
+const ToDoPage = styled.div`
+  background: #00bfff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 function App() {
   return (
-    <div className="App">
+    <ToDoPage className="App">
       <ToDo />
-    </div>
+    </ToDoPage>
   );
 }
 
