@@ -4,7 +4,10 @@ import SpecificTask from "./SpecificTask";
 import styled from "styled-components";
 
 const StyledWrapper = styled.div`
-  width: 100%;
+  /* display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 1rem 7rem; */
 `;
 
 const Title = styled.h1`
@@ -12,10 +15,38 @@ const Title = styled.h1`
   color: #fffafa;
   text-transform: uppercase;
 `;
-const FormStyled = styled.form``;
+const FormStyled = styled.form`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  position: relative;
+`;
 const InputStyled = styled.input`
-  border-radius: 9px;
-  padding: 0.8rem;
+  border-radius: 30px;
+  padding: 1.2rem 3rem;
+  width: 100%;
+  border: none;
+  font-size: 1.2rem;
+  transition: 0.2s;
+  box-shadow: inset 0 0 4px black;
+  &:focus {
+      box-shadow: 0 0 10px 1000px rgba(0,0,0)
+      outline: none;
+  }
+`;
+
+const StyledButton = styled.button`
+  position: absolute;
+  width: 2.8em;
+  height: 2.8em;
+  border-radius: 3em;
+  right: -85px;
+  border: none;
+  font-size: 1em;
+  background-color: #00bfff;
+  color: white;
+  transition: 0.2s all;
+  box-shadow: 0 0 10px black;
 `;
 
 const ToDo: React.FC = () => {
@@ -54,7 +85,7 @@ const ToDo: React.FC = () => {
             value={task}
           ></InputStyled>
         </label>
-        <button type="submit">Add</button>
+        <StyledButton type="submit">Add</StyledButton>
       </FormStyled>
       {tasks.map((eachTask) => {
         return <SpecificTask eachTask={eachTask} />;

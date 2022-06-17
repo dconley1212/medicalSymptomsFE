@@ -8,7 +8,9 @@ interface EachTaskProps {
 const SpecificTask = ({ eachTask }: EachTaskProps) => {
   return (
     <div>
-      <ul></ul>
+      <ul>
+        <li>{eachTask.task}</li>
+      </ul>
     </div>
   );
 };
