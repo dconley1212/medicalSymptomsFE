@@ -40,7 +40,7 @@ const StyledButton = styled.button`
   width: 2.8em;
   height: 2.8em;
   border-radius: 3em;
-  right: -85px;
+  right: -10px;
   border: none;
   font-size: 1em;
   background-color: #00bfff;
@@ -92,7 +92,7 @@ const ToDo: React.FC = () => {
         <StyledButton type="submit">Add</StyledButton>
       </FormStyled>
       {tasks.map((eachTask) => {
-        return <SpecificTask eachTask={eachTask} />;
+        return <SpecificTask eachTask={eachTask} key={eachTask.id} />;
       })}
     </StyledWrapper>
   );
