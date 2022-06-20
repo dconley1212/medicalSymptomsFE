@@ -40,9 +40,17 @@ const StyledIcon = styled.span`
 
 interface EachTaskProps {
   eachTask: Tasks;
+  tasks: Tasks[];
+  setTasks: React.Dispatch<React.SetStateAction<Tasks[]>>;
 }
 
-const SpecificTask = ({ eachTask }: EachTaskProps) => {
+const SpecificTask = ({ eachTask, setTasks, tasks }: EachTaskProps) => {
+  const handleDelete = (id: number) => {
+    const newTasksArray = tasks.filter((task) => {
+      return task.id !== id;
+    });
+    setTasks(newTasksArray);
+  };
   return (
     <StyledSpecificTaskWrapper>
       <StyledSpecificTask>
@@ -52,7 +60,7 @@ const SpecificTask = ({ eachTask }: EachTaskProps) => {
             <AiFillEdit />
           </StyledIcon>
           <StyledIcon>
-            <AiFillDelete />
+            <AiFillDelete onClick={() => handleDelete(eachTask.id)} />
           </StyledIcon>
           <StyledIcon>
             <MdDone />

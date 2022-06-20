@@ -92,7 +92,14 @@ const ToDo: React.FC = () => {
         <StyledButton type="submit">Add</StyledButton>
       </FormStyled>
       {tasks.map((eachTask) => {
-        return <SpecificTask eachTask={eachTask} key={eachTask.id} />;
+        return (
+          <SpecificTask
+            eachTask={eachTask}
+            key={eachTask.id}
+            setTasks={setTasks}
+            tasks={tasks}
+          />
+        );
       })}
     </StyledWrapper>
   );
