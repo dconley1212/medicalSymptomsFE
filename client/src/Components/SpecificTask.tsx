@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tasks } from "./model";
 import styled from "styled-components";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
@@ -45,11 +45,24 @@ interface EachTaskProps {
 }
 
 const SpecificTask = ({ eachTask, setTasks, tasks }: EachTaskProps) => {
+  const [editTask, setEditTask] = useState<string>("");
+  const handleDone = (id: number) => {
+    const unfinishedArray = tasks.map((task) => {
+      return task.id === id ? { ...task, isDone: !task.isDone } : task;
+    });
+    setTasks(unfinishedArray);
+  };
   const handleDelete = (id: number) => {
     const newTasksArray = tasks.filter((task) => {
       return task.id !== id;
     });
     setTasks(newTasksArray);
+  };
+
+  const handleEdit = (id: number) => {
+    const clickedTask = tasks.filter((task) => {
+      return task.id === id;
+    });
   };
   return (
     <StyledSpecificTaskWrapper>
@@ -63,7 +76,7 @@ const SpecificTask = ({ eachTask, setTasks, tasks }: EachTaskProps) => {
             <AiFillDelete onClick={() => handleDelete(eachTask.id)} />
           </StyledIcon>
           <StyledIcon>
-            <MdDone />
+            <MdDone onClick={() => handleDone(eachTask.id)} />
           </StyledIcon>
         </StyledIconDiv>
       </StyledSpecificTask>
