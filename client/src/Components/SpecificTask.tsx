@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Tasks } from "./model";
 import styled from "styled-components";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
@@ -52,6 +52,12 @@ const SpecificTask = ({ eachTask, setTasks, tasks }: EachTaskProps) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editTask, setEditTask] = useState<string>(eachTask.task);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [edit]);
+
   const handleDone = (id: number) => {
     const unfinishedArray = tasks.map((task) => {
       return task.id === id ? { ...task, isDone: !task.isDone } : task;
@@ -70,11 +76,29 @@ const SpecificTask = ({ eachTask, setTasks, tasks }: EachTaskProps) => {
       setEdit(true);
     }
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditTask(e.currentTarget.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, id: number) => {
+    e.preventDefault();
+    setTasks(
+      tasks.map((todo) => {
+        return todo.id === id ? { ...todo, task: editTask } : todo;
+      })
+    );
+    setEdit(false);
+  };
   return (
     <StyledSpecificTaskWrapper>
-      <StyledSpecificTask>
+      <StyledSpecificTask onSubmit={(e) => handleSubmit(e, eachTask.id)}>
         {edit === true ? (
-          <input></input>
+          <input
+            value={editTask}
+            onChange={handleChange}
+            ref={inputRef}
+          ></input>
         ) : eachTask.isDone === false ? (
           <StyledTaskText>{eachTask.task}</StyledTaskText>
         ) : (
