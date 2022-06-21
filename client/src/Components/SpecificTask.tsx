@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 
+//left off trying to figure out how to handle the edit task functionality with the
+// helper function and if you need one to handle the changes and one to handle the new
+// submission, which honestly is my guess
+
 const StyledSpecificTaskWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -45,7 +49,9 @@ interface EachTaskProps {
 }
 
 const SpecificTask = ({ eachTask, setTasks, tasks }: EachTaskProps) => {
-  const [editTask, setEditTask] = useState<string>("");
+  const [edit, setEdit] = useState<boolean>(false);
+  const [editTask, setEditTask] = useState<string>(eachTask.task);
+
   const handleDone = (id: number) => {
     const unfinishedArray = tasks.map((task) => {
       return task.id === id ? { ...task, isDone: !task.isDone } : task;
@@ -59,17 +65,23 @@ const SpecificTask = ({ eachTask, setTasks, tasks }: EachTaskProps) => {
     setTasks(newTasksArray);
   };
 
-  const handleEdit = (id: number) => {
-    const clickedTask = tasks.filter((task) => {
-      return task.id === id;
-    });
+  const handleEdit = () => {
+    if (edit === false) {
+      setEdit(true);
+    }
   };
   return (
     <StyledSpecificTaskWrapper>
       <StyledSpecificTask>
-        <StyledTaskText>{eachTask.task}</StyledTaskText>
+        {edit === true ? (
+          <input></input>
+        ) : eachTask.isDone === false ? (
+          <StyledTaskText>{eachTask.task}</StyledTaskText>
+        ) : (
+          <s>{eachTask.task}</s>
+        )}
         <StyledIconDiv>
-          <StyledIcon>
+          <StyledIcon onClick={() => handleEdit()}>
             <AiFillEdit />
           </StyledIcon>
           <StyledIcon>
