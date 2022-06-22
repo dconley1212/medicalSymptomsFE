@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import ToDo from "./ToDo";
+import LandingPage from "./LandingPage";
 import styled from "styled-components";
 
 // let name: string;
@@ -61,9 +62,12 @@ const ToDoPage = styled.div`
 
 function App() {
   return (
-    <ToDoPage className="App">
-      <ToDo />
-    </ToDoPage>
+    <div>
+      <LandingPage></LandingPage>
+      <ToDoPage className="App">
+        <ToDo />
+      </ToDoPage>
+    </div>
   );
 }
 
