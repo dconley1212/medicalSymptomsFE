@@ -36,11 +36,11 @@ const InputStyled = styled.input`
 `;
 
 const StyledButton = styled.button`
-  position: absolute;
+  position: relative;
   width: 2.8em;
   height: 2.8em;
   border-radius: 3em;
-  right: -10px;
+  left: 40px;
   border: none;
   font-size: 1em;
   background-color: #00bfff;

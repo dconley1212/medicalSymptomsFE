@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 
-//left off trying to figure out how to handle the edit task functionality with the
-// helper function and if you need one to handle the changes and one to handle the new
-// submission, which honestly is my guess
+//left off finishing the icon buttons functionality and am ready to start the next
+// drag and drop functionality, but should add some css next time too.
 
 const StyledSpecificTaskWrapper = styled.div`
   width: 100%;
@@ -18,28 +17,31 @@ const StyledSpecificTaskWrapper = styled.div`
 
 const StyledSpecificTask = styled.form`
   border-radius: 20px;
+  width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   padding: 0rem 2rem;
-  background-color: #faf0e6;
+  background-color: #ffffff;
+  border: 1px solid black;
 `;
 
 const StyledTaskText = styled.span`
   display: flex;
   padding: 0.2rem;
+  color: black;
   margin-right: 3rem;
   font-size: 1.2rem;
 `;
 
 const StyledIconDiv = styled.div`
-  display: flex;
-  margin-left: 1px;
   font-size: 1.3rem;
   cursor: pointer;
 `;
 
 const StyledIcon = styled.span`
   margin: 0px 5px;
+  color: #00bfff;
 `;
 
 interface EachTaskProps {
