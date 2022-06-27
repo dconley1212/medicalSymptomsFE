@@ -10,14 +10,38 @@ const StyledHeader = styled.header`
 `;
 
 const StyledMainDiv = styled.div`
-  padding: 20rem 15rem;
+  padding: 12rem 5rem;
   background-image: url(${backgroundImg});
   background-size: cover;
   background-repeat: no-repeat;
+  border: 2px solid black;
 `;
 
 const LandingPageHook = styled.h2`
   font-size: 2rem;
+  position: relative;
+  bottom: 9rem;
+  padding: 3rem;
+`;
+
+const LandingPageStat = styled.p`
+  padding: 1rem;
+  position: relative;
+  bottom: 8rem;
+  width: 35%;
+  font-size: 1.5rem;
+  color: white;
+`;
+const SurveyButton = styled.button`
+  padding: 1.2rem;
+  border-radius: 10px;
+  color: white;
+  background-color: black;
+  width: 15%;
+  position: relative;
+  left: 5rem;
+  bottom: 4rem;
+  font-size: 1rem;
 `;
 
 const LandingPage = () => {
@@ -28,8 +52,10 @@ const LandingPage = () => {
       </StyledHeader>
       <StyledMainDiv>
         <LandingPageHook>Tired of back pain?</LandingPageHook>
-        <p>You're in good company too. 1 in 3 Adults experience back pain!</p>
-        <button>Want a doctors recomendation?</button>
+        <LandingPageStat>
+          You're in good company too. 1 in 3 Adults experience back pain!
+        </LandingPageStat>
+        <SurveyButton>Want a doctors recomendation?</SurveyButton>
       </StyledMainDiv>
     </div>
   );
