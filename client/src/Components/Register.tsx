@@ -19,22 +19,22 @@ const Register = () => {
         <label>
           {" "}
           Create Username:
-          <input value={account.username} />
+          <input type="text" name="username" value={account.username} />
         </label>
         <label>
           {" "}
           Create Password:
-          <input value={account.password} />
+          <input type="password" name="password" value={account.password} />
         </label>
         <label>
           {" "}
           Email:
-          <input value={account.email} />
+          <input type="email" name="email" value={account.email} />
         </label>
         <label>
           {" "}
           Phone Number:
-          <input value={account.phone_number} />
+          <input type="tel" name="phone_number" value={account.phone_number} />
         </label>
       </form>
     </div>

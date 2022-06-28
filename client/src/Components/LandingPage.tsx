@@ -2,13 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
 
-const StyledHeader = styled.header`
-  padding: 1rem;
-  background: #4682b4;
-  color: #faf0e6;
-  font-size: 1.2rem;
-`;
-
 const StyledMainDiv = styled.div`
   padding: 12rem 5rem;
   background-image: url(${backgroundImg});
@@ -47,9 +40,6 @@ const SurveyButton = styled.button`
 const LandingPage = () => {
   return (
     <div>
-      <StyledHeader>
-        <h2>ConleyCare</h2>
-      </StyledHeader>
       <StyledMainDiv>
         <LandingPageHook>Tired of back pain?</LandingPageHook>
         <LandingPageStat>

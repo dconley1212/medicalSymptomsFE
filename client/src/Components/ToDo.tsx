@@ -3,6 +3,14 @@ import { Tasks } from "./model";
 import SpecificTask from "./SpecificTask";
 import styled from "styled-components";
 
+const ToDoPage = styled.div`
+  background: #00bfff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const StyledWrapper = styled.div`
   /* display: flex;
   flex-direction: column;
@@ -77,31 +85,33 @@ const ToDo: React.FC = () => {
     }
   };
   return (
-    <StyledWrapper>
-      <Title>My Goals!</Title>
-      <FormStyled onSubmit={handleSubmit}>
-        <label>
-          <InputStyled
-            ref={inputRef}
-            onChange={handleChange}
-            type="input"
-            placeholder="Add a Task"
-            value={task}
-          ></InputStyled>
-        </label>
-        <StyledButton type="submit">Add</StyledButton>
-      </FormStyled>
-      {tasks.map((eachTask) => {
-        return (
-          <SpecificTask
-            eachTask={eachTask}
-            key={eachTask.id}
-            setTasks={setTasks}
-            tasks={tasks}
-          />
-        );
-      })}
-    </StyledWrapper>
+    <ToDoPage>
+      <StyledWrapper>
+        <Title>My Goals!</Title>
+        <FormStyled onSubmit={handleSubmit}>
+          <label>
+            <InputStyled
+              ref={inputRef}
+              onChange={handleChange}
+              type="input"
+              placeholder="Add a Task"
+              value={task}
+            ></InputStyled>
+          </label>
+          <StyledButton type="submit">Add</StyledButton>
+        </FormStyled>
+        {tasks.map((eachTask) => {
+          return (
+            <SpecificTask
+              eachTask={eachTask}
+              key={eachTask.id}
+              setTasks={setTasks}
+              tasks={tasks}
+            />
+          );
+        })}
+      </StyledWrapper>
+    </ToDoPage>
   );
 };
 export default ToDo;
