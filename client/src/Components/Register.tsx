@@ -43,13 +43,13 @@ const StyledButton = styled.button`
   width: 40%;
   border-radius: 15px;
   background-color: #4682b4;
+  cursor: pointer;
 `;
 
 const Register = () => {
   const [account, setAccount] = useState<{ [x: string]: string }>({
-    username: "",
-    password: "",
     email: "",
+    password: "",
     phone_number: "",
   });
 
@@ -71,10 +71,10 @@ const Register = () => {
         <h2>ConleyCare</h2>
         <h3>Create an Account</h3>
         <FormInputsStyle
-          type="text"
-          name="username"
-          placeholder="Create Username"
-          value={account.username}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={account.email}
           onChange={handleChange}
         />
         <FormInputsStyle
@@ -82,13 +82,6 @@ const Register = () => {
           name="password"
           placeholder="Create Password"
           value={account.password}
-          onChange={handleChange}
-        />
-        <FormInputsStyle
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={account.email}
           onChange={handleChange}
         />
         <FormInputsStyle

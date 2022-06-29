@@ -1,10 +1,9 @@
 import React from "react";
-import "../App.css";
 import ToDo from "./ToDo";
 import LandingPage from "./LandingPage";
-import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import Register from "./Register";
+import Login from "./Login";
 
 // let name: string;
 // let age: number;
@@ -60,6 +59,7 @@ function App() {
       <Routes>
         <Route path="/todolist" element={<ToDo />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<LandingPage />} />
       </Routes>
     </div>
