@@ -1,5 +1,47 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  border: 2px solid black;
+`;
+
+const RegisterFormStyle = styled.form`
+  display: flex;
+  padding: 1rem;
+  border: 2px solid black;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  border-radius: 15px;
+`;
+
+const StyledLabels = styled.label`
+  display: flex;
+  flex-direction: column;
+  margin: 0.4rem 0rem;
+`;
+
+const FormInputsStyle = styled.input`
+  display: flex;
+  margin: 0.4rem 0.4rem;
+  padding: 0.7rem;
+  width: 90%;
+  border: 2px solid black;
+  border-radius: 15px;
+`;
+
+const StyledButton = styled.button`
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  width: 40%;
+  border-radius: 15px;
+`;
 
 const Register = () => {
   const [account, setAccount] = useState<{ [x: string]: string }>({
@@ -22,47 +64,47 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <FormWrapper>
+      <RegisterFormStyle onSubmit={handleSubmit}>
+        <StyledLabels>
           {"Create Username: "}
-          <input
+          <FormInputsStyle
             type="text"
             name="username"
             value={account.username}
             onChange={handleChange}
           />
-        </label>
-        <label>
+        </StyledLabels>
+        <StyledLabels>
           {"Create Password: "}
-          <input
+          <FormInputsStyle
             type="password"
             name="password"
             value={account.password}
             onChange={handleChange}
           />
-        </label>
-        <label>
+        </StyledLabels>
+        <StyledLabels>
           {"Email: "}
-          <input
+          <FormInputsStyle
             type="email"
             name="email"
             value={account.email}
             onChange={handleChange}
           />
-        </label>
-        <label>
+        </StyledLabels>
+        <StyledLabels>
           {" Phone Number:"}
-          <input
+          <FormInputsStyle
             type="tel"
             name="phone_number"
             value={account.phone_number}
             onChange={handleChange}
           />
-        </label>
-        <button>Submit</button>
-      </form>
-    </div>
+        </StyledLabels>
+        <StyledButton>Submit</StyledButton>
+      </RegisterFormStyle>
+    </FormWrapper>
   );
 };
 
