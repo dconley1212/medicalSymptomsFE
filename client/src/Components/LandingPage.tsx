@@ -1,6 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
+import { Link } from "react-router-dom";
+
+const StyledHeader = styled.header`
+  padding: 1rem;
+  background: #4682b4;
+  color: #000000;
+  font-size: 1.2rem;
+`;
 
 const StyledMainDiv = styled.div`
   padding: 12rem 5rem;
@@ -40,6 +48,10 @@ const SurveyButton = styled.button`
 const LandingPage = () => {
   return (
     <div>
+      <StyledHeader>
+        <h2>ConleyCare</h2>
+        <Link to="/register">Create Account</Link>
+      </StyledHeader>
       <StyledMainDiv>
         <LandingPageHook>Tired of back pain?</LandingPageHook>
         <LandingPageStat>

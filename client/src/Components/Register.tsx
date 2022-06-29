@@ -8,6 +8,8 @@ const FormWrapper = styled.div`
   align-items: center;
   padding: 4rem;
   border: 2px solid black;
+  background-color: #db7093;
+  height: 100vh;
 `;
 
 const RegisterFormStyle = styled.form`
@@ -18,12 +20,7 @@ const RegisterFormStyle = styled.form`
   justify-content: space-between;
   width: 40%;
   border-radius: 15px;
-`;
-
-const StyledLabels = styled.label`
-  display: flex;
-  flex-direction: column;
-  margin: 0.4rem 0rem;
+  background-color: #ffffff;
 `;
 
 const FormInputsStyle = styled.input`
@@ -33,14 +30,19 @@ const FormInputsStyle = styled.input`
   width: 90%;
   border: 2px solid black;
   border-radius: 15px;
+  background-color: #f5f5f5;
 `;
 
 const StyledButton = styled.button`
   display: flex;
+  position: relative;
+  left: 30%;
+  font-size: 1rem;
   padding: 1rem;
   justify-content: center;
   width: 40%;
   border-radius: 15px;
+  background-color: #4682b4;
 `;
 
 const Register = () => {
@@ -66,42 +68,36 @@ const Register = () => {
   return (
     <FormWrapper>
       <RegisterFormStyle onSubmit={handleSubmit}>
-        <StyledLabels>
-          {"Create Username: "}
-          <FormInputsStyle
-            type="text"
-            name="username"
-            value={account.username}
-            onChange={handleChange}
-          />
-        </StyledLabels>
-        <StyledLabels>
-          {"Create Password: "}
-          <FormInputsStyle
-            type="password"
-            name="password"
-            value={account.password}
-            onChange={handleChange}
-          />
-        </StyledLabels>
-        <StyledLabels>
-          {"Email: "}
-          <FormInputsStyle
-            type="email"
-            name="email"
-            value={account.email}
-            onChange={handleChange}
-          />
-        </StyledLabels>
-        <StyledLabels>
-          {" Phone Number:"}
-          <FormInputsStyle
-            type="tel"
-            name="phone_number"
-            value={account.phone_number}
-            onChange={handleChange}
-          />
-        </StyledLabels>
+        <h2>ConleyCare</h2>
+        <h3>Create an Account</h3>
+        <FormInputsStyle
+          type="text"
+          name="username"
+          placeholder="Create Username"
+          value={account.username}
+          onChange={handleChange}
+        />
+        <FormInputsStyle
+          type="password"
+          name="password"
+          placeholder="Create Password"
+          value={account.password}
+          onChange={handleChange}
+        />
+        <FormInputsStyle
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={account.email}
+          onChange={handleChange}
+        />
+        <FormInputsStyle
+          type="tel"
+          name="phone_number"
+          placeholder="Phone Number"
+          value={account.phone_number}
+          onChange={handleChange}
+        />
         <StyledButton>Submit</StyledButton>
       </RegisterFormStyle>
     </FormWrapper>

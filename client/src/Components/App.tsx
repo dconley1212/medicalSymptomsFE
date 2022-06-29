@@ -3,7 +3,7 @@ import "../App.css";
 import ToDo from "./ToDo";
 import LandingPage from "./LandingPage";
 import styled from "styled-components";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Register from "./Register";
 
 // let name: string;
@@ -53,20 +53,10 @@ import Register from "./Register";
 // }
 
 // let lotsOfPeople: Person[];
-const StyledHeader = styled.header`
-  padding: 1rem;
-  background: #4682b4;
-  color: #faf0e6;
-  font-size: 1.2rem;
-`;
 
 function App() {
   return (
     <div>
-      <StyledHeader>
-        <h2>ConleyCare</h2>
-        <Link to="/register">Create Account</Link>
-      </StyledHeader>
       <Routes>
         <Route path="/todolist" element={<ToDo />} />
         <Route path="/register" element={<Register />} />
