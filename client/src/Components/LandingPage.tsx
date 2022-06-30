@@ -4,10 +4,25 @@ import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
 import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
-  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.2rem;
   background: #4682b4;
-  color: #000000;
+`;
+const StyledLogoTitle = styled.h2`
   font-size: 1.2rem;
+  color: #000000;
+`;
+
+const StyledLinksDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledLinks = styled(Link)`
+  margin: 0em 1em;
+  color: #000000;
 `;
 
 const StyledMainDiv = styled.div`
@@ -49,8 +64,11 @@ const LandingPage = () => {
   return (
     <div>
       <StyledHeader>
-        <h2>ConleyCare</h2>
-        <Link to="/register">Create Account</Link>
+        <StyledLogoTitle>ConleyCare</StyledLogoTitle>
+        <StyledLinksDiv>
+          <StyledLinks to="/register">Create Account</StyledLinks>
+          <StyledLinks to="/login">Login</StyledLinks>
+        </StyledLinksDiv>
       </StyledHeader>
       <StyledMainDiv>
         <LandingPageHook>Tired of back pain?</LandingPageHook>
