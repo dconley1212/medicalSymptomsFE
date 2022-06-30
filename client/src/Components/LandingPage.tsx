@@ -23,6 +23,12 @@ const StyledLinksDiv = styled.div`
 const StyledLinks = styled(Link)`
   margin: 0em 1em;
   color: #000000;
+  text-decoration: none;
+  &:hover {
+    transition-timing-function: ease;
+    color: #ffffff;
+    text-decoration: underline;
+  }
 `;
 
 const StyledMainDiv = styled.div`
@@ -41,10 +47,10 @@ const LandingPageHook = styled.h2`
 `;
 
 const LandingPageStat = styled.p`
-  padding: 1rem;
+  padding: 3rem;
   position: relative;
-  bottom: 8rem;
-  width: 35%;
+  bottom: 10rem;
+  width: 23%;
   font-size: 1.5rem;
   color: white;
 `;
@@ -56,8 +62,9 @@ const SurveyButton = styled.button`
   width: 15%;
   position: relative;
   left: 5rem;
-  bottom: 4rem;
+  bottom: 7rem;
   font-size: 1rem;
+  cursor: pointer;
 `;
 
 const LandingPage = () => {
