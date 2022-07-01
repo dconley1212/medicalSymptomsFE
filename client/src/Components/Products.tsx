@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Products = () => {
+  const handleAdd = () => {};
   return (
     <div>
       <div>
@@ -12,6 +13,7 @@ const Products = () => {
           <h3>Back Product 1</h3>
           <img alt="back product"></img>
           <h3>Reviews</h3>
+          <button>Add to Cart</button>
         </div>
       </div>
       <div>
@@ -19,6 +21,7 @@ const Products = () => {
           <h3>Back Product 2</h3>
           <img alt="back product"></img>
           <h3>Reviews</h3>
+          <button>Add to Cart</button>
         </div>
       </div>
     </div>

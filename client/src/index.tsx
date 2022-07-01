@@ -2,12 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./Components/App";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
 import { BrowserRouter as Router } from "react-router-dom";
-
-const store = configureStore({
-  reducer: {},
-});
+import { store } from "./app/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
