@@ -5,10 +5,6 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
 
-//left off trying to figure out the redux-toolkit file structure and how you would
-// go about fixing your current file structure and if you need to follow it to a tee
-// before moving forward
-
 // let name: string;
 // let age: number;
 // let isStudent: boolean;
