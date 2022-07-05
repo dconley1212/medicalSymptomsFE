@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { stringify } from "querystring";
 
 interface ProductsInCheckout {
   product_name: string;
@@ -13,9 +12,17 @@ const initialState: ProductsInCheckout[] = [
 ];
 
 export const productToCheckoutSlice = createSlice({
-  name: "Checkout_Item",
+  name: "checkout_items",
   initialState: initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<ProductsInCheckout>) => {},
+    addToCart: (state, action: PayloadAction<ProductsInCheckout>) => {
+      state.push(action.payload);
+    },
   },
 });
+
+export const { addToCart } = productToCheckoutSlice.actions;
+export const productsInCart = (state: ProductsInCheckout[]) => {
+  return state;
+};
+export default productToCheckoutSlice.reducer;
