@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import products from "../../data/items.json";
+import Product from "./Product";
 
 const Products = () => {
+  const cartProducts = useAppSelector((state) => state);
+  const dispatch = useAppDispatch();
+
   const handleAdd = () => {};
   return (
     <div>
@@ -9,20 +15,17 @@ const Products = () => {
         <button></button>
       </div>
       <div>
-        <div>
-          <h3>Back Product 1</h3>
-          <img alt="back product"></img>
-          <h3>Reviews</h3>
-          <button>Add to Cart</button>
-        </div>
-      </div>
-      <div>
-        <div>
-          <h3>Back Product 2</h3>
-          <img alt="back product"></img>
-          <h3>Reviews</h3>
-          <button>Add to Cart</button>
-        </div>
+        {products.map((product) => {
+          return (
+            <Product
+              key={product.id}
+              name={product.name}
+              price={product.price}
+              description={product.description}
+              imgurl={product.imgurl}
+            />
+          );
+        })}
       </div>
     </div>
   );

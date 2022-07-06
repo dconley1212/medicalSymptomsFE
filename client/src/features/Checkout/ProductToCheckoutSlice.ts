@@ -20,9 +20,7 @@ export const productToCheckoutSlice = createSlice({
     addToCart: (state, action: PayloadAction<ProductsInCheckout>) => {
       state.push(action.payload);
     },
-    removeFromCart: (state, action) => {
-      state.pop();
-    },
+    removeFromCart: (state, action) => {},
   },
 });
 
