@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+// I should create a remove reducer and then look into how to manage the state for adding
+// products to the cart with redux and the components that will need the slice I created
 interface ProductsInCheckout {
   product_name: string;
 }
@@ -17,6 +19,9 @@ export const productToCheckoutSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<ProductsInCheckout>) => {
       state.push(action.payload);
+    },
+    removeFromCart: (state, action) => {
+      state.pop();
     },
   },
 });
