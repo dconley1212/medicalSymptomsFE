@@ -26,7 +26,7 @@ export const productToCheckoutSlice = createSlice({
   },
 });
 
-export const { addToCart } = productToCheckoutSlice.actions;
+export const { addToCart, removeFromCart } = productToCheckoutSlice.actions;
 export const productsInCart = (state: ProductsInCheckout[]) => {
   return state;
 };
