@@ -4,6 +4,7 @@ import LandingPage from "./LandingPage";
 import { Route, Routes } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
+import Products from "../features/Checkout/Products";
 
 // let name: string;
 // let age: number;
@@ -58,6 +59,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/todolist" element={<ToDo />} />
+        <Route path="products" element={<Products />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<LandingPage />} />

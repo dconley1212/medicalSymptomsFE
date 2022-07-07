@@ -3,13 +3,21 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 // I should create a remove reducer and then look into how to manage the state for adding
 // products to the cart with redux and the components that will need the slice I created
-interface ProductsInCheckout {
-  product_name: string;
+export interface ProductsInCheckout {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  imgurl: string;
 }
 
 const initialState: ProductsInCheckout[] = [
   {
-    product_name: "",
+    id: 0,
+    name: "",
+    price: 0,
+    description: "",
+    imgurl: "",
   },
 ];
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { formatCurrency } from "../../utilities/formatCurrency";
 
 interface ProductInfo {
   name: string;
@@ -13,7 +14,7 @@ const Product = ({ name, price, description, imgurl }: ProductInfo) => {
       <h2>{name}</h2>
       <img src={imgurl} alt="Medical Product"></img>
       <p>{description}</p>
-      <p>{price}</p>
+      <p>{formatCurrency(price)}</p>
     </div>
   );
 };
