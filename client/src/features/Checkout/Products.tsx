@@ -11,6 +11,7 @@ const Products = () => {
 
   const handleAdd = (product: ProductsInCheckout) => {
     dispatch(addToCart(product));
+    console.log(cartProducts);
   };
 
   return (

@@ -11,22 +11,24 @@ export interface ProductsInCheckout {
   imgurl: string;
 }
 
-const initialState: ProductsInCheckout[] = [
-  {
-    id: 0,
-    name: "",
-    price: 0,
-    description: "",
-    imgurl: "",
-  },
-];
+interface InitialState {
+  cartItems: ProductsInCheckout[];
+  itemQuantity: number;
+  totalPrice: number;
+}
+
+const initialState: InitialState = {
+  cartItems: [],
+  itemQuantity: 0,
+  totalPrice: 0,
+};
 
 export const productToCheckoutSlice = createSlice({
   name: "checkout_items",
   initialState: initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<ProductsInCheckout>) => {
-      state.push(action.payload);
+      state.cartItems.push(action.payload);
     },
     removeFromCart: (state, action) => {},
   },
