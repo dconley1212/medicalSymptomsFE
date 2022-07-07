@@ -1,8 +1,22 @@
-import React, { ReactEventHandler, useState } from "react";
+import React, { ReactEventHandler, useEffect, useState } from "react";
 import products from "../../data/items.json";
 import Product from "./Product";
+import { addToCart } from "./ProductToCheckoutSlice";
+import { ProductsInCheckout } from "./ProductToCheckoutSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 const Products = () => {
+  const cartProducts = useAppSelector((state) => state);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    console.log(cartProducts);
+  }, [cartProducts]);
+
+  const handleAdd = (product: ProductsInCheckout) => {
+    dispatch(addToCart(product));
+  };
+
   return (
     <div>
       <div>
@@ -12,7 +26,13 @@ const Products = () => {
       {products.map((product) => {
         return (
           <div>
-            <Product product={product} />
+            <Product
+              name={product.name}
+              price={product.price}
+              description={product.description}
+              imgurl={product.imgurl}
+            />
+            <button onClick={() => handleAdd(product)}></button>
           </div>
         );
       })}

@@ -1,34 +1,25 @@
 import React from "react";
 import { formatCurrency } from "../../utilities/formatCurrency";
-import { addToCart } from "./ProductToCheckoutSlice";
-import { ProductsInCheckout } from "./ProductToCheckoutSlice";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+
+// remember to put this in the readme about the challenges with the store state with
+// adding a item to the cart with the new redux tool kit and typescript funcitonality
+// also left off trying to figure our how to get the button to add the product to the cart
+// store without having to click the button twice
 
 interface ProductInfo {
-  product: {
-    id: number;
-    name: string;
-    price: number;
-    description: string;
-    imgurl: string;
-  };
+  name: string;
+  price: number;
+  description: string;
+  imgurl: string;
 }
 
-const Product = (product: ProductInfo) => {
-  const cartProducts = useAppSelector((state) => state);
-  const dispatch = useAppDispatch();
-
-  const handleAdd = (product: ProductInfo) => {
-    dispatch(addToCart(product.product));
-    console.log(cartProducts);
-  };
+const Product = ({ name, price, description, imgurl }: ProductInfo) => {
   return (
     <div>
-      <h2>{product.product.name}</h2>
-      <img src={product.product.imgurl} alt="Medical Product"></img>
-      <p>{product.product.description}</p>
-      <p>{formatCurrency(product.product.price)}</p>
-      <button onClick={() => handleAdd(product)}></button>
+      <h2>{name}</h2>
+      <img src={imgurl} alt="Medical Product"></img>
+      <p>{description}</p>
+      <p>{formatCurrency(price)}</p>
     </div>
   );
 };
