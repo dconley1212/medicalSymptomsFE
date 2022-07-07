@@ -6,6 +6,10 @@ import { formatCurrency } from "../../utilities/formatCurrency";
 // also left off trying to figure our how to get the button to add the product to the cart
 // store without having to click the button twice
 
+// figured out when I was clicking the button and logging the state in the function right
+// after I dispatched the action creator that I was seeing two items in the cartProducts
+// state due to the asychronous nature of the dispatch function
+
 interface ProductInfo {
   name: string;
   price: number;
