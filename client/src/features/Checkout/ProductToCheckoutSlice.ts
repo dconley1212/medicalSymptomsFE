@@ -30,7 +30,11 @@ export const productToCheckoutSlice = createSlice({
     addToCart: (state, action: PayloadAction<ProductsInCheckout>) => {
       state.cartItems.push(action.payload);
     },
-    removeFromCart: (state, action) => {},
+    removeFromCart: (state, action) => {
+      state.cartItems.filter((cartItem) => {
+        return action.payload.id !== cartItem.id;
+      });
+    },
   },
 });
 
