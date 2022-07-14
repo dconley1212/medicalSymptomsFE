@@ -13,13 +13,17 @@ export interface ProductsInCheckout {
 
 interface InitialState {
   cartItems: ProductsInCheckout[];
-  itemQuantity: number;
+  itemOne: number;
+  itemTwo: number;
+  totalQuantity: number;
   totalPrice: number;
 }
 
 const initialState: InitialState = {
   cartItems: [],
-  itemQuantity: 0,
+  itemOne: 0,
+  itemTwo: 0,
+  totalQuantity: 0,
   totalPrice: 0,
 };
 
@@ -28,12 +32,35 @@ export const productToCheckoutSlice = createSlice({
   initialState: initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<ProductsInCheckout>) => {
-      state.cartItems.push(action.payload);
+      const inCart = state.cartItems.filter((cartItem) => {
+        return cartItem.id === action.payload.id;
+      });
+      if (inCart[0]) {
+        if (inCart[0].id === 1) {
+          state.itemOne++;
+        } else {
+          state.itemTwo++;
+        }
+      } else {
+        state.cartItems.push(action.payload);
+        if (action.payload.id === 1) {
+          state.itemOne++;
+        } else {
+          state.itemTwo++;
+        }
+      }
+      state.totalQuantity++;
     },
     removeFromCart: (state, action) => {
-      state.cartItems.filter((cartItem) => {
+      state.totalQuantity--;
+      state.cartItems = state.cartItems.filter((cartItem) => {
         return action.payload.id !== cartItem.id;
       });
+      if (action.payload.id === 1) {
+        state.itemOne--;
+      } else {
+        state.itemTwo--;
+      }
     },
   },
 });
