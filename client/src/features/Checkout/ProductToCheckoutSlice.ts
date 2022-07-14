@@ -50,6 +50,7 @@ export const productToCheckoutSlice = createSlice({
         }
       }
       state.totalQuantity++;
+      state.totalPrice += action.payload.price;
     },
     removeFromCart: (state, action) => {
       state.totalQuantity--;
@@ -61,6 +62,7 @@ export const productToCheckoutSlice = createSlice({
       } else {
         state.itemTwo--;
       }
+      state.totalPrice -= action.payload.price;
     },
   },
 });
