@@ -3,14 +3,14 @@
     "id": 1,
     "name": "Item_one",
     "price": 21.99,
-    "description": "Wonder spray that make acute pain go away",
+    "description": "Wonder spray that makes acute pain go away",
     "imgurl": "https://unsplash.com/photos/SGmgCPxv8OI"
   },
   {
     "id": 2,
     "name": "Item_two",
     "price": 49.99,
-    "description": "These pills make sure you can get rid of chronic back pain",
+    "description": "These pills make sure you get rid of chronic back pain",
     "imgurl": "https://unsplash.com/photos/hEX5R8u7gCI"
   }
 ]
