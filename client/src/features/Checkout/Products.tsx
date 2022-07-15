@@ -5,6 +5,7 @@ import { addToCart, removeFromCart } from "./ProductToCheckoutSlice";
 import { ProductsInCheckout } from "./ProductToCheckoutSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import styled from "styled-components";
+import Header from "../../Components/Header";
 
 const StyledProductsPage = styled.div`
   display: flex;
@@ -18,7 +19,7 @@ const StyledSurveySection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 8rem 4rem;
+  margin: 7rem 4rem;
   border: 2px solid black;
   background-color: #ffffff;
   border-radius: 10px;
@@ -84,46 +85,49 @@ const Products = () => {
   };
 
   return (
-    <StyledProductsPage>
-      <StyledSurveySection>
-        <StyledSurveyHeading>
-          What Products make sense for you?
-        </StyledSurveyHeading>
-        <StyledSurveyButton>Find out here</StyledSurveyButton>
-        <StyledSurveyParagraphs>
-          "There is nothing worse than purchasing the wrong product because you
-          don't completely understand the nuances of your symptoms! Following
-          their questionaire helped me feel comfortable that I was making the
-          right choice."
-        </StyledSurveyParagraphs>
-        <p> -Karen Conley</p>
-      </StyledSurveySection>
-      <StyledProductsSection>
-        {products.map((product) => {
-          return (
-            <StyledProductDiv>
-              <Product
-                name={product.name}
-                price={product.price}
-                description={product.description}
-                imgurl={product.imgurl}
-              />
-              <ProductButton onClick={() => handleAdd(product)}>
-                Add
-              </ProductButton>
-              {product.id === 1 ? (
-                <p>{cartProducts.itemsInCart.itemOne}</p>
-              ) : (
-                <p>{cartProducts.itemsInCart.itemTwo}</p>
-              )}
-              <ProductButton onClick={() => handleDelete(product)}>
-                Delete
-              </ProductButton>
-            </StyledProductDiv>
-          );
-        })}
-      </StyledProductsSection>
-    </StyledProductsPage>
+    <div>
+      <Header />
+      <StyledProductsPage>
+        <StyledSurveySection>
+          <StyledSurveyHeading>
+            What Products make sense for you?
+          </StyledSurveyHeading>
+          <StyledSurveyButton>Find out here</StyledSurveyButton>
+          <StyledSurveyParagraphs>
+            "There is nothing worse than purchasing the wrong product because
+            you don't completely understand the nuances of your symptoms!
+            Following their questionaire helped me feel comfortable that I was
+            making the right choice."
+          </StyledSurveyParagraphs>
+          <p> -Karen Conley</p>
+        </StyledSurveySection>
+        <StyledProductsSection>
+          {products.map((product) => {
+            return (
+              <StyledProductDiv>
+                <Product
+                  name={product.name}
+                  price={product.price}
+                  description={product.description}
+                  imgurl={product.imgurl}
+                />
+                <ProductButton onClick={() => handleAdd(product)}>
+                  Add
+                </ProductButton>
+                {product.id === 1 ? (
+                  <p>{cartProducts.itemsInCart.itemOne}</p>
+                ) : (
+                  <p>{cartProducts.itemsInCart.itemTwo}</p>
+                )}
+                <ProductButton onClick={() => handleDelete(product)}>
+                  Delete
+                </ProductButton>
+              </StyledProductDiv>
+            );
+          })}
+        </StyledProductsSection>
+      </StyledProductsPage>
+    </div>
   );
 };
 
