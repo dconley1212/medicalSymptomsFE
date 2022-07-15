@@ -9,9 +9,10 @@ const StyledHeader = styled.header`
   padding: 1.2rem;
   background: #4682b4;
 `;
-const StyledLogoTitle = styled.h2`
+const StyledLogoTitle = styled(Link)`
   font-size: 1.2rem;
   color: #000000;
+  font-weight: bold;
 `;
 
 const StyledLinksDiv = styled.div`
@@ -23,6 +24,7 @@ const StyledLinks = styled(Link)`
   margin: 0em 1em;
   color: #000000;
   text-decoration: none;
+  font-size: 1rem;
   &:hover {
     transition-timing-function: ease;
     color: #ffffff;
@@ -33,7 +35,7 @@ const StyledLinks = styled(Link)`
 const Header = () => {
   return (
     <StyledHeader>
-      <StyledLogoTitle>ConleyCare</StyledLogoTitle>
+      <StyledLogoTitle to="/">ConleyCare</StyledLogoTitle>
       <StyledLinksDiv>
         <StyledLinks to="/register">Create Account</StyledLinks>
         <StyledLinks to="/login">Login</StyledLinks>

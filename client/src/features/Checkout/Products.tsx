@@ -29,6 +29,7 @@ const StyledSurveyHeading = styled.h2`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   width: 65%;
 `;
 
@@ -45,6 +46,7 @@ const StyledSurveyParagraphs = styled.p`
   width: 70%;
   margin: 2rem 0rem;
   font-size: 1rem;
+  text-align: center;
 `;
 
 const StyledProductsSection = styled.div`

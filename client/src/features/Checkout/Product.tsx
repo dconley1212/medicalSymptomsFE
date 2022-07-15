@@ -11,6 +11,7 @@ const StyledProductDiv = styled.div`
 `;
 
 const StyledProductName = styled.h2`
+  margin-top: 0.2rem;
   font-size: 1.2rem;
 `;
 
