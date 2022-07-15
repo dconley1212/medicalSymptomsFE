@@ -21,6 +21,7 @@ const StyledImg = styled.img`
 const StyledProductInfo = styled.p`
   font-size: 1rem;
   margin: 0.35rem;
+  text-align: center;
 `;
 
 interface ProductInfo {

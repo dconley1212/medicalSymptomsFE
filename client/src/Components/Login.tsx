@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Header from "./Header";
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -77,25 +78,28 @@ const Login = () => {
   };
 
   return (
-    <LoginWrapper>
-      <StyledForm onSubmit={handleSubmit}>
-        <StyledTitleLogo>ConleyCare</StyledTitleLogo>
-        <StyledDirections>Please Sign In</StyledDirections>
-        <StyledInput
-          placeholder="email"
-          name="email"
-          value={login.email}
-          onChange={handleChange}
-        />
-        <StyledInput
-          placeholder="password"
-          name="password"
-          value={login.password}
-          onChange={handleChange}
-        />
-        <StyledButton>Sign In</StyledButton>
-      </StyledForm>
-    </LoginWrapper>
+    <div>
+      <Header />
+      <LoginWrapper>
+        <StyledForm onSubmit={handleSubmit}>
+          <StyledTitleLogo>ConleyCare</StyledTitleLogo>
+          <StyledDirections>Please Sign In</StyledDirections>
+          <StyledInput
+            placeholder="email"
+            name="email"
+            value={login.email}
+            onChange={handleChange}
+          />
+          <StyledInput
+            placeholder="password"
+            name="password"
+            value={login.password}
+            onChange={handleChange}
+          />
+          <StyledButton>Sign In</StyledButton>
+        </StyledForm>
+      </LoginWrapper>
+    </div>
   );
 };
 

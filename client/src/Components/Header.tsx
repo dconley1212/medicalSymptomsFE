@@ -37,6 +37,7 @@ const Header = () => {
       <StyledLinksDiv>
         <StyledLinks to="/register">Create Account</StyledLinks>
         <StyledLinks to="/login">Login</StyledLinks>
+        <StyledLinks to="/products">Products</StyledLinks>
       </StyledLinksDiv>
     </StyledHeader>
   );

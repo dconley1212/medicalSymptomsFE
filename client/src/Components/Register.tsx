@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Header from "./Header";
 
 const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 4rem;
-  border: 2px solid black;
-  background-color: #db7093;
+  background-color: #f5f5f5;
   height: 100vh;
 `;
 
@@ -21,6 +21,10 @@ const RegisterFormStyle = styled.form`
   width: 40%;
   border-radius: 15px;
   background-color: #ffffff;
+`;
+
+const StyledTitle = styled.h2`
+  color: #cb4a6f;
 `;
 
 const FormInputsStyle = styled.input`
@@ -66,34 +70,37 @@ const Register = () => {
   };
 
   return (
-    <FormWrapper>
-      <RegisterFormStyle onSubmit={handleSubmit}>
-        <h2>ConleyCare</h2>
-        <h3>Create an Account</h3>
-        <FormInputsStyle
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={account.email}
-          onChange={handleChange}
-        />
-        <FormInputsStyle
-          type="password"
-          name="password"
-          placeholder="Create Password"
-          value={account.password}
-          onChange={handleChange}
-        />
-        <FormInputsStyle
-          type="tel"
-          name="phone_number"
-          placeholder="Phone Number"
-          value={account.phone_number}
-          onChange={handleChange}
-        />
-        <StyledButton>Submit</StyledButton>
-      </RegisterFormStyle>
-    </FormWrapper>
+    <div>
+      <Header />
+      <FormWrapper>
+        <RegisterFormStyle onSubmit={handleSubmit}>
+          <StyledTitle>ConleyCare</StyledTitle>
+          <h3>Create an Account</h3>
+          <FormInputsStyle
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={account.email}
+            onChange={handleChange}
+          />
+          <FormInputsStyle
+            type="password"
+            name="password"
+            placeholder="Create Password"
+            value={account.password}
+            onChange={handleChange}
+          />
+          <FormInputsStyle
+            type="tel"
+            name="phone_number"
+            placeholder="Phone Number"
+            value={account.phone_number}
+            onChange={handleChange}
+          />
+          <StyledButton>Submit</StyledButton>
+        </RegisterFormStyle>
+      </FormWrapper>
+    </div>
   );
 };
 

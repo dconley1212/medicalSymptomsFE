@@ -11,7 +11,7 @@ const StyledProductsPage = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: #e0ffff;
+  background-color: #cb4a6f;
   height: 100vh;
 `;
 
@@ -20,8 +20,7 @@ const StyledSurveySection = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 7rem 4rem;
-  border: 2px solid black;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   border-radius: 10px;
   width: 30%;
 `;
@@ -34,15 +33,18 @@ const StyledSurveyHeading = styled.h2`
 `;
 
 const StyledSurveyButton = styled.button`
-  border-radius: 5px;
-  margin-top: 2rem;
-  padding: 1.5em;
+  border-radius: 10px;
+  margin-top: 1rem;
+  padding: 1em;
   cursor: pointer;
+  background-color: #cb4a6f;
+  font-size: 1rem;
 `;
 
 const StyledSurveyParagraphs = styled.p`
   width: 70%;
   margin: 2rem 0rem;
+  font-size: 1rem;
 `;
 
 const StyledProductsSection = styled.div`
@@ -56,11 +58,10 @@ const StyledProductDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid black;
   border-radius: 8px;
   padding: 0.5rem;
   margin: 0.5rem;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
 `;
 const ProductButtonDiv = styled.div`
   display: flex;
@@ -76,6 +77,12 @@ const ProductButtonAdd = styled.button`
   font-size: 1rem;
   margin: 0.2rem 0.4rem;
   border-radius: 50%;
+  cursor: pointer;
+  background-color: #4682b4;
+  &:hover {
+    transition: ease-in-out;
+    background-color: #ffffff;
+  }
 `;
 
 const ProductButtonDelete = styled.button`
@@ -87,6 +94,12 @@ const ProductButtonDelete = styled.button`
   font-size: 1rem;
   margin: 0.2rem 0.4rem;
   border-radius: 50%;
+  cursor: pointer;
+  background-color: #4682b4;
+  &:hover {
+    transition: ease-in-out;
+    background-color: #ffffff;
+  }
 `;
 
 const Products = () => {
