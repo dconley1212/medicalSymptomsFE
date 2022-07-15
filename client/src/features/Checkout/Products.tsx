@@ -48,7 +48,8 @@ const StyledSurveyParagraphs = styled.p`
 const StyledProductsSection = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 1rem 0.5rem 0rem 6rem;
+  margin: 0.3rem 0.5rem 0.3rem 6rem;
+  width: 20%;
 `;
 
 const StyledProductDiv = styled.div`
@@ -61,10 +62,30 @@ const StyledProductDiv = styled.div`
   margin: 0.5rem;
   background-color: #ffffff;
 `;
+const ProductButtonDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
-const ProductButton = styled.button`
-  width: 20%;
+const ProductButtonAdd = styled.button`
+  background-color: white;
   padding: 0.5rem;
+  text-align: center;
+  text-decoration: bold;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0.2rem 0.4rem;
+  border-radius: 50%;
+`;
+
+const ProductButtonDelete = styled.button`
+  background-color: white;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: bold;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0.2rem 0.4rem;
   border-radius: 50%;
 `;
 
@@ -106,22 +127,25 @@ const Products = () => {
             return (
               <StyledProductDiv>
                 <Product
+                  key={product.id}
                   name={product.name}
                   price={product.price}
                   description={product.description}
-                  imgurl={product.imgurl}
+                  id={product.id}
                 />
-                <ProductButton onClick={() => handleAdd(product)}>
-                  Add
-                </ProductButton>
-                {product.id === 1 ? (
-                  <p>{cartProducts.itemsInCart.itemOne}</p>
-                ) : (
-                  <p>{cartProducts.itemsInCart.itemTwo}</p>
-                )}
-                <ProductButton onClick={() => handleDelete(product)}>
-                  Delete
-                </ProductButton>
+                <ProductButtonDiv>
+                  <ProductButtonAdd onClick={() => handleAdd(product)}>
+                    +
+                  </ProductButtonAdd>
+                  {product.id === 1 ? (
+                    <p>{cartProducts.itemsInCart.itemOne}</p>
+                  ) : (
+                    <p>{cartProducts.itemsInCart.itemTwo}</p>
+                  )}
+                  <ProductButtonDelete onClick={() => handleDelete(product)}>
+                    -
+                  </ProductButtonDelete>
+                </ProductButtonDiv>
               </StyledProductDiv>
             );
           })}
