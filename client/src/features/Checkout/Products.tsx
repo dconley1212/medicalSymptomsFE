@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import products from "../../data/items.json";
 import Product from "./Product";
 import { addToCart, removeFromCart } from "./ProductToCheckoutSlice";
@@ -6,6 +6,7 @@ import { ProductsInCheckout } from "./ProductToCheckoutSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import styled from "styled-components";
 import Header from "../../Components/Header";
+import CheckoutItems from "./CheckoutItems";
 
 const StyledProductsPage = styled.div`
   display: flex;
@@ -106,12 +107,15 @@ const ProductButtonDelete = styled.button`
 
 const Products = () => {
   const cartProducts = useAppSelector((state) => state);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(cartProducts);
-  }, [cartProducts]);
+    if (cartProducts.itemsInCart.cartItems.length >= 1) {
+      setIsActive(true);
+    }
+  }, [cartProducts.itemsInCart.cartItems]);
 
   const handleAdd = (product: ProductsInCheckout) => {
     dispatch(addToCart(product));
@@ -123,6 +127,7 @@ const Products = () => {
   return (
     <div>
       <Header />
+      {isActive === true ? <CheckoutItems /> : null}
       <StyledProductsPage>
         <StyledSurveySection>
           <StyledSurveyHeading>

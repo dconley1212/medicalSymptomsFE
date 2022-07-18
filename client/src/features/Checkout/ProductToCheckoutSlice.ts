@@ -68,7 +68,7 @@ export const productToCheckoutSlice = createSlice({
 });
 
 export const { addToCart, removeFromCart } = productToCheckoutSlice.actions;
-export const productsInCart = (state: ProductsInCheckout[]) => {
+export const productsInCart = (state: InitialState[]) => {
   return state;
 };
 export default productToCheckoutSlice.reducer;

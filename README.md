@@ -39,6 +39,6 @@ Decisions:
 - Updated the ProductToCheckoutSlice to accomodate the changes to initital state and how the users actions would affect updating the state.
 - Created a New Header Component to include in every component that I feel like it is needed.
 - Gave the products and product component a css overhaul where I decided on the design of all the parent children jsx relationships on the web page and how it would be displayed to the user.
-- Touched up the web page with to make the ui more appealing to the user.
+- Touched up the web page to make the ui more appealing to the user.
 
-The week really started on the 9th for me because that is when we got back from vacation. I didn't run into as many problems this week because a lot of it was sharpening my new typscript and redux tool kit skills, and sharpening my css and flexbox skills to create the layout I wanted for the page. One of the things I find very exciting is I am starting to use Javascript in the JSX more than I ever have to make the webpage more dynamic and user friendly. I feel like this is a major part of my development and huge hurdle as I contiune to grow in my coding capability!
+The week really started on the 13th for me because that is when we got back from vacation. I didn't run into as many problems this week because a lot of it was sharpening my new typscript and redux tool kit skills; and sharpening my css and flexbox skills to create the layout I wanted for the page. One of the things I find very exciting is I am starting to use Javascript in the JSX more than I ever have to make the webpage more dynamic and user friendly. I feel like this is a major part of my development and huge hurdle as I contiune to grow in my coding capability!
