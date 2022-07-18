@@ -112,10 +112,12 @@ const Products = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (cartProducts.itemsInCart.cartItems.length >= 1) {
+    if (cartProducts.itemsInCart.totalQuantity > 0) {
       setIsActive(true);
+    } else {
+      setIsActive(false);
     }
-  }, [cartProducts.itemsInCart.cartItems]);
+  }, [cartProducts.itemsInCart.totalQuantity]);
 
   const handleAdd = (product: ProductsInCheckout) => {
     dispatch(addToCart(product));

@@ -32,31 +32,24 @@ export const productToCheckoutSlice = createSlice({
   initialState: initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<ProductsInCheckout>) => {
-      const inCart = state.cartItems.filter((cartItem) => {
-        return cartItem.id === action.payload.id;
-      });
-      if (inCart[0]) {
-        if (inCart[0].id === 1) {
-          state.itemOne++;
-        } else {
-          state.itemTwo++;
-        }
+      state.cartItems.push(action.payload);
+
+      if (action.payload.id === 1) {
+        state.itemOne++;
       } else {
-        state.cartItems.push(action.payload);
-        if (action.payload.id === 1) {
-          state.itemOne++;
-        } else {
-          state.itemTwo++;
-        }
+        state.itemTwo++;
       }
       state.totalQuantity++;
       state.totalPrice += action.payload.price;
     },
     removeFromCart: (state, action) => {
       state.totalQuantity--;
-      state.cartItems = state.cartItems.filter((cartItem) => {
-        return action.payload.id !== cartItem.id;
-      });
+      for (let i = 0; i < state.cartItems.length; i++) {
+        if (state.cartItems[i].id === action.payload.id) {
+          state.cartItems.splice(i, 1);
+          break;
+        }
+      }
       if (action.payload.id === 1) {
         state.itemOne--;
       } else {
