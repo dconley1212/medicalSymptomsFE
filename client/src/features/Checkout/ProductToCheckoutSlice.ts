@@ -32,7 +32,15 @@ export const productToCheckoutSlice = createSlice({
   initialState: initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<ProductsInCheckout>) => {
-      state.cartItems.push(action.payload);
+      if (state.cartItems.length === 0) {
+        state.cartItems.push(action.payload);
+      }
+      if (
+        state.cartItems.length === 1 &&
+        action.payload.id !== state.cartItems[0].id
+      ) {
+        state.cartItems.push(action.payload);
+      }
 
       if (action.payload.id === 1) {
         state.itemOne++;
@@ -41,6 +49,7 @@ export const productToCheckoutSlice = createSlice({
       }
       state.totalQuantity++;
       state.totalPrice += action.payload.price;
+      state.totalPrice.toFixed(2);
     },
     removeFromCart: (state, action) => {
       state.totalQuantity--;
@@ -56,6 +65,7 @@ export const productToCheckoutSlice = createSlice({
         state.itemTwo--;
       }
       state.totalPrice -= action.payload.price;
+      state.totalPrice.toFixed(2);
     },
   },
 });
