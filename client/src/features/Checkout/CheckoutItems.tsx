@@ -1,25 +1,54 @@
 import React, { useState, useEffect } from "react";
 import { useAppSelector } from "../../app/hooks";
+import { ProductsInCheckout } from "./ProductToCheckoutSlice";
 
 const CheckoutItems = () => {
   const cartProducts = useAppSelector((state) => state);
-  const [sprayItem, setSprayItem] = useState<boolean>(false);
-  const [pillsItem, setPillsItem] = useState<boolean>(false);
+  const [dropdownCart, setDropdownCart] = useState<ProductsInCheckout[]>([]);
 
   useEffect(() => {
     for (let i = 0; i < cartProducts.itemsInCart.cartItems.length; i++) {
-      if (cartProducts.itemsInCart.cartItems[i].id === 1) {
-        setSprayItem(true);
+      if (dropdownCart.length === 0) {
+        setDropdownCart([
+          ...dropdownCart,
+          cartProducts.itemsInCart.cartItems[i],
+        ]);
       }
-      if (cartProducts.itemsInCart.cartItems[i].id === 2) {
-        setPillsItem(true);
+      if (
+        dropdownCart.length === 1 &&
+        dropdownCart[0].id !== cartProducts.itemsInCart.cartItems[i].id
+      ) {
+        setDropdownCart([
+          ...dropdownCart,
+          cartProducts.itemsInCart.cartItems[i],
+        ]);
       }
     }
-  }, [cartProducts.itemsInCart.cartItems]);
+  }, [dropdownCart, cartProducts.itemsInCart.cartItems]);
 
   return (
     <div>
       <h3>Cart</h3>
+      {dropdownCart.map((item) => {
+        return (
+          <div>
+            {item.id === 1 && cartProducts.itemsInCart.itemOne > 0 ? (
+              <div>
+                <p>{item.name}</p>
+                <p>{item.price}</p>
+                <p>{cartProducts.itemsInCart.itemOne}</p>
+              </div>
+            ) : null}
+            {item.id === 2 && cartProducts.itemsInCart.itemTwo > 0 ? (
+              <div>
+                <p>{item.name}</p>
+                <p>{item.price}</p>
+                <p>{cartProducts.itemsInCart.itemTwo}</p>
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
       {/* {cartProducts.itemsInCart.cartItems.map((item) => {
         return (
           <div>
