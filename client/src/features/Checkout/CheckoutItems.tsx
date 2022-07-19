@@ -1,27 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAppSelector } from "../../app/hooks";
 
 const CheckoutItems = () => {
   const cartProducts = useAppSelector((state) => state);
-
-  //   useEffect(() => {
-  //     for (let i = 0; i < cartProducts.itemsInCart.cartItems.length; i++) {
-  //       if (cartProducts.itemsInCart.checkoutItems.length === 0) {
-  //         dispatch(itemsInCheckout(cartProducts.itemsInCart.cartItems[i]));
-  //       }
-  //       if (
-  //         cartProducts.itemsInCart.checkoutItems.length === 1 &&
-  //         cartProducts.itemsInCart.checkoutItems[0].id !==
-  //           cartProducts.itemsInCart.cartItems[i].id
-  //       ) {
-  //         dispatch(itemsInCheckout(cartProducts.itemsInCart.cartItems[i]));
-  //       }
-  //     }
-  //   }, [
-  //     cartProducts.itemsInCart.checkoutItems,
-  //     cartProducts.itemsInCart.cartItems,
-  //     dispatch,
-  //   ]);
 
   return (
     <div>
