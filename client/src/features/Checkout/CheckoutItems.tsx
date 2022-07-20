@@ -1,12 +1,19 @@
 import React from "react";
 import { useAppSelector } from "../../app/hooks";
+import styled from "styled-components";
+
+const StyledWrapperDiv = styled.div`
+  background-color: #f5f5f5;
+  margin-left: 1rem;
+  padding: 2rem;
+`;
 
 const CheckoutItems = () => {
   const cartProducts = useAppSelector((state) => state);
 
   return (
-    <div>
-      <h3>Cart</h3>
+    <StyledWrapperDiv>
+      <h3>Order Summary</h3>
       {cartProducts.itemsInCart.cartItems.map((item) => {
         return (
           <div>
@@ -29,7 +36,7 @@ const CheckoutItems = () => {
       })}
       <p>Total Quantity: {cartProducts.itemsInCart.totalQuantity}</p>
       <p>Total Price: {cartProducts.itemsInCart.totalPrice}</p>
-    </div>
+    </StyledWrapperDiv>
   );
 };
 

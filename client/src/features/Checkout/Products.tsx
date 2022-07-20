@@ -53,7 +53,7 @@ const StyledSurveyParagraphs = styled.p`
 const StyledProductsSection = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0.3rem 0.5rem 0.3rem 6rem;
+  margin: 4rem 0.5rem 0.3rem 6rem;
   width: 20%;
 `;
 
@@ -129,7 +129,6 @@ const Products = () => {
   return (
     <div>
       <Header />
-      {isActive === true ? <CheckoutItems /> : null}
       <StyledProductsPage>
         <StyledSurveySection>
           <StyledSurveyHeading>
@@ -172,6 +171,7 @@ const Products = () => {
             );
           })}
         </StyledProductsSection>
+        {isActive === true ? <CheckoutItems /> : null}
       </StyledProductsPage>
     </div>
   );

@@ -8,12 +8,20 @@ const CheckoutCreditCardPage = () => {
       <Header />
       <CheckoutItems />
       <div>
-        <input placeholder="Card Number" />
-        <input placeholder="Name on card" />
-        <input placeholder="Expiration data (mm/yy)" />
-        <input placeholder="Security Code" />
-        <input placeholder="Same as Shipping address" />
-        <input placeholder="Used a different billing address" />
+        <input name="Card Number" placeholder="Card Number" />
+        <input name="Name on Card" placeholder="Name on card" />
+        <input name="Card Expiration" placeholder="Expiration data (mm/yy)" />
+        <input name="Security Code" placeholder="Security Code" />
+        <input
+          name="Same as Shipping"
+          placeholder="Same as Shipping address"
+          type="radio"
+        />
+        <input
+          name="Different Billing Address"
+          placeholder="Used a different billing address"
+          type="radio"
+        />
       </div>
     </div>
   );

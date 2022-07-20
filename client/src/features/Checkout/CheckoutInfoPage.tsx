@@ -18,6 +18,7 @@ const CheckoutInfoPage = () => {
             placeholder="Apartment, suite, etc. (optional"
           />
           <input name="City" placeholder="City" />
+          <label>Choose a state from the Dropdown</label>
           <select>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
