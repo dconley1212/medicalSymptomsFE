@@ -6,11 +6,15 @@ import Register from "./Register";
 import Login from "./Login";
 import Products from "../features/Checkout/Products";
 import CheckoutInfoPage from "../features/Checkout/CheckoutInfoPage";
+import AddReview from "../features/Reviews/AddRevew";
+import Reviews from "../features/Reviews/Reviews";
 
 function App() {
   return (
     <div>
       <Routes>
+        <Route path="/addreview" element={<AddReview />} />
+        <Route path="/reviews" element={<Reviews />} />
         <Route path="/checkoutinfo" element={<CheckoutInfoPage />} />
         <Route path="/todolist" element={<ToDo />} />
         <Route path="products" element={<Products />} />

@@ -1,9 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 const Reviews = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/addreview");
+  };
   return (
     <div>
-      <button>Want to add your own Review</button>
+      <button onClick={handleClick}>Want to add your own Review</button>
       <h2>What are people saying about our Products</h2>
       <div>
         <h3>Item One</h3>

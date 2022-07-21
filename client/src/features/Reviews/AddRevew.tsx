@@ -21,10 +21,13 @@ const AddReview = () => {
     return value;
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(add({ rating: rating, comments: comment }));
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <span>
           {[1, 2, 3, 4, 5].map((value) => {
             return <Star value={value} key={value} handleClick={handleClick} />;
