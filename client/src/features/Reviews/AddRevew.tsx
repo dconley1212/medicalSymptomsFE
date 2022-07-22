@@ -1,19 +1,24 @@
-import React, { ReactEventHandler, useState } from "react";
+import React, { useState } from "react";
 import { add } from "./ReviewsSlice";
 import { useAppDispatch } from "../../app/hooks";
 import Star from "./Star";
 
-// left off thinking I might be able to pass a function as a type into the Star Component
-// and have it allow me to use the event handler to update the rating state when the icon
-// is clicked
-
 const AddReview = () => {
   const [rating, setRating] = useState<number>(0);
   const [comment, setComment] = useState<string>("");
+  const [itemName, setItemName] = useState<string>("");
   const dispatch = useAppDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setComment(e.currentTarget.value);
+  };
+
+  const handleRadioInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget.name === "ItemOne") {
+      setItemName(e.currentTarget.name);
+    } else {
+      setItemName(e.currentTarget.name);
+    }
   };
 
   const handleClick = (value: number) => {
@@ -23,7 +28,7 @@ const AddReview = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(add({ rating: rating, comments: comment }));
+    dispatch(add({ itemName: itemName, rating: rating, comments: comment }));
   };
   return (
     <div>
@@ -34,6 +39,12 @@ const AddReview = () => {
           })}
         </span>
         <input value={comment} type="text" onChange={handleChange}></input>
+        <input onChange={handleRadioInput} name="ItemOne" type="radio">
+          Item One
+        </input>
+        <input onChange={handleRadioInput} name="ItemTwo" type="radio">
+          Item Two
+        </input>
       </form>
     </div>
   );

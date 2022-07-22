@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Review {
+  itemName: string;
   rating: number;
   comments: string;
 }
@@ -25,4 +26,7 @@ export const reviewsSlice = createSlice({
 });
 
 export const { add } = reviewsSlice.actions;
+export const reviews = (state: ReviewsData) => {
+  return state;
+};
 export default reviewsSlice.reducer;
