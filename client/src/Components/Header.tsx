@@ -40,6 +40,7 @@ const Header = () => {
         <StyledLinks to="/register">Create Account</StyledLinks>
         <StyledLinks to="/login">Login</StyledLinks>
         <StyledLinks to="/products">Products</StyledLinks>
+        <StyledLinks to="/reviews">Reviews</StyledLinks>
         <StyledLinks to="/checkoutinfo">Checkout</StyledLinks>
       </StyledLinksDiv>
     </StyledHeader>

@@ -38,13 +38,16 @@ const AddReview = () => {
             return <Star value={value} key={value} handleClick={handleClick} />;
           })}
         </span>
-        <input value={comment} type="text" onChange={handleChange}></input>
-        <input onChange={handleRadioInput} name="ItemOne" type="radio">
+        <input value={comment} type="text" onChange={handleChange} />
+        <label>
+          {" "}
           Item One
-        </input>
-        <input onChange={handleRadioInput} name="ItemTwo" type="radio">
+          <input onChange={handleRadioInput} name="ItemOne" type="radio" />
+        </label>
+        <label>
           Item Two
-        </input>
+          <input onChange={handleRadioInput} name="ItemTwo" type="radio" />
+        </label>
       </form>
     </div>
   );
