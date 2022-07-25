@@ -1,7 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "../../app/hooks";
-import { Review } from "./ReviewsSlice";
+import { Review, reviews } from "./ReviewsSlice";
+import { FaStar } from "react-icons/fa";
+import ReviewStars from "./ReviewStars";
+import styled from "styled-components";
 
 const Reviews = () => {
   const reviews = useAppSelector((state) => state.reviews);
@@ -21,12 +24,37 @@ const Reviews = () => {
         {reviews.itemOneReviews.map((item: Review) => {
           return (
             <div>
+              {[1, 2, 3, 4, 5].map((itemOne) => {
+                return <ReviewStars rating={item.rating} value={itemOne} />;
+              })}
               <p>{item.comments}</p>
               <p>- {item.reviewerName}</p>
             </div>
           );
         })}
+      </div>
+      <div>
         <h3>Item two</h3>
+        {reviews.itemTwoReviews.map((item) => {
+          return (
+            <div>
+              {[1, 2, 3, 4, 5].map(() => {
+                return (
+                  <div>
+                    <div>
+                      <FaStar />
+                    </div>
+                    <div>
+                      <FaStar />
+                    </div>
+                  </div>
+                );
+              })}
+              <p>{item.comments}</p>
+              <p>- {item.reviewerName}</p>
+            </div>
+          );
+        })}
         <p></p>
       </div>
     </div>
