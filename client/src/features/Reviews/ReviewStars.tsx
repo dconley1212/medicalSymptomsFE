@@ -4,10 +4,10 @@ import { FaStar } from "react-icons/fa";
 import styled from "styled-components";
 
 const StyledStarFilled = styled.div`
-  color: yellow;
+  color: blue;
 `;
 const StyledStarUnfilled = styled.div`
-  color: Blue;
+  color: grey;
 `;
 
 interface rating {

@@ -6,6 +6,16 @@ import { FaStar } from "react-icons/fa";
 import ReviewStars from "./ReviewStars";
 import styled from "styled-components";
 
+const StyledReviewWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledStarWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 const Reviews = () => {
   const reviews = useAppSelector((state) => state.reviews);
   const navigate = useNavigate();
@@ -23,13 +33,15 @@ const Reviews = () => {
         <h3>Item One</h3>
         {reviews.itemOneReviews.map((item: Review) => {
           return (
-            <div>
-              {[1, 2, 3, 4, 5].map((itemOne) => {
-                return <ReviewStars rating={item.rating} value={itemOne} />;
-              })}
+            <StyledReviewWrapper>
+              <StyledStarWrapper>
+                {[1, 2, 3, 4, 5].map((itemOne) => {
+                  return <ReviewStars rating={item.rating} value={itemOne} />;
+                })}
+              </StyledStarWrapper>
               <p>{item.comments}</p>
               <p>- {item.reviewerName}</p>
-            </div>
+            </StyledReviewWrapper>
           );
         })}
       </div>
@@ -37,22 +49,15 @@ const Reviews = () => {
         <h3>Item two</h3>
         {reviews.itemTwoReviews.map((item) => {
           return (
-            <div>
-              {[1, 2, 3, 4, 5].map(() => {
-                return (
-                  <div>
-                    <div>
-                      <FaStar />
-                    </div>
-                    <div>
-                      <FaStar />
-                    </div>
-                  </div>
-                );
-              })}
+            <StyledReviewWrapper>
+              <StyledStarWrapper>
+                {[1, 2, 3, 4, 5].map((itemTwo) => {
+                  return <ReviewStars rating={item.rating} value={itemTwo} />;
+                })}
+              </StyledStarWrapper>
               <p>{item.comments}</p>
               <p>- {item.reviewerName}</p>
-            </div>
+            </StyledReviewWrapper>
           );
         })}
         <p></p>
