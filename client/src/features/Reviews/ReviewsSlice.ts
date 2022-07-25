@@ -2,17 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Review {
+  reviewerName: string;
   itemName: string;
   rating: number;
   comments: string;
 }
 
 interface ReviewsData {
-  reviews: Review[];
+  itemOneReviews: Review[];
+  itemTwoReviews: Review[];
 }
 
 const initialState: ReviewsData = {
-  reviews: [],
+  itemOneReviews: [],
+  itemTwoReviews: [],
 };
 
 export const reviewsSlice = createSlice({
@@ -20,7 +23,11 @@ export const reviewsSlice = createSlice({
   initialState: initialState,
   reducers: {
     add: (state, action: PayloadAction<Review>) => {
-      state.reviews.push(action.payload);
+      if (action.payload.itemName === "ItemOne") {
+        state.itemOneReviews.push(action.payload);
+      } else {
+        state.itemTwoReviews.push(action.payload);
+      }
     },
   },
 });

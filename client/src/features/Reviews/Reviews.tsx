@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "../../app/hooks";
+import { Review } from "./ReviewsSlice";
 
 const Reviews = () => {
   const reviews = useAppSelector((state) => state.reviews);
@@ -17,7 +18,14 @@ const Reviews = () => {
       </div>
       <div>
         <h3>Item One</h3>
-        <p></p>
+        {reviews.itemOneReviews.map((item: Review) => {
+          return (
+            <div>
+              <p>{item.comments}</p>
+              <p>- {item.reviewerName}</p>
+            </div>
+          );
+        })}
         <h3>Item two</h3>
         <p></p>
       </div>
