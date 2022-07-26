@@ -30,9 +30,42 @@ const StyledItemsDiv = styled.div`
   justify-content: space-around;
 `;
 
-const StyledItemColumn = styled.div`
+const StyledItemOneColumn = styled.div`
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
+  padding: 3rem;
+  width: 30%;
+  margin-top: 2rem;
+`;
+
+const StyledItemTwoColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 3rem;
+  width: 30%;
+  margin-top: 2rem;
+`;
+
+const StyledItemNames = styled.h3`
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  margin-top: 0rem;
+  font-size: 1.3rem;
+`;
+
+const StyledButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledButton = styled.button`
+  width: 30%;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-bottom: 2rem;
 `;
 
 const Reviews = () => {
@@ -49,9 +82,13 @@ const Reviews = () => {
         <h2>What are people saying about our Products</h2>
       </StyledTitleDiv>
       <StyledItemsDiv>
-        <StyledItemColumn>
-          <h3>Item One</h3>
-          <button onClick={handleClick}>Add your own Review</button>
+        <StyledItemOneColumn>
+          <StyledItemNames>Item One</StyledItemNames>
+          <StyledButtonDiv>
+            <StyledButton onClick={handleClick}>
+              Add your own Review
+            </StyledButton>
+          </StyledButtonDiv>
           {reviews.itemOneReviews.map((item: Review) => {
             return (
               <StyledReviewWrapper>
@@ -65,10 +102,14 @@ const Reviews = () => {
               </StyledReviewWrapper>
             );
           })}
-        </StyledItemColumn>
-        <StyledItemColumn>
-          <h3>Item two</h3>
-          <button onClick={handleClick}>Add your own Review</button>
+        </StyledItemOneColumn>
+        <StyledItemTwoColumn>
+          <StyledItemNames>Item Two</StyledItemNames>
+          <StyledButtonDiv>
+            <StyledButton onClick={handleClick}>
+              Add your own Review
+            </StyledButton>
+          </StyledButtonDiv>
           {reviews.itemTwoReviews.map((item) => {
             return (
               <StyledReviewWrapper>
@@ -83,7 +124,7 @@ const Reviews = () => {
             );
           })}
           <p></p>
-        </StyledItemColumn>
+        </StyledItemTwoColumn>
       </StyledItemsDiv>
     </div>
   );
