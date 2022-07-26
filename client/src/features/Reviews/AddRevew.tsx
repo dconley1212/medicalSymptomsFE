@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { add } from "./ReviewsSlice";
 import { useAppDispatch } from "../../app/hooks";
 import Star from "./Star";
+import Header from "../../Components/Header";
+import styled from "styled-components";
+
+const StyledFilledStar = styled.div`
+  color: blue;
+`;
+const StyledUnfilledStar = styled.div`
+  color: grey;
+`;
 
 const AddReview = () => {
   const [rating, setRating] = useState<number>(0);
   const [comment, setComment] = useState<string>("");
   const [itemName, setItemName] = useState<string>("");
   const [reviewerName, setReviewerName] = useState<string>("");
+  const [color, setColor] = useState<boolean>(false);
+
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
   const handleClick = (value: number) => {
     setRating(value);
+    setColor(true);
     return value;
   };
 
@@ -48,10 +60,23 @@ const AddReview = () => {
   };
   return (
     <div>
+      <Header />
       <form onSubmit={handleSubmit}>
         <span>
           {[1, 2, 3, 4, 5].map((value) => {
-            return <Star value={value} key={value} handleClick={handleClick} />;
+            return (
+              <div>
+                {rating <= value && color === true ? (
+                  <StyledFilledStar>
+                    <Star value={value} key={value} handleClick={handleClick} />
+                  </StyledFilledStar>
+                ) : (
+                  <StyledUnfilledStar>
+                    <Star value={value} key={value} handleClick={handleClick} />
+                  </StyledUnfilledStar>
+                )}
+              </div>
+            );
           })}
         </span>
         <input value={comment} type="text" onChange={handleTextFieldChange} />

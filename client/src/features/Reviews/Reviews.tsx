@@ -5,6 +5,7 @@ import { Review, reviews } from "./ReviewsSlice";
 import { FaStar } from "react-icons/fa";
 import ReviewStars from "./ReviewStars";
 import styled from "styled-components";
+import Header from "../../Components/Header";
 
 const StyledReviewWrapper = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ const Reviews = () => {
   };
   return (
     <div>
+      <Header />
       <div>
         <button onClick={handleClick}>Want to add your own Review</button>
         <h2>What are people saying about our Products</h2>
