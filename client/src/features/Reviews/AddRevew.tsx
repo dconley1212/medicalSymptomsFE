@@ -66,13 +66,12 @@ const AddReview = () => {
   return (
     <div>
       <Header />
-
       <span>
         <StyledStarsWrapper>
           {[1, 2, 3, 4, 5].map((value) => {
             return (
               <div>
-                {rating <= value && color === true ? (
+                {rating >= value && color === true ? (
                   <StyledFilledStar>
                     <Star value={value} key={value} handleClick={handleClick} />
                   </StyledFilledStar>
@@ -86,7 +85,6 @@ const AddReview = () => {
           })}
         </StyledStarsWrapper>
       </span>
-
       <form onSubmit={handleSubmit}>
         <input value={comment} type="text" onChange={handleTextFieldChange} />
         <label>
