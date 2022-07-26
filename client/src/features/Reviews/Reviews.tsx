@@ -17,6 +17,24 @@ const StyledStarWrapper = styled.div`
   flex-direction: row;
 `;
 
+const StyledTitleDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledItemsDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+const StyledItemColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Reviews = () => {
   const reviews = useAppSelector((state) => state.reviews);
   const navigate = useNavigate();
@@ -27,43 +45,46 @@ const Reviews = () => {
   return (
     <div>
       <Header />
-      <div>
-        <button onClick={handleClick}>Want to add your own Review</button>
+      <StyledTitleDiv>
         <h2>What are people saying about our Products</h2>
-      </div>
-      <div>
-        <h3>Item One</h3>
-        {reviews.itemOneReviews.map((item: Review) => {
-          return (
-            <StyledReviewWrapper>
-              <StyledStarWrapper>
-                {[1, 2, 3, 4, 5].map((itemOne) => {
-                  return <ReviewStars rating={item.rating} value={itemOne} />;
-                })}
-              </StyledStarWrapper>
-              <p>{item.comments}</p>
-              <p>- {item.reviewerName}</p>
-            </StyledReviewWrapper>
-          );
-        })}
-      </div>
-      <div>
-        <h3>Item two</h3>
-        {reviews.itemTwoReviews.map((item) => {
-          return (
-            <StyledReviewWrapper>
-              <StyledStarWrapper>
-                {[1, 2, 3, 4, 5].map((itemTwo) => {
-                  return <ReviewStars rating={item.rating} value={itemTwo} />;
-                })}
-              </StyledStarWrapper>
-              <p>{item.comments}</p>
-              <p>- {item.reviewerName}</p>
-            </StyledReviewWrapper>
-          );
-        })}
-        <p></p>
-      </div>
+      </StyledTitleDiv>
+      <StyledItemsDiv>
+        <StyledItemColumn>
+          <h3>Item One</h3>
+          <button onClick={handleClick}>Add your own Review</button>
+          {reviews.itemOneReviews.map((item: Review) => {
+            return (
+              <StyledReviewWrapper>
+                <StyledStarWrapper>
+                  {[1, 2, 3, 4, 5].map((itemOne) => {
+                    return <ReviewStars rating={item.rating} value={itemOne} />;
+                  })}
+                </StyledStarWrapper>
+                <p>{item.comments}</p>
+                <p>- {item.reviewerName}</p>
+              </StyledReviewWrapper>
+            );
+          })}
+        </StyledItemColumn>
+        <StyledItemColumn>
+          <h3>Item two</h3>
+          <button onClick={handleClick}>Add your own Review</button>
+          {reviews.itemTwoReviews.map((item) => {
+            return (
+              <StyledReviewWrapper>
+                <StyledStarWrapper>
+                  {[1, 2, 3, 4, 5].map((itemTwo) => {
+                    return <ReviewStars rating={item.rating} value={itemTwo} />;
+                  })}
+                </StyledStarWrapper>
+                <p>{item.comments}</p>
+                <p>- {item.reviewerName}</p>
+              </StyledReviewWrapper>
+            );
+          })}
+          <p></p>
+        </StyledItemColumn>
+      </StyledItemsDiv>
     </div>
   );
 };

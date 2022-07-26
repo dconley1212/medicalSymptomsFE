@@ -13,6 +13,11 @@ const StyledUnfilledStar = styled.div`
   color: grey;
 `;
 
+const StyledStarsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 const AddReview = () => {
   const [rating, setRating] = useState<number>(0);
   const [comment, setComment] = useState<string>("");
@@ -61,8 +66,9 @@ const AddReview = () => {
   return (
     <div>
       <Header />
-      <form onSubmit={handleSubmit}>
-        <span>
+
+      <span>
+        <StyledStarsWrapper>
           {[1, 2, 3, 4, 5].map((value) => {
             return (
               <div>
@@ -78,7 +84,10 @@ const AddReview = () => {
               </div>
             );
           })}
-        </span>
+        </StyledStarsWrapper>
+      </span>
+
+      <form onSubmit={handleSubmit}>
         <input value={comment} type="text" onChange={handleTextFieldChange} />
         <label>
           {" "}
