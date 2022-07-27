@@ -7,7 +7,6 @@ const StyledWrapperDiv = styled.div`
   position: relative;
   left: 5rem;
   padding: 2rem;
-  height: 35vh;
   border-radius: 8px;
 `;
 

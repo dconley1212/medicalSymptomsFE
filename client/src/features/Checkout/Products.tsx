@@ -105,6 +105,10 @@ const ProductButtonDelete = styled.button`
   }
 `;
 
+const StyledCheckoutComponent = styled.div`
+  height: 35vh;
+`;
+
 const Products = () => {
   const cartProducts = useAppSelector((state) => state);
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -171,7 +175,11 @@ const Products = () => {
             );
           })}
         </StyledProductsSection>
-        {isActive === true ? <CheckoutItems /> : null}
+        {isActive === true ? (
+          <StyledCheckoutComponent>
+            <CheckoutItems />
+          </StyledCheckoutComponent>
+        ) : null}
       </StyledProductsPage>
     </div>
   );
