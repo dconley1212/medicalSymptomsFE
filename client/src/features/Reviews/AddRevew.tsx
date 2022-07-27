@@ -11,18 +11,19 @@ const StyledAddReview = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 8rem;
+  padding: 6rem;
+  background-color: #f5f5f5;
 `;
 
 const StyledFilledStar = styled.div`
-  color: blue;
-  padding: 1.5rem;
+  color: #cb4a6f;
+  padding: 2rem;
 `;
 const StyledUnfilledStar = styled.div`
   color: grey;
-  padding: 1.5rem;
+  padding: 2rem;
   &:hover {
-    color: blue;
+    color: #cb4a6f;
     transition: ease-in-out;
   }
 `;
@@ -39,7 +40,8 @@ const StyledForm = styled.form`
 `;
 
 const StyledTextBox = styled.input`
-  padding: 4em 8em;
+  padding: 2em 6em;
+  font-size: 1.3rem;
 `;
 
 const StyledRadioButtons = styled.div`
@@ -53,13 +55,16 @@ const StyledItemTwoLabel = styled.label`
 `;
 
 const StyledNameInput = styled.input`
-  padding: 1em 5em;
+  padding: 1em 3em;
   margin-bottom: 1rem;
+  font-size: 1rem;
 `;
 
 const StyledSubmitButton = styled.button`
   border-radius: 8px;
   padding: 1em;
+  background-color: #cb4a6f;
+  font-size: 1em;
 `;
 
 const AddReview = () => {
@@ -123,6 +128,7 @@ const AddReview = () => {
     <div>
       <Header />
       <StyledAddReview>
+        <h2>Let us know what you think!</h2>
         <span>
           <StyledStarsWrapper>
             {[1, 2, 3, 4, 5].map((value) => {

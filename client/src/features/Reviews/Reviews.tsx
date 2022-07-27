@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "../../app/hooks";
-import { Review, reviews } from "./ReviewsSlice";
-import { FaStar } from "react-icons/fa";
+import { Review } from "./ReviewsSlice";
 import ReviewStars from "./ReviewStars";
 import styled from "styled-components";
 import Header from "../../Components/Header";

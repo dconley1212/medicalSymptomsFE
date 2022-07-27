@@ -49,14 +49,16 @@ export const productToCheckoutSlice = createSlice({
       }
       state.totalQuantity++;
       state.totalPrice += action.payload.price;
-      state.totalPrice.toFixed(2);
+      const fixedPrice = state.totalPrice.toFixed(2);
+      state.totalPrice = parseFloat(fixedPrice);
     },
     removeFromCart: (state, action) => {
       state.totalQuantity--;
-      for (let i = 0; i < state.cartItems.length; i++) {
-        if (state.cartItems[i].id === action.payload.id) {
-          state.cartItems.splice(i, 1);
-          break;
+      if (state.itemOne === 1 || state.itemTwo === 1) {
+        for (let i = 0; i < state.cartItems.length; i++) {
+          if (state.cartItems[i].id === action.payload.id) {
+            state.cartItems.splice(i, 1);
+          }
         }
       }
       if (action.payload.id === 1) {
@@ -65,7 +67,8 @@ export const productToCheckoutSlice = createSlice({
         state.itemTwo--;
       }
       state.totalPrice -= action.payload.price;
-      state.totalPrice.toFixed(2);
+      const twoDecimals = state.totalPrice.toFixed(2);
+      state.totalPrice = parseFloat(twoDecimals);
     },
   },
 });

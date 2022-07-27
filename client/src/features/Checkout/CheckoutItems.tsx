@@ -4,8 +4,11 @@ import styled from "styled-components";
 
 const StyledWrapperDiv = styled.div`
   background-color: #f5f5f5;
-  margin-left: 1rem;
+  position: relative;
+  left: 5rem;
   padding: 2rem;
+  height: 35vh;
+  border-radius: 8px;
 `;
 
 const CheckoutItems = () => {
