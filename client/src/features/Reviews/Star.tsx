@@ -4,14 +4,31 @@ import styled from "styled-components";
 
 interface click {
   handleClick: (value: number) => number;
+  handleMouseOver: (value: number) => number;
+  handleMouseLeave: () => null;
   value: number;
 }
 
-const Star = ({ handleClick, value }: click) => {
+const Star = ({
+  handleClick,
+  handleMouseOver,
+  handleMouseLeave,
+  value,
+}: click) => {
   const iconClick = () => {
     handleClick(value);
   };
 
-  return <FaStar onClick={iconClick} />;
+  const hover = () => {
+    handleMouseOver(value);
+  };
+
+  return (
+    <FaStar
+      onMouseLeave={handleMouseLeave}
+      onMouseOver={hover}
+      onClick={iconClick}
+    />
+  );
 };
 export default Star;

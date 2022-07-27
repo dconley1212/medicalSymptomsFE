@@ -57,16 +57,33 @@ const StyledNameInput = styled.input`
   margin-bottom: 1rem;
 `;
 
+const StyledSubmitButton = styled.button`
+  border-radius: 8px;
+  padding: 1em;
+`;
+
 const AddReview = () => {
   const [rating, setRating] = useState<number>(0);
   const [comment, setComment] = useState<string>("");
   const [itemName, setItemName] = useState<string>("");
   const [reviewerName, setReviewerName] = useState<string>("");
   const [color, setColor] = useState<boolean>(false);
+  const [hoverStars, setHoverStars] = useState<number>(0);
 
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
+
+  const handleMouseLeave = () => {
+    setHoverStars(0);
+    return null;
+  };
+
+  const handleMouseOver = (value: number) => {
+    setHoverStars(value);
+    setColor(true);
+    return value;
+  };
 
   const handleClick = (value: number) => {
     setRating(value);
@@ -111,12 +128,15 @@ const AddReview = () => {
             {[1, 2, 3, 4, 5].map((value) => {
               return (
                 <div>
-                  {rating >= value && color === true ? (
+                  {(rating >= value || hoverStars >= value) &&
+                  color === true ? (
                     <StyledFilledStar>
                       <Star
                         value={value}
                         key={value}
                         handleClick={handleClick}
+                        handleMouseOver={handleMouseOver}
+                        handleMouseLeave={handleMouseLeave}
                       />
                     </StyledFilledStar>
                   ) : (
@@ -125,6 +145,8 @@ const AddReview = () => {
                         value={value}
                         key={value}
                         handleClick={handleClick}
+                        handleMouseOver={handleMouseOver}
+                        handleMouseLeave={handleMouseLeave}
                       />
                     </StyledUnfilledStar>
                   )}
@@ -156,7 +178,7 @@ const AddReview = () => {
             placeholder="First Name"
             onChange={handleNameInputChange}
           />
-          <button>Submit Review</button>
+          <StyledSubmitButton>Submit Review</StyledSubmitButton>
         </StyledForm>
       </StyledAddReview>
     </div>
