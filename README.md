@@ -11,7 +11,7 @@ I decided to create a React app with Typescript because I have heard so many goo
 
 Another decision I made recently was to use Redux in my project over context API. I learned both frameworks in school, and originally thought that context API was the framework I would choose for this project. After I realized a couple of features I wanted to do might require a better method of handling state on a global level, I decided to do this project with redux as my framework to help me with state management. It became increasingly clear that I should use redux because I wanted to pass information from components that might not have a parent, child, grandchild, etc relationship. I wanted the flexibility that redux provides with a global store of state that my components could connect to and get the necessary information to display on the web page.
 
-Decisions for week 06/27/22 - 07/01/22
+Week 06/27/22 - 07/01/22
 Ideas:
 
 - color scheme
@@ -33,8 +33,6 @@ customer" clicked the add to cart button. I learned how to import the action cre
 
 Week of July 11th - 15th
 
-Decisions:
-
 - Updating the intitial State to reflect more accurately the state needed for checkout
 - Updated the ProductToCheckoutSlice to accomodate the changes to initital state and how the users actions would affect updating the state.
 - Created a New Header Component to include in every component that I feel like it is needed.
@@ -45,8 +43,6 @@ The week really started on the 13th for me because that is when we got back from
 
 Week of July 18th - 22nd
 
-Decisions:
-
 -Created a reviews folder inside the features folder to follow the guidlines of Redux Toolkit in regards to organization.
 
 -Created the ReviewsSlice, Reviews, AddReview, and Star components
@@ -55,4 +51,12 @@ Decisions:
 
 -Downloaded the React Star Icon FaStar to be used in the AddReview and Reviews Component
 
-This week I saw a a lot of progress building on the
+This week I saw a a lot of progress building on the skills I have developed while building this app. It has been really fun learning how to reapply the different instances of typescript for the slicer file and the props for the different components etc. Additionally, it has been really cool to strengthen my javascript skills and make the reviews folder and web pages more dynamic for the user. Again, I have felt like that has been the biggest improvement for me this week. And it has bled into me finding more success at managing the state in react and the store in redux. It has given me a lot of confidence to try new features and add new things to the app.
+
+Week of July 25th-29th
+
+-Fixed checkout slicer reducer so that it added the cost of the products to a fixed two decimals. It had a few bugs at first because I did't realize I was making the price number a stirng when I use the toFixed method. So then I used a parseInt() to convert it back to a number, but that made me realize I needed to use parseFloat() in order to keep the decimals as part of the final total.
+
+- Created the Review Stars Component in order to have the FaStar icon on the reviews page and give it the css I wanted.
+
+- Added structure, design, and styled to the components in the reviews folder
