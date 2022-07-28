@@ -7,6 +7,7 @@ const StyledCheckoutWrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 0rem;
+  background-color: #f5f5f5;
 `;
 
 const StyledFormWrappper = styled.div`
@@ -30,6 +31,33 @@ const StyledInput = styled.input`
 
 const StyledCheckoutComponent = styled.div`
   height: 100vh;
+  border-left: 1px solid black;
+`;
+
+const StyledStateLabel = styled.label`
+  margin: 0.5rem 0rem;
+  font-size: 1em;
+`;
+
+const StyledStateSelector = styled.select`
+  padding: 0.5em;
+`;
+
+const StyledPromotionLabel = styled.label`
+  margin-top: 0.5rem;
+`;
+
+const StyledCheckBox = styled.input`
+  margin-left: 2rem;
+`;
+
+const StyledButton = styled.button`
+  margin-top: 1rem;
+  width: 50%;
+  padding: 1rem;
+  background-color: #cb4a6f;
+  color: #000000;
+  font-size: 1rem;
 `;
 
 const CheckoutInfoPage = () => {
@@ -52,8 +80,10 @@ const CheckoutInfoPage = () => {
               placeholder="Apartment, suite, etc. (optional"
             />
             <StyledInput name="City" placeholder="City" />
-            <label>Choose a state from the Dropdown</label>
-            <select>
+            <StyledStateLabel>
+              Choose a state from the Dropdown
+            </StyledStateLabel>
+            <StyledStateSelector>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -105,15 +135,14 @@ const CheckoutInfoPage = () => {
               <option value="WV">West Virginia</option>
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
-            </select>
+            </StyledStateSelector>
             <StyledInput name="Zip_code" placeholder="ZIP code" type="text" />
             <StyledInput name="Phone" placeholder="Phone" type="text" />
-            <StyledInput
-              name="Subscriber"
-              placeholder="email me with news and offers"
-              type="checkbox"
-            />
-            <button>Continue to Payment</button>
+            <StyledPromotionLabel>
+              Check the box if you want to subscribe to promotions and news
+              <StyledCheckBox name="Subscriber" type="checkbox" />
+            </StyledPromotionLabel>
+            <StyledButton>Continue to Payment</StyledButton>
           </StyledForm>
         </StyledFormWrappper>
         <StyledCheckoutComponent>

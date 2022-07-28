@@ -6,7 +6,9 @@ const StyledWrapperDiv = styled.div`
   background-color: #f5f5f5;
   position: relative;
   left: 5rem;
-  padding: 2rem;
+  padding: 3rem;
+  height: 100%;
+  width: 100%;
   border-radius: 8px;
 `;
 
