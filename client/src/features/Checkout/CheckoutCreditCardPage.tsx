@@ -43,6 +43,7 @@ const StyledButton = styled.button`
   border-radius: 10px;
   background-color: #cb4a6f;
   font-size: 1em;
+  cursor: pointer;
 `;
 
 const StyledCheckoutComponent = styled.div`
@@ -66,11 +67,11 @@ const CheckoutCreditCardPage = () => {
             <StyledTextInput name="Security Code" placeholder="Security Code" />
             <StyledRadioLabel>
               Same as Shipping address
-              <StyledRadioInput name="Same as Shipping" type="radio" />
+              <StyledRadioInput name="Billing Address" type="radio" />
             </StyledRadioLabel>
             <StyledRadioLabel>
               Used a different billing address
-              <StyledRadioInput name="Different Billing Address" type="radio" />
+              <StyledRadioInput name="Billing Address" type="radio" />
             </StyledRadioLabel>
             <StyledButton>Submit Order</StyledButton>
           </StyledForm>

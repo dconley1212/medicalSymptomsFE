@@ -65,6 +65,7 @@ const StyledSubmitButton = styled.button`
   padding: 1em;
   background-color: #cb4a6f;
   font-size: 1em;
+  cursor: pointer;
 `;
 
 const AddReview = () => {
@@ -101,10 +102,10 @@ const AddReview = () => {
   };
 
   const handleRadioInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.currentTarget.name === "ItemOne") {
-      setItemName(e.currentTarget.name);
+    if (e.currentTarget.value === "ItemOne") {
+      setItemName(e.currentTarget.value);
     } else {
-      setItemName(e.currentTarget.name);
+      setItemName(e.currentTarget.value);
     }
   };
 
@@ -171,11 +172,21 @@ const AddReview = () => {
           <StyledRadioButtons>
             <label>
               Item One
-              <input onChange={handleRadioInput} name="ItemOne" type="radio" />
+              <input
+                onChange={handleRadioInput}
+                value="ItemOne"
+                name="Product"
+                type="radio"
+              />
             </label>
             <StyledItemTwoLabel>
               Item Two
-              <input onChange={handleRadioInput} name="ItemTwo" type="radio" />
+              <input
+                onChange={handleRadioInput}
+                value="ItemTwo"
+                name="Product"
+                type="radio"
+              />
             </StyledItemTwoLabel>
           </StyledRadioButtons>
           <StyledNameInput

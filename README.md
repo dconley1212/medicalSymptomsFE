@@ -51,7 +51,7 @@ Week of July 18th - 22nd
 
 -Downloaded the React Star Icon FaStar to be used in the AddReview and Reviews Component
 
-This week I saw a a lot of progress building on the skills I have developed while building this app. It has been really fun learning how to reapply the different instances of typescript for the slicer file and the props for the different components etc. Additionally, it has been really cool to strengthen my javascript skills and make the reviews folder and web pages more dynamic for the user. Again, I have felt like that has been the biggest improvement for me this week. And it has bled into me finding more success at managing the state in react and the store in redux. It has given me a lot of confidence to try new features and add new things to the app.
+This week I saw a a lot of progress building on the skills I have developed while building this app. It has been really fun learning how to reapply the different instances of typescript for the slicer file and the props for the different components etc. Additionally, it has been really cool to strengthen my javascript skills and make the reviews folder and web pages more dynamic for the user. Again, I have felt like that has been the biggest improvement this week. And it has bled into me finding more success at managing the state in react and the store in redux. It has given me a lot of confidence to try new features and add new things to the app. Creating the reviews feature has really helped me practice my redux skills again and it is helping me understand how I would use Redux to help me scale the front-end state as the fron-end components become more complex.
 
 Week of July 25th-29th
 

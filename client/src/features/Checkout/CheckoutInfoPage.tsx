@@ -59,6 +59,7 @@ const StyledButton = styled.button`
   background-color: #cb4a6f;
   color: #000000;
   font-size: 1rem;
+  cursor: pointer;
 `;
 
 const CheckoutInfoPage = () => {
