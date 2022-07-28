@@ -31,7 +31,7 @@ It was a holiday week and we are going on vacation on the 8th with Amy's family,
 Additionally, I started the process of implementing the event handler for when a "potential
 customer" clicked the add to cart button. I learned how to import the action creators to be dispatched to the reducers in the slice file for the feature. Additionally, I was running into a problem that I created myself, where I thought I needed to click the button twice to add a product to the cartItems state. I knew this functionality wasn't right and I tried to move the event handler into the Product component with the thinking that it wasn't registering on the first click with the button under the product that was clicked. I soon realized that this was dumb because I had the same functionality before when I was returning the button in the products.map function anyways. I came to realize the problem I thought I was experiencing had to do with where I was calling my console.log function. It was in the event handler right after the dispatch of the action creator. So I tested this hypothesis by creating a useEffect hook to log the cartProducts state everytime it changed and sure enough I saw that my app actually was working correctly on the first click.
 
-Week of July 11th - July 15th
+Week of July 11th - 15th
 
 Decisions:
 
@@ -41,4 +41,18 @@ Decisions:
 - Gave the products and product component a css overhaul where I decided on the design of all the parent children jsx relationships on the web page and how it would be displayed to the user.
 - Touched up the web page to make the ui more appealing to the user.
 
-The week really started on the 13th for me because that is when we got back from vacation. I didn't run into as many problems this week because a lot of it was sharpening my new typscript and redux tool kit skills; and sharpening my css and flexbox skills to create the layout I wanted for the page. One of the things I find very exciting is I am starting to use Javascript in the JSX more than I ever have to make the webpage more dynamic and user friendly. I feel like this is a major part of my development and huge hurdle as I contiune to grow in my coding capability!
+The week really started on the 13th for me because that is when we got back from vacation. I didn't run into as many problems this week because a lot of it was sharpening my new typscript and redux tool kit skills; and sharpening my css and flexbox skills to create the layout I wanted for the page. One of the things I find very exciting is I am starting to use Javascript in the JSX more than I ever to make the webpage more dynamic for the user. I feel like this is a major part of my development and huge hurdle as I contiune to grow in my coding capability!
+
+Week of July 18th - 22nd
+
+Decisions:
+
+-Created a reviews folder inside the features folder to follow the guidlines of Redux Toolkit in regards to organization.
+
+-Created the ReviewsSlice, Reviews, AddReview, and Star components
+
+-Created the add reducer for adding Reviews to the store to be used in the Reviews component as well as other components moving forward
+
+-Downloaded the React Star Icon FaStar to be used in the AddReview and Reviews Component
+
+This week I saw a a lot of progress building on the
