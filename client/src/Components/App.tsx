@@ -8,11 +8,13 @@ import Products from "../features/Checkout/Products";
 import CheckoutInfoPage from "../features/Checkout/CheckoutInfoPage";
 import AddReview from "../features/Reviews/AddRevew";
 import Reviews from "../features/Reviews/Reviews";
+import CheckoutCreditCardPage from "../features/Checkout/CheckoutCreditCardPage";
 
 function App() {
   return (
     <div>
       <Routes>
+        <Route path="/checkoutpayment" element={<CheckoutCreditCardPage />} />
         <Route path="/addreview" element={<AddReview />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/checkoutinfo" element={<CheckoutInfoPage />} />

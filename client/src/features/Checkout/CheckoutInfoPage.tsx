@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import Header from "../../Components/Header";
 import CheckoutItems from "./CheckoutItems";
 import styled from "styled-components";
@@ -61,6 +62,12 @@ const StyledButton = styled.button`
 `;
 
 const CheckoutInfoPage = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/checkoutpayment");
+  };
+
   return (
     <div>
       <Header />
@@ -142,7 +149,9 @@ const CheckoutInfoPage = () => {
               Check the box if you want to subscribe to promotions and news
               <StyledCheckBox name="Subscriber" type="checkbox" />
             </StyledPromotionLabel>
-            <StyledButton>Continue to Payment</StyledButton>
+            <StyledButton onClick={handleClick}>
+              Continue to Payment
+            </StyledButton>
           </StyledForm>
         </StyledFormWrappper>
         <StyledCheckoutComponent>
