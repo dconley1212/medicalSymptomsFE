@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserPaymentInfo from "./UserPaymentInfo";
+import { useAppSelector } from "../../app/hooks";
 
 const UserInfo = () => {
-  const [addAddress, setAddAddress] = useState<boolean>(false);
-  const [paymentInfo, setPaymentInfo] = useState<boolean>(false);
+  const [addAddress, setAddAddress] = useState<boolean>(true);
+  const [paymentInfo, setPaymentInfo] = useState<boolean>(true);
+  const [address, setAddress] = useState<string>("");
+
+  const userInfo = useAppSelector((state) => state.user);
+
+  useEffect(() => {
+    if (!userInfo.address) {
+      setAddAddress(false);
+    }
+    if (!userInfo.payment.cardNumber) {
+      setPaymentInfo(false);
+    }
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
+
   return (
     <div>
       <h2>Name</h2>
       <p>password shown as stars</p>
       <p>Phone Number</p>
-      <button>Add Billing Address</button>
-      {addAddress === true ? (
+      {addAddress === false ? (
         <div>
           <form>
             <input name="address" type="text" />
@@ -71,11 +86,20 @@ const UserInfo = () => {
               <option value="WY">Wyoming</option>
             </select>
             <input name="Zip_code" type="text" />
+            <button>Submit Billing Address</button>
           </form>
         </div>
-      ) : null}
+      ) : (
+        <div>
+          <p>{userInfo.address}</p>
+          <p>{userInfo.apartment_suite_etc}</p>
+          <p>{userInfo.city}</p>
+          <p>{userInfo.state}</p>
+          <p>{userInfo.zipcode}</p>
+        </div>
+      )}
       <button>Add Payment Info</button>
-      {paymentInfo === true ? <UserPaymentInfo /> : null}
+      {paymentInfo === false ? <UserPaymentInfo /> : null}
     </div>
   );
 };
