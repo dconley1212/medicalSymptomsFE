@@ -60,3 +60,11 @@ Week of July 25th-29th
 - Created the Review Stars Component in order to have the FaStar icon on the reviews page and give it the css I wanted.
 
 - Added structure, design, and styled to the components in the reviews folder
+
+- Created the UserAccount Folder and created the user, userAccountSlice, UserInfo, and UserPaymentInfo components
+
+- Added jsx, added useState and useEffect hooks to manage state for the UserInfo and UserPaymentInfo components.
+
+-Created the Initial State, and two reducers for the UserAccount slice and hooked them up to the store and dispatched the action payload to the reducer from the UserInfo and UserPaymentInfo components
+
+This week was really productive because I have continued to re-practice the skills I have purposely tried to get better at while building this app. Before I started this app I wanted to get better at flexbox, general css skills, redux/redux toolkit, state management, hooks, typescript, and test my ability to create a more dynamic website. So far I feel like I have achieved those goals and have pushed myself in areas that I wasn't comfortable before. I know there is always a ton to learn, but it feels good to look back and see how far I have come. I plan to start incorporating testing and building out the backend of this app soon.
