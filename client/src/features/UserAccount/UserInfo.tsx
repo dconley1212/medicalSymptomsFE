@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import UserPaymentInfo from "./UserPaymentInfo";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { userInformation, add } from "./UserAccountSlice";
+import { userInformation, addUserInfo } from "./UserAccountSlice";
 
 const UserInfo = () => {
   const [addAddress, setAddAddress] = useState<boolean>(true);
@@ -43,7 +43,7 @@ const UserInfo = () => {
   };
 
   const handleUserInfoSubmit = () => {
-    dispatch(add(userInfo));
+    dispatch(addUserInfo(userInfo));
   };
 
   return (

@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
 
 export interface payment {
   cardNumber: string;
@@ -46,13 +45,16 @@ export const UserAccount = createSlice({
   name: "UserAccount",
   initialState: initialState,
   reducers: {
-    add: (state, action: PayloadAction<userInformation>) => {
+    addUserInfo: (state, action: PayloadAction<userInformation>) => {
       state.userInfo = action.payload;
+    },
+    addPaymentInfo: (state, action: PayloadAction<payment>) => {
+      state.paymentInfo = action.payload;
     },
   },
 });
 
-export const { add } = UserAccount.actions;
+export const { addUserInfo, addPaymentInfo } = UserAccount.actions;
 
 export const User = (state: user) => {
   return state;
