@@ -1,14 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { stat } from "fs";
 
-interface payment {
+export interface payment {
   cardNumber: string;
   nameOnCard: string;
   cardExpiration: string;
   securityCode: string;
 }
 
-interface user {
+export interface userInformation {
   username: string;
   phone: string;
   address: string;
@@ -16,18 +17,24 @@ interface user {
   city: string;
   state: string;
   zipcode: string;
-  payment: payment;
+}
+
+interface user {
+  userInfo: userInformation;
+  paymentInfo: payment;
 }
 
 const initialState: user = {
-  username: "",
-  phone: "",
-  address: "",
-  apartment_suite_etc: "",
-  city: "",
-  state: "",
-  zipcode: "",
-  payment: {
+  userInfo: {
+    username: "",
+    phone: "",
+    address: "",
+    apartment_suite_etc: "",
+    city: "",
+    state: "",
+    zipcode: "",
+  },
+  paymentInfo: {
     cardNumber: "",
     nameOnCard: "",
     cardExpiration: "",
@@ -39,11 +46,13 @@ export const UserAccount = createSlice({
   name: "UserAccount",
   initialState: initialState,
   reducers: {
-    add: (state, action: PayloadAction<user>) => {
-      state = action.payload;
+    add: (state, action: PayloadAction<userInformation>) => {
+      state.userInfo = action.payload;
     },
   },
 });
+
+export const { add } = UserAccount.actions;
 
 export const User = (state: user) => {
   return state;
