@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useAppSelector } from "../../app/hooks";
 import UserInfo from "./UserInfo";
 
 const UserAccount = () => {
   const [showUser, setShowUser] = useState<boolean>(false);
+  const userInfo = useAppSelector((state) => state.user);
 
   const handleUserInfoClick = () => {
     setShowUser(true);
@@ -10,7 +12,7 @@ const UserAccount = () => {
 
   return (
     <div>
-      <div className="user tab">
+      <div>
         <button onClick={handleUserInfoClick}>
           Add your info for a faster checkout!
         </button>

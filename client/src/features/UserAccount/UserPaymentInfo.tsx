@@ -30,24 +30,28 @@ const UserPaymentInfo = () => {
           type="text"
           onChange={handlePaymentInfoChange}
           value={paymentInfo.cardNumber}
+          placeholder="Card Number"
         />
         <input
           name="nameOnCard"
           type="text"
           onChange={handlePaymentInfoChange}
           value={paymentInfo.nameOnCard}
+          placeholder="Name on Card"
         />
         <input
           name="cardExpiration"
           type="text"
           onChange={handlePaymentInfoChange}
           value={paymentInfo.cardExpiration}
+          placeholder="Expiration date"
         />
         <input
           name="securityCode"
           type="text"
           onChange={handlePaymentInfoChange}
           value={paymentInfo.securityCode}
+          placeholder="Security Code"
         />
         <button>Submit</button>
       </form>

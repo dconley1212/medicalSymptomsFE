@@ -11,6 +11,8 @@ export interface payment {
 export interface userInformation {
   username: string;
   phone: string;
+  firstName: string;
+  lastName: string;
   address: string;
   apartment_suite_etc: string;
   city: string;
@@ -27,6 +29,8 @@ const initialState: user = {
   userInfo: {
     username: "",
     phone: "",
+    firstName: "",
+    lastName: "",
     address: "",
     apartment_suite_etc: "",
     city: "",

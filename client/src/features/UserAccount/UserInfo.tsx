@@ -9,6 +9,8 @@ const UserInfo = () => {
   const [userInfo, setUserInfo] = useState<userInformation>({
     username: "",
     phone: "",
+    firstName: "",
+    lastName: "",
     address: "",
     apartment_suite_etc: "",
     city: "",
@@ -21,10 +23,10 @@ const UserInfo = () => {
   const user = useAppSelector((state) => state.user);
 
   useEffect(() => {
-    if (!user.userInfo.address) {
+    if (user.userInfo.address === "") {
       setAddAddress(false);
     }
-    if (!user.paymentInfo.cardNumber) {
+    if (user.paymentInfo.cardNumber === "") {
       setPaymentInfo(false);
     }
   }, []);
@@ -42,8 +44,10 @@ const UserInfo = () => {
     });
   };
 
-  const handleUserInfoSubmit = () => {
+  const handleUserInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     dispatch(addUserInfo(userInfo));
+    setAddAddress(true);
   };
 
   return (
@@ -55,22 +59,39 @@ const UserInfo = () => {
         <div>
           <form onSubmit={handleUserInfoSubmit}>
             <input
+              value={userInfo.firstName}
+              onChange={handleChange}
+              name="firstName"
+              type="text"
+              placeholder="First name"
+            />
+            <input
+              value={userInfo.lastName}
+              onChange={handleChange}
+              name="lastName"
+              type="text"
+              placeholder="Last name"
+            />
+            <input
               value={userInfo.address}
               onChange={handleChange}
               name="address"
               type="text"
+              placeholder="Address"
             />
             <input
               onChange={handleChange}
               name="apartment_suite_etc"
               type="text"
               value={userInfo.apartment_suite_etc}
+              placeholder="Apt., Suite, etc."
             />
             <input
               name="city"
               type="text"
               onChange={handleChange}
               value={userInfo.city}
+              placeholder="City"
             />
             <label>Choose A State</label>
             <select onChange={handleSelectChange} value={user.userInfo.state}>
@@ -127,10 +148,11 @@ const UserInfo = () => {
               <option value="WY">Wyoming</option>
             </select>
             <input
-              name="Zip_code"
+              name="zipcode"
               type="text"
               onChange={handleChange}
               value={userInfo.zipcode}
+              placeholder="Zipcode"
             />
             <button>Submit Billing Address</button>
           </form>
@@ -142,6 +164,7 @@ const UserInfo = () => {
           <p>{user.userInfo.city}</p>
           <p>{user.userInfo.state}</p>
           <p>{user.userInfo.zipcode}</p>
+          <button>Edit my info</button>
         </div>
       )}
       <button>Add Payment Info</button>
