@@ -40,7 +40,7 @@ const UserInfo = () => {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setUserInfo({
       ...userInfo,
-      [e.currentTarget.name]: e.currentTarget.value,
+      state: e.currentTarget.value,
     });
   };
 
@@ -94,7 +94,7 @@ const UserInfo = () => {
               placeholder="City"
             />
             <label>Choose A State</label>
-            <select onChange={handleSelectChange} value={user.userInfo.state}>
+            <select onChange={handleSelectChange} value={userInfo.state}>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
