@@ -9,11 +9,14 @@ import CheckoutInfoPage from "../features/Checkout/CheckoutInfoPage";
 import AddReview from "../features/Reviews/AddRevew";
 import Reviews from "../features/Reviews/Reviews";
 import CheckoutCreditCardPage from "../features/Checkout/CheckoutCreditCardPage";
+import UserInfo from "../features/UserAccount/UserInfo";
+import User from "../features/UserAccount/User";
 
 function App() {
   return (
     <div>
       <Routes>
+        <Route path="/user" element={<User />} />
         <Route path="/checkoutpayment" element={<CheckoutCreditCardPage />} />
         <Route path="/addreview" element={<AddReview />} />
         <Route path="/reviews" element={<Reviews />} />
