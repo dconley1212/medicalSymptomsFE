@@ -14,7 +14,9 @@ const UserAccount = () => {
     <div>
       <div>
         <button onClick={handleUserInfoClick}>
-          Add your info for a faster checkout!
+          {showUser === false
+            ? "Add your info for a faster checkout!"
+            : "My Info"}
         </button>
         {showUser === true ? (
           <div>
