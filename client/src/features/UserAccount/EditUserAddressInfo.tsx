@@ -1,72 +1,51 @@
 import React, { useState } from "react";
-import { userInformation, addUserInfo } from "./UserAccountSlice";
-import { useAppDispatch } from "../../app/hooks";
-import { useNavigate } from "react-router";
+import { useAppSelector } from "../../app/hooks";
+import { userInformation } from "./UserAccountSlice";
 
-interface props {
-  handleSubmit: () => {};
-}
+const EditUserAddressInfo = () => {
+  const userInfo = useAppSelector((state) => state.user.userInfo);
 
-const UserAddressInfo = ({ handleSubmit }: props) => {
-  const [userInfo, setUserInfo] = useState<userInformation>({
-    username: "",
-    phone: "",
-    firstName: "",
-    lastName: "",
-    address: "",
-    apartment_suite_etc: "",
-    city: "",
-    state: "",
-    zipcode: "",
+  const [editedInfo, setEditedInfo] = useState<userInformation>({
+    username: userInfo.username,
+    phone: userInfo.phone,
+    firstName: userInfo.firstName,
+    lastName: userInfo.lastName,
+    address: userInfo.address,
+    apartment_suite_etc: userInfo.apartment_suite_etc,
+    city: userInfo.city,
+    state: userInfo.state,
+    zipcode: userInfo.zipcode,
   });
 
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInfo({
-      ...userInfo,
-      [e.currentTarget.name]: e.currentTarget.value,
-    });
-  };
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setUserInfo({
-      ...userInfo,
-      state: e.currentTarget.value,
-    });
-  };
-
-  const handleUserInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    dispatch(addUserInfo(userInfo));
-    handleSubmit();
-  };
+  const handleEditUserInfoSubmit = () => {};
+  const handleEditSelectChange = () => {};
+  const handleEditChange = () => {};
   return (
     <div>
-      <form onSubmit={handleUserInfoSubmit}>
+      <form onSubmit={handleEditUserInfoSubmit}>
         <input
           value={userInfo.firstName}
-          onChange={handleChange}
+          onChange={handleEditChange}
           name="firstName"
           type="text"
           placeholder="First name"
         />
         <input
           value={userInfo.lastName}
-          onChange={handleChange}
+          onChange={handleEditChange}
           name="lastName"
           type="text"
           placeholder="Last name"
         />
         <input
           value={userInfo.address}
-          onChange={handleChange}
+          onChange={handleEditChange}
           name="address"
           type="text"
           placeholder="Address"
         />
         <input
-          onChange={handleChange}
+          onChange={handleEditChange}
           name="apartment_suite_etc"
           type="text"
           value={userInfo.apartment_suite_etc}
@@ -75,12 +54,12 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
         <input
           name="city"
           type="text"
-          onChange={handleChange}
+          onChange={handleEditChange}
           value={userInfo.city}
           placeholder="City"
         />
         <label>Choose A State</label>
-        <select onChange={handleSelectChange} value={userInfo.state}>
+        <select onChange={handleEditSelectChange} value={userInfo.state}>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
@@ -136,7 +115,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
         <input
           name="zipcode"
           type="text"
-          onChange={handleChange}
+          onChange={handleEditChange}
           value={userInfo.zipcode}
           placeholder="Zipcode"
         />
@@ -146,4 +125,4 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
   );
 };
 
-export default UserAddressInfo;
+export default EditUserAddressInfo;

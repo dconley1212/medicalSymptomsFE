@@ -15,6 +15,7 @@ const UserInfo = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(user.userInfo.address);
     if (user.userInfo.address === "") {
       setAddAddress(false);
     }
@@ -29,8 +30,7 @@ const UserInfo = () => {
 
   const handleSubmit = () => {
     setAddAddress(true);
-
-    return null;
+    return addAddress;
   };
 
   return (
@@ -40,7 +40,7 @@ const UserInfo = () => {
       <p>Phone Number</p>
       {addAddress === false ? (
         <div>
-          <UserAddressInfo />
+          <UserAddressInfo handleSubmit={handleSubmit} />
         </div>
       ) : (
         <div>

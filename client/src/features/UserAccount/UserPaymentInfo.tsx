@@ -19,7 +19,8 @@ const UserPaymentInfo = () => {
       [e.currentTarget.name]: e.currentTarget.value,
     });
   };
-  const handleSubmiPaymentInfo = () => {
+  const handleSubmiPaymentInfo = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     dispatch(addPaymentInfo(paymentInfo));
   };
   return (

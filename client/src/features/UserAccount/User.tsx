@@ -4,7 +4,6 @@ import UserInfo from "./UserInfo";
 
 const UserAccount = () => {
   const [showUser, setShowUser] = useState<boolean>(false);
-  const userInfo = useAppSelector((state) => state.user);
 
   const handleUserInfoClick = () => {
     setShowUser(true);
