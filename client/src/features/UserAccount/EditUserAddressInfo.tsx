@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { useAppSelector } from "../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { userInformation } from "./UserAccountSlice";
+import { addUserInfo } from "./UserAccountSlice";
+import { useNavigate } from "react-router";
 
 const EditUserAddressInfo = () => {
   const userInfo = useAppSelector((state) => state.user.userInfo);
+  const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const [editedInfo, setEditedInfo] = useState<userInformation>({
     username: userInfo.username,
@@ -17,9 +22,23 @@ const EditUserAddressInfo = () => {
     zipcode: userInfo.zipcode,
   });
 
-  const handleEditUserInfoSubmit = () => {};
-  const handleEditSelectChange = () => {};
-  const handleEditChange = () => {};
+  const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditedInfo({
+      ...editedInfo,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  };
+  const handleEditSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setEditedInfo({
+      ...editedInfo,
+      state: e.currentTarget.value,
+    });
+  };
+  const handleEditUserInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(addUserInfo(editedInfo));
+    navigate("/user/info");
+  };
   return (
     <div>
       <form onSubmit={handleEditUserInfoSubmit}>

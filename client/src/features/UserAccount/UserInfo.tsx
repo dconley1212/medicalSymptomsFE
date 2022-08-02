@@ -25,7 +25,7 @@ const UserInfo = () => {
   }, []);
 
   const handleEditUserInfo = () => {
-    navigate("/user/userAddress");
+    navigate("/user/editAddress");
   };
 
   const handleSubmit = () => {
@@ -49,7 +49,7 @@ const UserInfo = () => {
           <p>{user.userInfo.city}</p>
           <p>{user.userInfo.state}</p>
           <p>{user.userInfo.zipcode}</p>
-          <button onChange={handleEditUserInfo}>Edit my info</button>
+          <button onClick={handleEditUserInfo}>Edit my info</button>
         </div>
       )}
       <button>Add Payment Info</button>
