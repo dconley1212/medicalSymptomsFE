@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Header from "../../Components/Header";
 import CheckoutItems from "./CheckoutItems";
 import styled from "styled-components";
+import { userInformation } from "../UserAccount/UserAccountSlice";
+import { useAppSelector } from "../../app/hooks";
 
 const StyledCheckoutWrapper = styled.div`
   display: flex;
@@ -63,6 +65,24 @@ const StyledButton = styled.button`
 `;
 
 const CheckoutInfoPage = () => {
+  const [userCheckoutInfo, setUserCheckoutInfo] = useState<userInformation>({
+    username: "",
+    phone: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    apartment_suite_etc: "",
+    city: "",
+    state: "",
+    zipcode: "",
+  });
+
+  const userInfo = useAppSelector((state) => state.user.userInfo);
+
+  useEffect(() => {
+    if (userInfo.firstName) setUserCheckoutInfo(userInfo);
+  }, []);
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -79,19 +99,35 @@ const CheckoutInfoPage = () => {
               name="First_name"
               placeholder="First name"
               type="text"
+              value={userCheckoutInfo.firstName}
             />
-            <StyledInput name="Last_name" placeholder="Last name" type="text" />
+            <StyledInput
+              name="Last_name"
+              placeholder="Last name"
+              type="text"
+              value={userCheckoutInfo.lastName}
+            />
             <StyledInput name="Email" placeholder="Email" />
-            <StyledInput name="address" placeholder="address" type="text" />
+            <StyledInput
+              name="address"
+              placeholder="address"
+              type="text"
+              value={userCheckoutInfo.address}
+            />
             <StyledInput
               name="Apartment_Suite_Etc"
-              placeholder="Apartment, suite, etc. (optional"
+              placeholder="Apartment, suite, etc. (optional)"
+              value={userCheckoutInfo.apartment_suite_etc}
             />
-            <StyledInput name="City" placeholder="City" />
+            <StyledInput
+              name="City"
+              placeholder="City"
+              value={userCheckoutInfo.city}
+            />
             <StyledStateLabel>
               Choose a state from the Dropdown
             </StyledStateLabel>
-            <StyledStateSelector>
+            <StyledStateSelector value={userCheckoutInfo.state}>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -144,8 +180,18 @@ const CheckoutInfoPage = () => {
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
             </StyledStateSelector>
-            <StyledInput name="Zip_code" placeholder="ZIP code" type="text" />
-            <StyledInput name="Phone" placeholder="Phone" type="text" />
+            <StyledInput
+              name="Zip_code"
+              placeholder="ZIP code"
+              type="text"
+              value={userCheckoutInfo.zipcode}
+            />
+            <StyledInput
+              name="Phone"
+              placeholder="Phone"
+              type="text"
+              value={userCheckoutInfo.phone}
+            />
             <StyledPromotionLabel>
               Check the box if you want to subscribe to promotions and news
               <StyledCheckBox name="Subscriber" type="checkbox" />
