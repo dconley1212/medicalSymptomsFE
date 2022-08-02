@@ -4,9 +4,6 @@ import { useAppSelector } from "../../app/hooks";
 import UserAddressInfo from "./UserAddressInfo";
 import { useNavigate } from "react-router";
 
-// left off trying to fix the state for showing the added billing address/ update billing address
-// Ran into a little trouble with the interface type for a handle submit function
-
 const UserInfo = () => {
   const [addAddress, setAddAddress] = useState<boolean>(true);
   const [paymentInfo, setPaymentInfo] = useState<boolean>(true);
@@ -33,6 +30,15 @@ const UserInfo = () => {
     return addAddress;
   };
 
+  const handleSubmitPayment = () => {
+    setPaymentInfo(true);
+    return paymentInfo;
+  };
+
+  const handleEditPayment = () => {
+    navigate("/user/editPayment");
+  };
+
   return (
     <div>
       <h2>Name</h2>
@@ -44,16 +50,27 @@ const UserInfo = () => {
         </div>
       ) : (
         <div>
+          <h3>Address</h3>
           <p>{user.userInfo.address}</p>
           <p>{user.userInfo.apartment_suite_etc}</p>
           <p>{user.userInfo.city}</p>
           <p>{user.userInfo.state}</p>
           <p>{user.userInfo.zipcode}</p>
-          <button onClick={handleEditUserInfo}>Edit my info</button>
+          <button onClick={handleEditUserInfo}>Edit Address</button>
         </div>
       )}
-      <button>Add Payment Info</button>
-      {paymentInfo === false ? <UserPaymentInfo /> : null}
+      {paymentInfo === false ? (
+        <UserPaymentInfo handleSubmitPayment={handleSubmitPayment} />
+      ) : (
+        <div>
+          <h3>Payment</h3>
+          <p>CardNumber: {user.paymentInfo.cardNumber}</p>
+          <p>Name on card: {user.paymentInfo.nameOnCard}</p>
+          <p>Card Expiration: {user.paymentInfo.cardExpiration}</p>
+          <p>Security Code: {user.paymentInfo.securityCode}</p>
+          <button onClick={handleEditPayment}>Edit Payment</button>
+        </div>
+      )}
     </div>
   );
 };

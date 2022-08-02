@@ -37,7 +37,7 @@ const EditUserAddressInfo = () => {
   const handleEditUserInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(addUserInfo(editedInfo));
-    navigate("/user/info");
+    navigate("/user");
   };
   return (
     <div>

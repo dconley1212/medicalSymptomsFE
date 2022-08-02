@@ -12,12 +12,14 @@ import CheckoutCreditCardPage from "../features/Checkout/CheckoutCreditCardPage"
 import User from "../features/UserAccount/User";
 import EditUserAddressInfo from "../features/UserAccount/EditUserAddressInfo";
 import UserInfo from "../features/UserAccount/UserInfo";
+import EditUserPaymentInfo from "../features/UserAccount/EditUserPaymentInfo";
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/user" element={<User />} />
+        <Route path="/user/editPayment" element={<EditUserPaymentInfo />} />
         <Route path="/user/info" element={<UserInfo />} />
         <Route path="/user/editAddress" element={<EditUserAddressInfo />} />
         <Route path="/checkoutpayment" element={<CheckoutCreditCardPage />} />

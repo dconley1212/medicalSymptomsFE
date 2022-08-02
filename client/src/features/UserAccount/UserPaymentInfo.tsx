@@ -3,7 +3,11 @@ import { payment } from "./UserAccountSlice";
 import { addPaymentInfo } from "./UserAccountSlice";
 import { useAppDispatch } from "../../app/hooks";
 
-const UserPaymentInfo = () => {
+interface paymentProp {
+  handleSubmitPayment: () => {};
+}
+
+const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
   const [paymentInfo, setPaymentInfo] = useState<payment>({
     cardNumber: "",
     nameOnCard: "",
@@ -22,6 +26,7 @@ const UserPaymentInfo = () => {
   const handleSubmiPaymentInfo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(addPaymentInfo(paymentInfo));
+    handleSubmitPayment();
   };
   return (
     <div>
@@ -54,7 +59,7 @@ const UserPaymentInfo = () => {
           value={paymentInfo.securityCode}
           placeholder="Security Code"
         />
-        <button>Submit</button>
+        <button>Add Payment</button>
       </form>
     </div>
   );
