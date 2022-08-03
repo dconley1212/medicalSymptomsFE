@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../Components/Header";
 import CheckoutItems from "./CheckoutItems";
+import { useAppSelector } from "../../app/hooks";
+import { payment } from "../UserAccount/UserAccountSlice";
 import styled from "styled-components";
 
 const StyledPaymentWrapper = styled.div`
@@ -52,19 +54,45 @@ const StyledCheckoutComponent = styled.div`
 `;
 
 const CheckoutCreditCardPage = () => {
+  const [payment, setPayment] = useState<payment>({
+    cardNumber: "",
+    nameOnCard: "",
+    cardExpiration: "",
+    securityCode: "",
+  });
+  const creditCardInfo = useAppSelector((state) => state.user.paymentInfo);
+
+  useEffect(() => {
+    if (creditCardInfo.cardNumber) {
+      setPayment(creditCardInfo);
+    }
+  }, []);
   return (
     <div>
       <Header />
       <StyledPaymentWrapper>
         <StyledFormDiv>
           <StyledForm>
-            <StyledTextInput name="Card Number" placeholder="Card Number" />
-            <StyledTextInput name="Name on Card" placeholder="Name on card" />
+            <StyledTextInput
+              value={payment.cardNumber}
+              name="Card Number"
+              placeholder="Card Number"
+            />
+            <StyledTextInput
+              value={payment.nameOnCard}
+              name="Name on Card"
+              placeholder="Name on card"
+            />
             <StyledTextInput
               name="Card Expiration"
               placeholder="Expiration data (mm/yy)"
+              value={payment.cardExpiration}
             />
-            <StyledTextInput name="Security Code" placeholder="Security Code" />
+            <StyledTextInput
+              value={payment.securityCode}
+              name="Security Code"
+              placeholder="Security Code"
+            />
             <StyledRadioLabel>
               Same as Shipping address
               <StyledRadioInput name="Billing Address" type="radio" />
