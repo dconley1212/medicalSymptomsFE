@@ -3,6 +3,16 @@ import styled from "styled-components";
 import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
 import Header from "./Header";
 
+import { devices } from "./Header";
+
+const StyledWrapper = styled.div`
+  @media only screen ${devices.mobileS} {
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
 const StyledMainDiv = styled.div`
   padding: 12rem 5rem;
   background-image: url(${backgroundImg});
@@ -41,7 +51,7 @@ const SurveyButton = styled.button`
 
 const LandingPage = () => {
   return (
-    <div>
+    <StyledWrapper>
       <Header />
       <StyledMainDiv>
         <LandingPageHook>Tired of back pain?</LandingPageHook>
@@ -50,7 +60,7 @@ const LandingPage = () => {
         </LandingPageStat>
         <SurveyButton>Want a doctors recomendation?</SurveyButton>
       </StyledMainDiv>
-    </div>
+    </StyledWrapper>
   );
 };
 

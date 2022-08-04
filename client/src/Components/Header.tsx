@@ -2,12 +2,37 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+const sizes = {
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "450px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px",
+};
+
+export const devices = {
+  mobileS: `(min-width: ${sizes.mobileS})`,
+  mobileM: `(min-width: ${sizes.mobileM})`,
+  mobileL: `(min-width: ${sizes.mobileL})`,
+  tablet: `(min-width: ${sizes.tablet})`,
+  laptop: `(min-width: ${sizes.laptop})`,
+  laptopL: `(min-width: ${sizes.laptopL})`,
+  desktop: `(min-width: ${sizes.desktop})`,
+};
+
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 1.2rem;
   background: #4682b4;
+  @media only screen ${devices.mobileS} {
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const StyledLogoTitle = styled(Link)`
   font-size: 1.2rem;
