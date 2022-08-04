@@ -28,10 +28,12 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   padding: 1.2rem;
   background: #4682b4;
-  @media only screen ${devices.mobileS} {
-    max-width: 460px;
+  @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 20%;
   }
 `;
 const StyledLogoTitle = styled(Link)`

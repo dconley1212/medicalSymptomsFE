@@ -6,10 +6,10 @@ import Header from "./Header";
 import { devices } from "./Header";
 
 const StyledWrapper = styled.div`
-  @media only screen ${devices.mobileS} {
-    max-width: 450px;
+  @media screen and (max-width: 450px) {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-start;
   }
 `;
 
@@ -19,6 +19,11 @@ const StyledMainDiv = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid black;
+  @media screen and (max-width: 450px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const LandingPageHook = styled.h2`
