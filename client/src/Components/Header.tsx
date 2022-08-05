@@ -31,9 +31,10 @@ const StyledHeader = styled.header`
   @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    width: 20%;
+    width: 100%;
   }
 `;
 const StyledLogoTitle = styled(Link)`
@@ -51,8 +52,8 @@ const StyledLinksDiv = styled.div`
   align-items: center;
   @media screen and (max-width: 460px) {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 
@@ -68,7 +69,12 @@ const StyledLinks = styled(Link)`
   }
   @media screen and (max-width: 460px) {
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    &:hover {
+      transition-timing-function: ease;
+      color: #ffffff;
+      text-decoration: underline;
+    }
   }
 `;
 

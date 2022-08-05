@@ -14,10 +14,18 @@ import EditUserAddressInfo from "../features/UserAccount/EditUserAddressInfo";
 import UserInfo from "../features/UserAccount/UserInfo";
 import EditUserPaymentInfo from "../features/UserAccount/EditUserPaymentInfo";
 import Header from "./Header";
+import styled from "styled-components";
+
+const StyledAppWrapper = styled.div`
+  /* @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+  } */
+`;
 
 function App() {
   return (
-    <div>
+    <StyledAppWrapper>
       <Header />
       <Routes>
         <Route path="/user" element={<User />} />
@@ -34,7 +42,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<LandingPage />} />
       </Routes>
-    </div>
+    </StyledAppWrapper>
   );
 }
 

@@ -5,7 +5,7 @@ import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
 const StyledWrapper = styled.div`
   @media screen and (max-width: 450px) {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
   }
 `;
@@ -16,10 +16,17 @@ const StyledMainDiv = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid black;
+  width: 100vw;
+  height: 75vh;
   @media screen and (max-width: 450px) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* width: 100vw; */
+    background: url(${backgroundImg}) no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
   }
 `;
 
@@ -28,6 +35,11 @@ const LandingPageHook = styled.h2`
   position: relative;
   bottom: 9rem;
   padding: 3rem;
+  @media screen and (max-width: 460px) {
+    position: relative;
+    bottom: 15rem;
+    right: 4rem;
+  }
 `;
 
 const LandingPageStat = styled.p`
@@ -37,6 +49,11 @@ const LandingPageStat = styled.p`
   width: 23%;
   font-size: 1.5rem;
   color: white;
+  @media screen and (max-width: 460px) {
+    position: relative;
+    right: 12rem;
+    width: 25vw;
+  }
 `;
 const SurveyButton = styled.button`
   padding: 1.2rem;
