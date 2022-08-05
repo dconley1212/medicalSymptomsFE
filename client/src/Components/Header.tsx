@@ -40,11 +40,20 @@ const StyledLogoTitle = styled(Link)`
   font-size: 1.2rem;
   color: #000000;
   font-weight: bold;
+  @media screen and (max-width: 460px) {
+    /* position: relative;
+    bottom: 10rem; */
+  }
 `;
 
 const StyledLinksDiv = styled.div`
   display: flex;
   align-items: center;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 `;
 
 const StyledLinks = styled(Link)`
@@ -56,6 +65,10 @@ const StyledLinks = styled(Link)`
     transition-timing-function: ease;
     color: #ffffff;
     text-decoration: underline;
+  }
+  @media screen and (max-width: 460px) {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
