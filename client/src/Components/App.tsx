@@ -13,10 +13,12 @@ import User from "../features/UserAccount/User";
 import EditUserAddressInfo from "../features/UserAccount/EditUserAddressInfo";
 import UserInfo from "../features/UserAccount/UserInfo";
 import EditUserPaymentInfo from "../features/UserAccount/EditUserPaymentInfo";
+import Header from "./Header";
 
 function App() {
   return (
     <div>
+      <Header />
       <Routes>
         <Route path="/user" element={<User />} />
         <Route path="/user/editPayment" element={<EditUserPaymentInfo />} />

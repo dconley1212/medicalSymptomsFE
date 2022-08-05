@@ -1,5 +1,6 @@
 import LandingPage from "../Components/LandingPage";
+import { render } from "@testing-library/react";
 
-it("renders without crashing", () => {
-  <LandingPage />;
+test("renders without crashing", () => {
+  render(<LandingPage />);
 });

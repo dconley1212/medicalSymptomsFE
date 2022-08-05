@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 import { add } from "./ReviewsSlice";
 import { useAppDispatch } from "../../app/hooks";
 import Star from "./Star";
-import Header from "../../Components/Header";
 import styled from "styled-components";
 
 const StyledAddReview = styled.div`
@@ -127,7 +126,6 @@ const AddReview = () => {
   };
   return (
     <div>
-      <Header />
       <StyledAddReview>
         <h2>Let us know what you think!</h2>
         <span>

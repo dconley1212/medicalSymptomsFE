@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppSelector } from "../../app/hooks";
 import UserInfo from "./UserInfo";
-import Header from "../../Components/Header";
 
 const UserAccount = () => {
   const user = useAppSelector((state) => state.user);
@@ -23,7 +22,6 @@ const UserAccount = () => {
 
   return (
     <div>
-      <Header />
       <div>
         <button onClick={handleUserInfoClick}>
           {button === false

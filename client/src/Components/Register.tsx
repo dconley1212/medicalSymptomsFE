@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Header from "./Header";
 
 const FormWrapper = styled.div`
   display: flex;
@@ -71,7 +70,6 @@ const Register = () => {
 
   return (
     <div>
-      <Header />
       <FormWrapper>
         <RegisterFormStyle onSubmit={handleSubmit}>
           <StyledTitle>ConleyCare</StyledTitle>

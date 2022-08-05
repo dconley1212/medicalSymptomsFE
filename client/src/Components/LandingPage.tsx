@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
-import Header from "./Header";
-
-import { devices } from "./Header";
 
 const StyledWrapper = styled.div`
   @media screen and (max-width: 450px) {
@@ -57,7 +54,6 @@ const SurveyButton = styled.button`
 const LandingPage = () => {
   return (
     <StyledWrapper>
-      <Header />
       <StyledMainDiv>
         <LandingPageHook>Tired of back pain?</LandingPageHook>
         <LandingPageStat>

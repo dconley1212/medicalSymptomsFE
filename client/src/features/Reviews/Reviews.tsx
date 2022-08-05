@@ -4,7 +4,6 @@ import { useAppSelector } from "../../app/hooks";
 import { Review } from "./ReviewsSlice";
 import ReviewStars from "./ReviewStars";
 import styled from "styled-components";
-import Header from "../../Components/Header";
 
 const StyledComponentWrapper = styled.div`
   background-color: #f5f5f5;
@@ -96,7 +95,6 @@ const Reviews = () => {
   return (
     <div>
       <StyledComponentWrapper>
-        <Header />
         <StyledTitleDiv>
           <h2>What are people saying about our products?</h2>
         </StyledTitleDiv>

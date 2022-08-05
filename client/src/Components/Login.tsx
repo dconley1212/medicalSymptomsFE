@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Header from "./Header";
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -79,7 +78,6 @@ const Login = () => {
 
   return (
     <div>
-      <Header />
       <LoginWrapper>
         <StyledForm onSubmit={handleSubmit}>
           <StyledTitleLogo>ConleyCare</StyledTitleLogo>

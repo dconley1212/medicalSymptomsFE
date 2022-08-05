@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import Header from "../../Components/Header";
 import CheckoutItems from "./CheckoutItems";
 import styled from "styled-components";
 import { userInformation } from "../UserAccount/UserAccountSlice";
@@ -91,7 +90,6 @@ const CheckoutInfoPage = () => {
 
   return (
     <div>
-      <Header />
       <StyledCheckoutWrapper>
         <StyledFormWrappper>
           <StyledForm>

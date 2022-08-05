@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "../../Components/Header";
+
 import CheckoutItems from "./CheckoutItems";
 import { useAppSelector } from "../../app/hooks";
 import { payment } from "../UserAccount/UserAccountSlice";
@@ -69,7 +69,6 @@ const CheckoutCreditCardPage = () => {
   }, []);
   return (
     <div>
-      <Header />
       <StyledPaymentWrapper>
         <StyledFormDiv>
           <StyledForm>

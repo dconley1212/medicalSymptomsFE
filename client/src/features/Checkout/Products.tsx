@@ -5,7 +5,7 @@ import { addToCart, removeFromCart } from "./ProductToCheckoutSlice";
 import { ProductsInCheckout } from "./ProductToCheckoutSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import styled from "styled-components";
-import Header from "../../Components/Header";
+
 import CheckoutItems from "./CheckoutItems";
 
 const StyledProductsPage = styled.div`
@@ -132,7 +132,6 @@ const Products = () => {
 
   return (
     <div>
-      <Header />
       <StyledProductsPage>
         <StyledSurveySection>
           <StyledSurveyHeading>
