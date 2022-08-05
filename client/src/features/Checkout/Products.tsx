@@ -5,7 +5,6 @@ import { addToCart, removeFromCart } from "./ProductToCheckoutSlice";
 import { ProductsInCheckout } from "./ProductToCheckoutSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import styled from "styled-components";
-
 import CheckoutItems from "./CheckoutItems";
 
 const StyledProductsPage = styled.div`
