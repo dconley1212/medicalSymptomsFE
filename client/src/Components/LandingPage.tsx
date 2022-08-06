@@ -42,6 +42,13 @@ const LandingPageHook = styled.h2`
   }
 `;
 
+const StyledLowerDiv = styled.div`
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: row;
+  }
+`;
+
 const LandingPageStat = styled.p`
   padding: 3rem;
   position: relative;
@@ -51,8 +58,14 @@ const LandingPageStat = styled.p`
   color: white;
   @media screen and (max-width: 460px) {
     position: relative;
-    right: 12rem;
-    width: 25vw;
+    padding: 0.5rem;
+    width: 20vw;
+    top: 5rem;
+    right: 6rem;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 10px;
+    font-size: 1.2rem;
   }
 `;
 const SurveyButton = styled.button`
@@ -66,6 +79,14 @@ const SurveyButton = styled.button`
   bottom: 7rem;
   font-size: 1rem;
   cursor: pointer;
+  @media screen and (max-width: 460px) {
+    position: relative;
+    top: 15rem;
+    padding: 1rem;
+    width: 40%;
+    height: 10vh;
+    cursor: pointer;
+  } ;
 `;
 
 const LandingPage = () => {
@@ -73,10 +94,12 @@ const LandingPage = () => {
     <StyledWrapper>
       <StyledMainDiv>
         <LandingPageHook>Tired of back pain?</LandingPageHook>
-        <LandingPageStat>
-          You're in good company too. 1 in 3 Adults experience back pain!
-        </LandingPageStat>
-        <SurveyButton>Want a doctors recomendation?</SurveyButton>
+        <StyledLowerDiv>
+          <LandingPageStat>
+            You're in good company too. 1 in 3 Adults experience back pain!
+          </LandingPageStat>
+          <SurveyButton>Want a doctors recomendation?</SurveyButton>
+        </StyledLowerDiv>
       </StyledMainDiv>
     </StyledWrapper>
   );
