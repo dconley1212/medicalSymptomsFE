@@ -30,11 +30,11 @@ const StyledSurveySection = styled.div`
   width: 30%;
   @media screen and (max-width: 460px) {
     width: 70vw;
-    height: 25vh;
+    height: 23vh;
     margin-top: 0rem;
     margin-bottom: 0.5rem;
     position: relative;
-    bottom: 5.5rem;
+    bottom: 6.5rem;
   }
 `;
 
@@ -47,6 +47,7 @@ const StyledSurveyHeading = styled.h2`
   @media screen and (max-width: 460px) {
     width: 75%;
     font-size: 1.3rem;
+    margin-top: 0.2rem;
     margin-bottom: 0rem;
   }
 `;
@@ -85,7 +86,7 @@ const StyledProductsSection = styled.div`
     width: 70vw;
     margin: 0.5rem 3rem 0.5rem 3rem;
     position: relative;
-    bottom: 6.5rem;
+    bottom: 7.5rem;
   }
 `;
 
@@ -99,7 +100,8 @@ const StyledProductDiv = styled.div`
   background-color: #f5f5f5;
   @media screen and (max-width: 460px) {
     width: 70vw;
-    height: 22vh;
+    height: 21vh;
+    margin-bottom: 0rem;
   }
 `;
 const ProductButtonDiv = styled.div`
@@ -148,6 +150,7 @@ const ProductButtonDelete = styled.button`
     font-size: 0.8rem;
     padding: 0.4rem;
     border-radius: 50%;
+  }
 `;
 
 const StyledCheckoutComponent = styled.div`
@@ -193,9 +196,8 @@ const Products = () => {
         <StyledProductsSection>
           {products.map((product) => {
             return (
-              <StyledProductDiv>
+              <StyledProductDiv key={product.id}>
                 <Product
-                  key={product.id}
                   name={product.name}
                   price={product.price}
                   description={product.description}

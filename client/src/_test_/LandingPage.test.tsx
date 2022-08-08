@@ -1,6 +1,15 @@
 import LandingPage from "../Components/LandingPage";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
-test("renders without crashing", () => {
-  render(<LandingPage />);
+describe("testing the landing page componet", () => {
+  test("renders without crashing", () => {
+    render(<LandingPage />);
+  });
+
+  test("title shows up on landing page", () => {
+    render(<LandingPage />);
+    const title = screen.getByText(/tired of back pain/i);
+    expect(title).toBeInTheDocument();
+  });
 });

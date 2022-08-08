@@ -11,4 +11,8 @@ describe("testing the Products component", () => {
       </Provider>
     );
   });
+
+  //   test('on first render that isActive state is set to false', () =>{
+
+  //   })
 });
