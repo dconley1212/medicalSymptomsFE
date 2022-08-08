@@ -30,11 +30,13 @@ const StyledHeader = styled.header`
   background: #4682b4;
   @media screen and (max-width: 460px) {
     display: flex;
+    padding: 0.4rem;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    width: 100vw;
+    height: 18vh;
   }
 `;
 const StyledLogoTitle = styled(Link)`

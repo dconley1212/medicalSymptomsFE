@@ -9,6 +9,9 @@ const FormWrapper = styled.div`
   padding: 4rem;
   background-color: #f5f5f5;
   height: 100vh;
+  @media screen and (max-width: 460px) {
+    width: 100vw;
+  }
 `;
 
 const RegisterFormStyle = styled.form`
@@ -20,6 +23,12 @@ const RegisterFormStyle = styled.form`
   width: 40%;
   border-radius: 15px;
   background-color: #ffffff;
+  @media screen and (max-width: 460px) {
+    padding: 3rem;
+    margin-right: 7rem;
+    width: 60vw;
+    height: 40vh;
+  }
 `;
 
 const StyledTitle = styled.h2`

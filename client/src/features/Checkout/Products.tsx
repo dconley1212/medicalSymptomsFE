@@ -13,6 +13,11 @@ const StyledProductsPage = styled.div`
   justify-content: center;
   background-color: #cb4a6f;
   height: 100vh;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
 `;
 
 const StyledSurveySection = styled.div`
@@ -23,6 +28,14 @@ const StyledSurveySection = styled.div`
   background-color: #f5f5f5;
   border-radius: 10px;
   width: 30%;
+  @media screen and (max-width: 460px) {
+    width: 70vw;
+    height: 25vh;
+    margin-top: 0rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    bottom: 5.5rem;
+  }
 `;
 
 const StyledSurveyHeading = styled.h2`
@@ -31,6 +44,11 @@ const StyledSurveyHeading = styled.h2`
   justify-content: center;
   text-align: center;
   width: 65%;
+  @media screen and (max-width: 460px) {
+    width: 75%;
+    font-size: 1.3rem;
+    margin-bottom: 0rem;
+  }
 `;
 
 const StyledSurveyButton = styled.button`
@@ -40,6 +58,11 @@ const StyledSurveyButton = styled.button`
   cursor: pointer;
   background-color: #cb4a6f;
   font-size: 1rem;
+  @media screen and (max-width: 460px) {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
 `;
 
 const StyledSurveyParagraphs = styled.p`
@@ -47,6 +70,10 @@ const StyledSurveyParagraphs = styled.p`
   margin: 2rem 0rem;
   font-size: 1rem;
   text-align: center;
+  @media screen and (max-width: 460px) {
+    margin: 0.5rem 0rem;
+    font-size: 0.8rem;
+  }
 `;
 
 const StyledProductsSection = styled.div`
@@ -54,6 +81,12 @@ const StyledProductsSection = styled.div`
   flex-direction: column;
   margin: 4rem 0.5rem 0.3rem 6rem;
   width: 20%;
+  @media screen and (max-width: 460px) {
+    width: 70vw;
+    margin: 0.5rem 3rem 0.5rem 3rem;
+    position: relative;
+    bottom: 6.5rem;
+  }
 `;
 
 const StyledProductDiv = styled.div`
@@ -64,6 +97,10 @@ const StyledProductDiv = styled.div`
   padding: 0.5rem;
   margin: 0.5rem;
   background-color: #f5f5f5;
+  @media screen and (max-width: 460px) {
+    width: 70vw;
+    height: 22vh;
+  }
 `;
 const ProductButtonDiv = styled.div`
   display: flex;
@@ -85,6 +122,11 @@ const ProductButtonAdd = styled.button`
     transition: ease-in-out;
     background-color: #ffffff;
   }
+  @media screen and (max-width: 460px) {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+    border-radius: 50%;
+  }
 `;
 
 const ProductButtonDelete = styled.button`
@@ -102,6 +144,10 @@ const ProductButtonDelete = styled.button`
     transition: ease-in-out;
     background-color: #ffffff;
   }
+  @media screen and (max-width: 460px) {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+    border-radius: 50%;
 `;
 
 const StyledCheckoutComponent = styled.div`
@@ -141,9 +187,8 @@ const Products = () => {
             "There is nothing worse than purchasing the wrong product because
             you don't completely understand the nuances of your symptoms!
             Following their questionaire helped me feel comfortable that I was
-            making the right choice."
+            making the right choice." -Karen Conley
           </StyledSurveyParagraphs>
-          <p> -Karen Conley</p>
         </StyledSurveySection>
         <StyledProductsSection>
           {products.map((product) => {
