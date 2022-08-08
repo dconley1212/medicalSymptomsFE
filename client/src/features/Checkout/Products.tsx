@@ -196,7 +196,7 @@ const Products = () => {
         <StyledProductsSection>
           {products.map((product) => {
             return (
-              <StyledProductDiv key={product.id}>
+              <StyledProductDiv data-testid={product.id} key={product.id}>
                 <Product
                   name={product.name}
                   price={product.price}
