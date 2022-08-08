@@ -41,10 +41,6 @@ const StyledLogoTitle = styled(Link)`
   font-size: 1.2rem;
   color: #000000;
   font-weight: bold;
-  @media screen and (max-width: 460px) {
-    /* position: relative;
-    bottom: 10rem; */
-  }
 `;
 
 const StyledLinksDiv = styled.div`
@@ -70,11 +66,6 @@ const StyledLinks = styled(Link)`
   @media screen and (max-width: 460px) {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    &:hover {
-      transition-timing-function: ease;
-      color: #ffffff;
-      text-decoration: underline;
-    }
   }
 `;
 

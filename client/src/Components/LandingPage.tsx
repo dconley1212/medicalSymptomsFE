@@ -7,6 +7,7 @@ const StyledWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 100vw;
   }
 `;
 
@@ -46,6 +47,7 @@ const StyledLowerDiv = styled.div`
   @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: row;
+    width: 90%;
   }
 `;
 
@@ -81,10 +83,10 @@ const SurveyButton = styled.button`
   cursor: pointer;
   @media screen and (max-width: 460px) {
     position: relative;
-    top: 15rem;
+    top: 25rem;
     padding: 1rem;
-    width: 40%;
     height: 10vh;
+    width: 40%;
     cursor: pointer;
   } ;
 `;

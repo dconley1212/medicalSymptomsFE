@@ -8,6 +8,9 @@ const LoginWrapper = styled.div`
   align-items: center;
   background-color: #f5f5f5;
   height: 100vh;
+  @media screen and (max-width: 460px) {
+    width: 100vw;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -20,6 +23,11 @@ const StyledForm = styled.form`
   border-width: 5px;
   border-image: linear-gradient(#4682b4, #db7093) 5;
   width: 20%;
+  @media screen and (max-width: 460px) {
+    padding: 5rem;
+    margin: 3rem 1rem;
+    width: 50vw;
+  }
 `;
 
 const StyledTitleLogo = styled.h2`
