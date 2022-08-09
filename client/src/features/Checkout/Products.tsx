@@ -221,7 +221,7 @@ const Products = () => {
           })}
         </StyledProductsSection>
         {isActive === true ? (
-          <StyledCheckoutComponent>
+          <StyledCheckoutComponent title="Checkout dropdown">
             <CheckoutItems />
           </StyledCheckoutComponent>
         ) : null}
