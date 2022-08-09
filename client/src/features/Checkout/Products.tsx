@@ -182,11 +182,11 @@ const Products = () => {
     <div>
       <StyledProductsPage>
         <StyledSurveySection>
-          <StyledSurveyHeading>
+          <StyledSurveyHeading title="Products Title">
             What Products make sense for you?
           </StyledSurveyHeading>
           <StyledSurveyButton>Find out here</StyledSurveyButton>
-          <StyledSurveyParagraphs>
+          <StyledSurveyParagraphs title="review">
             "There is nothing worse than purchasing the wrong product because
             you don't completely understand the nuances of your symptoms!
             Following their questionaire helped me feel comfortable that I was
