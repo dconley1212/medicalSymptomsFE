@@ -49,7 +49,7 @@ const UserInfo = () => {
           <UserAddressInfo handleSubmit={handleSubmit} />
         </div>
       ) : (
-        <div>
+        <div title="address">
           <h3>Address</h3>
           <p>{user.userInfo.address}</p>
           <p>{user.userInfo.apartment_suite_etc}</p>
