@@ -204,7 +204,10 @@ const Products = () => {
                   id={product.id}
                 />
                 <ProductButtonDiv>
-                  <ProductButtonAdd onClick={() => handleAdd(product)}>
+                  <ProductButtonAdd
+                    title="add"
+                    onClick={() => handleAdd(product)}
+                  >
                     +
                   </ProductButtonAdd>
                   {product.id === 1 ? (

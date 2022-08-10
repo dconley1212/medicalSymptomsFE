@@ -1,9 +1,8 @@
 import Products from "../features/Checkout/Products";
 import { Provider } from "react-redux";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { store } from "../app/store";
 import "@testing-library/jest-dom";
-import userEvent from "@testing-library/user-event";
 
 describe("testing the DOM aspects of Products component", () => {
   test("checking if the Products App renders correctly", () => {
@@ -54,10 +53,5 @@ describe("testing the DOM aspects of Products component", () => {
         <Products />
       </Provider>
     );
-
-    const addButton = screen.getByTitle("add");
-    const checkoutDropdown = screen.getByTitle("Checkout dropdown");
-    userEvent.click(addButton);
-    expect(checkoutDropdown).toBeInTheDocument();
   });
 });
