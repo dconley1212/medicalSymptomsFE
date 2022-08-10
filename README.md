@@ -68,3 +68,16 @@ Week of July 25th-29th
 -Created the Initial State, and two reducers for the UserAccount slice and hooked them up to the store and dispatched the action payload to the reducer from the UserInfo and UserPaymentInfo components
 
 This week was really productive because I have continued to re-practice the skills I have purposely tried to get better at while building this app. Before I started this app I wanted to get better at flexbox, general css skills, redux/redux toolkit, state management, hooks, typescript, and test my ability to create a more dynamic website. So far I feel like I have achieved those goals and have pushed myself in areas that I wasn't comfortable before. I know there is always a ton to learn, but it feels good to look back and see how far I have come. I plan to start incorporating testing and building out the backend of this app soon.
+
+Week of August 1st-5th
+-Jest/React Testing Center test found bug with my header component that I wouldn't have found otherwise because it was rendering fine on my local machine.
+-Added reponsive design for mobile devices.
+-Added more tests that helped me understand how to better test what is rendering in my componet on the first render and if it is what I expect.
+-Created the foundation of the backend of my project by downloading the necessary packages and setting up the basics to get a server working.
+
+This week seemed less productive because I was learning a lot of things again that I brushed over in my Bootcamp. It helped me solidify and get better at some areas that hadn't recieved a lot of attention during my coding journey. Those two areas are responsive design and testing. That will be part of the focus the rest of the way forward, so I am excited to pull everything together as I continue to learn how to be a better developer. Additionally, I reviewed how to setup up the express server again, but this time it was more of a learning curve because I had never done it with Typescript. I got the server up and running, but I was having some trouble with the script tag I believe when trying to run a script to build the server in javascript from the typscript file.
+
+Week of August 8th -11th;
+-More Testing;
+-Getting Better at Responsive Design;
+-Setting up first route on the backend.
