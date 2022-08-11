@@ -8,6 +8,12 @@ import styled from "styled-components";
 const StyledPaymentWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: #f5f5f5;
+  }
 `;
 
 const StyledFormDiv = styled.div`
@@ -15,6 +21,11 @@ const StyledFormDiv = styled.div`
   margin: 5rem;
   background-color: #f5f5f5;
   border-radius: 10px;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    width: 100%;
+    margin: 0rem 1rem;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -22,6 +33,9 @@ const StyledForm = styled.form`
   flex-direction: column;
   width: 75%;
   margin: 5em;
+  @media screen and (max-width: 460px) {
+    margin: 4em 3em;
+  }
 `;
 
 const StyledTextInput = styled.input`
@@ -29,10 +43,17 @@ const StyledTextInput = styled.input`
   padding: 0.75em;
   border-radius: 10px;
   font-size: 0.9em;
+  @media screen and (max-width: 460px) {
+    margin-bottom: 1.2em;
+    padding: 1em;
+  }
 `;
 
 const StyledRadioLabel = styled.label`
   margin-bottom: 1em;
+  @media screen and (max-width: 460px) {
+    margin-bottom: 1.2em;
+  }
 `;
 
 const StyledRadioInput = styled.input`
@@ -46,6 +67,10 @@ const StyledButton = styled.button`
   background-color: #cb4a6f;
   font-size: 1em;
   cursor: pointer;
+  @media screen and (max-width: 460px) {
+    margin-top: 1.2em;
+    width: 100%;
+  }
 `;
 
 const StyledCheckoutComponent = styled.div`
