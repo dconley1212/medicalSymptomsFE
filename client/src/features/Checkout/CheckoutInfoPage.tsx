@@ -10,12 +10,24 @@ const StyledCheckoutWrapper = styled.div`
   flex-direction: row;
   margin-top: 0rem;
   background-color: #f5f5f5;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
 `;
 
 const StyledFormWrappper = styled.div`
   margin: 0rem 2rem;
   padding: 0 4rem;
   width: 50%;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: 0rem 0rem;
+    padding: 0rem 2rem;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -51,6 +63,9 @@ const StyledPromotionLabel = styled.label`
 
 const StyledCheckBox = styled.input`
   margin-left: 2rem;
+  @media screen and (max-width: 460px) {
+    margin-left: 0.5rem;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -61,6 +76,9 @@ const StyledButton = styled.button`
   color: #000000;
   font-size: 1rem;
   cursor: pointer;
+  @media screen and (max-width: 460px) {
+    width: 90%;
+  }
 `;
 
 const CheckoutInfoPage = () => {
@@ -108,7 +126,7 @@ const CheckoutInfoPage = () => {
             <StyledInput name="Email" placeholder="Email" />
             <StyledInput
               name="address"
-              placeholder="address"
+              placeholder="Address"
               type="text"
               value={userCheckoutInfo.address}
             />
