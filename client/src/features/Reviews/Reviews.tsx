@@ -11,6 +11,7 @@ const StyledComponentWrapper = styled.div`
   @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: column;
+    width: 100vw;
   }
 `;
 
@@ -29,6 +30,12 @@ const StyledTitleDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 5rem;
+  }
 `;
 
 const StyledItemsDiv = styled.div`
@@ -38,6 +45,7 @@ const StyledItemsDiv = styled.div`
   @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -89,6 +97,10 @@ const StyledButton = styled.button`
   background-color: #4682b4;
   cursor: pointer;
   font-size: 1rem;
+  @media screen and (max-width: 460px) {
+    width: 70%;
+    padding: 1em, 1.5em;
+  }
 `;
 
 const StyledReviewerName = styled.p`
