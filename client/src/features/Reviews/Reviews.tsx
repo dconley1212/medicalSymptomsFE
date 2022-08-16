@@ -8,6 +8,10 @@ import styled from "styled-components";
 const StyledComponentWrapper = styled.div`
   background-color: #f5f5f5;
   height: 100vh;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledReviewWrapper = styled.div`
@@ -31,6 +35,10 @@ const StyledItemsDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledItemOneColumn = styled.div`
@@ -41,7 +49,11 @@ const StyledItemOneColumn = styled.div`
   padding: 3rem;
   width: 30%;
   margin-top: 2rem;
-  background-color: #cb4a6f; ;
+  background-color: #cb4a6f;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledItemTwoColumn = styled.div`
