@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useAppSelector } from "../../app/hooks";
 import UserInfo from "./UserInfo";
+import styled from "styled-components";
+
+const StyledDivButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  background-color: #4682b4;
+`;
+
+const StyledButtons = styled.button`
+  height: 10vh;
+  background-color: #cb4a6f;
+  border-color: #ffffff;
+  cursor: pointer;
+`;
 
 const UserAccount = () => {
   const user = useAppSelector((state) => state.user);
@@ -22,18 +38,18 @@ const UserAccount = () => {
 
   return (
     <div>
+      <StyledDivButtons>
+        <StyledButtons onClick={handleUserInfoClick}>
+          {button === false ? "Add info for a faster checkout!" : "My Info"}
+        </StyledButtons>
+        <StyledButtons>News</StyledButtons>
+      </StyledDivButtons>
       <div>
-        <button onClick={handleUserInfoClick}>
-          {button === false
-            ? "Add your info for a faster checkout!"
-            : "My Info"}
-        </button>
         {showUser === true ? (
           <div>
             <UserInfo />
           </div>
         ) : null}
-        <button>News</button>
       </div>
     </div>
   );

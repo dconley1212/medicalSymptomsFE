@@ -30,7 +30,7 @@ const StyledHeader = styled.header`
   background: #4682b4;
   @media screen and (max-width: 460px) {
     display: flex;
-    padding: 0.4rem;
+    padding: 0.1rem;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
