@@ -5,6 +5,13 @@ import { useAppDispatch } from "../../app/hooks";
 import Star from "./Star";
 import styled from "styled-components";
 
+const StyledAddReviewWrapper = styled.div`
+  @media screen and (max-width: 460px) {
+    background-color: #f5f5f5;
+    width: 100vw;
+  }
+`;
+
 const StyledAddReview = styled.div`
   display: flex;
   flex-direction: column;
@@ -12,6 +19,12 @@ const StyledAddReview = styled.div`
   align-items: center;
   padding: 6rem;
   background-color: #f5f5f5;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 3.5rem;
+    width
+  }
 `;
 
 const StyledFilledStar = styled.div`
@@ -41,6 +54,10 @@ const StyledForm = styled.form`
 const StyledTextBox = styled.input`
   padding: 2em 6em;
   font-size: 1.3rem;
+  @media screen and (max-width: 460px) {
+    padding: 2em 3em;
+    width: 60%;
+  }
 `;
 
 const StyledRadioButtons = styled.div`
@@ -125,7 +142,7 @@ const AddReview = () => {
     navigate("/reviews");
   };
   return (
-    <div>
+    <StyledAddReviewWrapper>
       <StyledAddReview>
         <h2>Let us know what you think!</h2>
         <span>
@@ -196,7 +213,7 @@ const AddReview = () => {
           <StyledSubmitButton>Submit Review</StyledSubmitButton>
         </StyledForm>
       </StyledAddReview>
-    </div>
+    </StyledAddReviewWrapper>
   );
 };
 
