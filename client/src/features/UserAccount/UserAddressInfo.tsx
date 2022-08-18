@@ -2,6 +2,22 @@ import React, { useState } from "react";
 import { userInformation, addUserInfo } from "./UserAccountSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { useNavigate } from "react-router";
+import styled from "styled-components";
+
+const StyledAddressWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledInput = styled.input`
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+`;
 
 interface props {
   handleSubmit: () => {};
@@ -42,37 +58,37 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
     handleSubmit();
   };
   return (
-    <div>
-      <form onSubmit={handleUserInfoSubmit}>
-        <input
+    <StyledAddressWrapper>
+      <StyledForm onSubmit={handleUserInfoSubmit}>
+        <StyledInput
           value={userInfo.firstName}
           onChange={handleChange}
           name="firstName"
           type="text"
           placeholder="First name"
         />
-        <input
+        <StyledInput
           value={userInfo.lastName}
           onChange={handleChange}
           name="lastName"
           type="text"
           placeholder="Last name"
         />
-        <input
+        <StyledInput
           value={userInfo.address}
           onChange={handleChange}
           name="address"
           type="text"
           placeholder="Address"
         />
-        <input
+        <StyledInput
           onChange={handleChange}
           name="apartment_suite_etc"
           type="text"
           value={userInfo.apartment_suite_etc}
           placeholder="Apt., Suite, etc."
         />
-        <input
+        <StyledInput
           name="city"
           type="text"
           onChange={handleChange}
@@ -133,7 +149,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </select>
-        <input
+        <StyledInput
           name="zipcode"
           type="text"
           onChange={handleChange}
@@ -141,8 +157,8 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           placeholder="Zipcode"
         />
         <button>Submit Billing Address</button>
-      </form>
-    </div>
+      </StyledForm>
+    </StyledAddressWrapper>
   );
 };
 

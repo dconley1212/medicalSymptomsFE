@@ -3,6 +3,13 @@ import UserPaymentInfo from "./UserPaymentInfo";
 import { useAppSelector } from "../../app/hooks";
 import UserAddressInfo from "./UserAddressInfo";
 import { useNavigate } from "react-router";
+import styled from "styled-components";
+
+const StyledUserInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+`;
 
 const UserInfo = () => {
   const [addAddress, setAddAddress] = useState<boolean>(true);
@@ -40,7 +47,7 @@ const UserInfo = () => {
   };
 
   return (
-    <div>
+    <StyledUserInfoWrapper>
       <h2>Name</h2>
       <p>password shown as stars</p>
       <p>Phone Number</p>
@@ -71,7 +78,7 @@ const UserInfo = () => {
           <button onClick={handleEditPayment}>Edit Payment</button>
         </div>
       )}
-    </div>
+    </StyledUserInfoWrapper>
   );
 };
 

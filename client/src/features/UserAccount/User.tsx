@@ -3,6 +3,13 @@ import { useAppSelector } from "../../app/hooks";
 import UserInfo from "./UserInfo";
 import styled from "styled-components";
 
+const StyledUserWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: #f5f5f5;
+`;
+
 const StyledDivButtons = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,7 +44,7 @@ const UserAccount = () => {
   };
 
   return (
-    <div>
+    <StyledUserWrapper>
       <StyledDivButtons>
         <StyledButtons onClick={handleUserInfoClick}>
           {button === false ? "Add info for a faster checkout!" : "My Info"}
@@ -51,7 +58,7 @@ const UserAccount = () => {
           </div>
         ) : null}
       </div>
-    </div>
+    </StyledUserWrapper>
   );
 };
 
