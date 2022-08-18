@@ -7,13 +7,20 @@ import styled from "styled-components";
 const StyledPaymentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
-  width: 70%;
+  padding: 1rem;
+  margin-left: 4rem;
+  width: 90%;
 `;
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
+  width: 85%;
+`;
+
+const StyledInput = styled.input`
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
 `;
 
 interface paymentProp {
@@ -44,28 +51,28 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
   return (
     <StyledPaymentWrapper>
       <StyledForm onSubmit={handleSubmiPaymentInfo}>
-        <input
+        <StyledInput
           name="cardNumber"
           type="text"
           onChange={handlePaymentInfoChange}
           value={paymentInfo.cardNumber}
           placeholder="Card Number"
         />
-        <input
+        <StyledInput
           name="nameOnCard"
           type="text"
           onChange={handlePaymentInfoChange}
           value={paymentInfo.nameOnCard}
           placeholder="Name on Card"
         />
-        <input
+        <StyledInput
           name="cardExpiration"
           type="text"
           onChange={handlePaymentInfoChange}
           value={paymentInfo.cardExpiration}
           placeholder="Expiration date"
         />
-        <input
+        <StyledInput
           name="securityCode"
           type="text"
           onChange={handlePaymentInfoChange}

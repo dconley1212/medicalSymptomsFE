@@ -7,18 +7,21 @@ import styled from "styled-components";
 
 const StyledUserInfoWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 2rem;
-  padding: 0.5rem 15rem;
-  border: 1px solid black;
+  padding: 0.5rem 5rem;
 `;
 
 const StyledUserInfoDiv = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0.5rem 4rem;
+  margin-left: 5rem;
+  padding: 0.5rem 5rem;
   width: 100%;
-  border: 1px solid black;
+`;
+const StyledUserLoginInfo = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const UserInfo = () => {
@@ -58,9 +61,11 @@ const UserInfo = () => {
 
   return (
     <StyledUserInfoWrapper>
-      <h2>Name</h2>
-      <p>password shown as stars</p>
-      <p>Phone Number</p>
+      <StyledUserLoginInfo>
+        <h2>Name</h2>
+        <p>password shown as stars</p>
+        <p>Phone Number</p>
+      </StyledUserLoginInfo>
       <StyledUserInfoDiv>
         {addAddress === false ? (
           <div>
