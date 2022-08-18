@@ -9,6 +9,16 @@ const StyledUserInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 2rem;
+  padding: 0.5rem 15rem;
+  border: 1px solid black;
+`;
+
+const StyledUserInfoDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 4rem;
+  width: 100%;
+  border: 1px solid black;
 `;
 
 const UserInfo = () => {
@@ -51,33 +61,35 @@ const UserInfo = () => {
       <h2>Name</h2>
       <p>password shown as stars</p>
       <p>Phone Number</p>
-      {addAddress === false ? (
-        <div>
-          <UserAddressInfo handleSubmit={handleSubmit} />
-        </div>
-      ) : (
-        <div title="address">
-          <h3>Address</h3>
-          <p>{user.userInfo.address}</p>
-          <p>{user.userInfo.apartment_suite_etc}</p>
-          <p>{user.userInfo.city}</p>
-          <p>{user.userInfo.state}</p>
-          <p>{user.userInfo.zipcode}</p>
-          <button onClick={handleEditUserInfo}>Edit Address</button>
-        </div>
-      )}
-      {paymentInfo === false ? (
-        <UserPaymentInfo handleSubmitPayment={handleSubmitPayment} />
-      ) : (
-        <div>
-          <h3>Payment</h3>
-          <p>CardNumber: {user.paymentInfo.cardNumber}</p>
-          <p>Name on card: {user.paymentInfo.nameOnCard}</p>
-          <p>Card Expiration: {user.paymentInfo.cardExpiration}</p>
-          <p>Security Code: {user.paymentInfo.securityCode}</p>
-          <button onClick={handleEditPayment}>Edit Payment</button>
-        </div>
-      )}
+      <StyledUserInfoDiv>
+        {addAddress === false ? (
+          <div>
+            <UserAddressInfo handleSubmit={handleSubmit} />
+          </div>
+        ) : (
+          <div title="address">
+            <h3>Address</h3>
+            <p>{user.userInfo.address}</p>
+            <p>{user.userInfo.apartment_suite_etc}</p>
+            <p>{user.userInfo.city}</p>
+            <p>{user.userInfo.state}</p>
+            <p>{user.userInfo.zipcode}</p>
+            <button onClick={handleEditUserInfo}>Edit Address</button>
+          </div>
+        )}
+        {paymentInfo === false ? (
+          <UserPaymentInfo handleSubmitPayment={handleSubmitPayment} />
+        ) : (
+          <div>
+            <h3>Payment</h3>
+            <p>CardNumber: {user.paymentInfo.cardNumber}</p>
+            <p>Name on card: {user.paymentInfo.nameOnCard}</p>
+            <p>Card Expiration: {user.paymentInfo.cardExpiration}</p>
+            <p>Security Code: {user.paymentInfo.securityCode}</p>
+            <button onClick={handleEditPayment}>Edit Payment</button>
+          </div>
+        )}
+      </StyledUserInfoDiv>
     </StyledUserInfoWrapper>
   );
 };

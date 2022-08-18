@@ -2,6 +2,19 @@ import React, { useState } from "react";
 import { payment } from "./UserAccountSlice";
 import { addPaymentInfo } from "./UserAccountSlice";
 import { useAppDispatch } from "../../app/hooks";
+import styled from "styled-components";
+
+const StyledPaymentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  width: 70%;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 
 interface paymentProp {
   handleSubmitPayment: () => {};
@@ -29,8 +42,8 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
     handleSubmitPayment();
   };
   return (
-    <div>
-      <form onSubmit={handleSubmiPaymentInfo}>
+    <StyledPaymentWrapper>
+      <StyledForm onSubmit={handleSubmiPaymentInfo}>
         <input
           name="cardNumber"
           type="text"
@@ -60,8 +73,8 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
           placeholder="Security Code"
         />
         <button>Add Payment</button>
-      </form>
-    </div>
+      </StyledForm>
+    </StyledPaymentWrapper>
   );
 };
 

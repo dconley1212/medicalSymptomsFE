@@ -7,14 +7,26 @@ import styled from "styled-components";
 const StyledAddressWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+  width: 100%;
 `;
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const StyledInput = styled.input`
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+`;
+
+const StyledLabel = styled.label`
+  padding: 0.5rem;
+`;
+
+const StyledSelect = styled.select`
   margin-bottom: 0.5rem;
   padding: 0.5rem;
 `;
@@ -95,8 +107,8 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           value={userInfo.city}
           placeholder="City"
         />
-        <label>Choose A State</label>
-        <select onChange={handleSelectChange} value={userInfo.state}>
+        <StyledLabel>Use dropdow to pick your state</StyledLabel>
+        <StyledSelect onChange={handleSelectChange} value={userInfo.state}>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
@@ -148,7 +160,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           <option value="WV">West Virginia</option>
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
-        </select>
+        </StyledSelect>
         <StyledInput
           name="zipcode"
           type="text"
