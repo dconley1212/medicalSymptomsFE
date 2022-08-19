@@ -31,6 +31,12 @@ const StyledSelect = styled.select`
   padding: 0.5rem;
 `;
 
+const StyledButton = styled.button`
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: #cb4a6f;
+`;
+
 interface props {
   handleSubmit: () => {};
 }
@@ -107,7 +113,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           value={userInfo.city}
           placeholder="City"
         />
-        <StyledLabel>Use dropdow to pick your state</StyledLabel>
+        <StyledLabel>Use dropdown to pick your state</StyledLabel>
         <StyledSelect onChange={handleSelectChange} value={userInfo.state}>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -168,7 +174,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           value={userInfo.zipcode}
           placeholder="Zipcode"
         />
-        <button>Submit Billing Address</button>
+        <StyledButton>Submit Billing Address</StyledButton>
       </StyledForm>
     </StyledAddressWrapper>
   );

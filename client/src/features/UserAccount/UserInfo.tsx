@@ -24,6 +24,26 @@ const StyledUserLoginInfo = styled.div`
   flex-direction: column;
 `;
 
+const StyledAddressDiv = styled.div`
+  padding: 1rem 6rem;
+  border: solid 3px #000000;
+  background-color: #ffffff;
+  width: 100%;
+`;
+
+const StyledAddressTitle = styled.h2`
+  color: #4682b4;
+  /* text-decoration: underline 3px black; */
+`;
+
+const StyledParagraphAddress = styled.p`
+  width: 100%;
+`;
+
+const StyledPaymentDiv = styled.div`
+  padding: 0.5rem 5rem;
+`;
+
 const UserInfo = () => {
   const [addAddress, setAddAddress] = useState<boolean>(true);
   const [paymentInfo, setPaymentInfo] = useState<boolean>(true);
@@ -72,27 +92,29 @@ const UserInfo = () => {
             <UserAddressInfo handleSubmit={handleSubmit} />
           </div>
         ) : (
-          <div title="address">
-            <h3>Address</h3>
-            <p>{user.userInfo.address}</p>
-            <p>{user.userInfo.apartment_suite_etc}</p>
-            <p>{user.userInfo.city}</p>
-            <p>{user.userInfo.state}</p>
-            <p>{user.userInfo.zipcode}</p>
+          <StyledAddressDiv title="address">
+            <StyledAddressTitle>Address:</StyledAddressTitle>
+            <StyledParagraphAddress>
+              Street Address: {user.userInfo.address}
+            </StyledParagraphAddress>
+            <p>Apartment/Suite/etc:{user.userInfo.apartment_suite_etc}</p>
+            <p>City: {user.userInfo.city}</p>
+            <p>State: {user.userInfo.state}</p>
+            <p>Zip Code: {user.userInfo.zipcode}</p>
             <button onClick={handleEditUserInfo}>Edit Address</button>
-          </div>
+          </StyledAddressDiv>
         )}
         {paymentInfo === false ? (
           <UserPaymentInfo handleSubmitPayment={handleSubmitPayment} />
         ) : (
-          <div>
-            <h3>Payment</h3>
+          <StyledPaymentDiv>
+            <h2>Payment</h2>
             <p>CardNumber: {user.paymentInfo.cardNumber}</p>
             <p>Name on card: {user.paymentInfo.nameOnCard}</p>
             <p>Card Expiration: {user.paymentInfo.cardExpiration}</p>
             <p>Security Code: {user.paymentInfo.securityCode}</p>
             <button onClick={handleEditPayment}>Edit Payment</button>
-          </div>
+          </StyledPaymentDiv>
         )}
       </StyledUserInfoDiv>
     </StyledUserInfoWrapper>

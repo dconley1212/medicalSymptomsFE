@@ -23,6 +23,12 @@ const StyledInput = styled.input`
   padding: 0.5rem;
 `;
 
+const StyledButton = styled.button`
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: #cb4a6f;
+`;
+
 interface paymentProp {
   handleSubmitPayment: () => {};
 }
@@ -79,7 +85,7 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
           value={paymentInfo.securityCode}
           placeholder="Security Code"
         />
-        <button>Add Payment</button>
+        <StyledButton>Add Payment</StyledButton>
       </StyledForm>
     </StyledPaymentWrapper>
   );
