@@ -25,7 +25,7 @@ const StyledUserLoginInfo = styled.div`
 `;
 
 const StyledAddressDiv = styled.div`
-  padding: 1rem 6rem;
+  padding: 1rem 3rem;
   border: solid 3px #000000;
   background-color: #ffffff;
   width: 100%;
@@ -37,11 +37,25 @@ const StyledAddressTitle = styled.h2`
 `;
 
 const StyledParagraphAddress = styled.p`
-  width: 100%;
+  width: 20rem;
+`;
+
+const StyledEditAddress = styled.button`
+  background-color: #cb4a6f;
+  padding: 0.5rem;
+  border-radius: 8px;
 `;
 
 const StyledPaymentDiv = styled.div`
-  padding: 0.5rem 5rem;
+  padding: 1rem 5rem;
+  margin-left: 1rem;
+  border: solid 3px #000000;
+  background-color: #ffffff;
+  width: 100%;
+`;
+
+const StyledPaymentTitle = styled.h2`
+  color: #4682b4;
 `;
 
 const UserInfo = () => {
@@ -97,19 +111,32 @@ const UserInfo = () => {
             <StyledParagraphAddress>
               Street Address: {user.userInfo.address}
             </StyledParagraphAddress>
-            <p>Apartment/Suite/etc:{user.userInfo.apartment_suite_etc}</p>
-            <p>City: {user.userInfo.city}</p>
-            <p>State: {user.userInfo.state}</p>
-            <p>Zip Code: {user.userInfo.zipcode}</p>
-            <button onClick={handleEditUserInfo}>Edit Address</button>
+            <StyledParagraphAddress>
+              Apartment/Suite/etc:{user.userInfo.apartment_suite_etc}
+            </StyledParagraphAddress>
+            <StyledParagraphAddress>
+              City: {user.userInfo.city}
+            </StyledParagraphAddress>
+            <StyledParagraphAddress>
+              State: {user.userInfo.state}
+            </StyledParagraphAddress>
+            <StyledParagraphAddress>
+              Zip Code: {user.userInfo.zipcode}
+            </StyledParagraphAddress>
+            <StyledEditAddress onClick={handleEditUserInfo}>
+              Edit Address
+            </StyledEditAddress>
           </StyledAddressDiv>
         )}
         {paymentInfo === false ? (
           <UserPaymentInfo handleSubmitPayment={handleSubmitPayment} />
         ) : (
           <StyledPaymentDiv>
-            <h2>Payment</h2>
-            <p>CardNumber: {user.paymentInfo.cardNumber}</p>
+            <StyledPaymentTitle>Payment</StyledPaymentTitle>
+            <p>
+              CardNumber:
+              {user.paymentInfo.cardNumber}
+            </p>
             <p>Name on card: {user.paymentInfo.nameOnCard}</p>
             <p>Card Expiration: {user.paymentInfo.cardExpiration}</p>
             <p>Security Code: {user.paymentInfo.securityCode}</p>
