@@ -8,6 +8,10 @@ const StyledUserWrapper = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   background-color: #f5f5f5;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledDivButtons = styled.div`
@@ -16,6 +20,12 @@ const StyledDivButtons = styled.div`
   width: 20%;
   height: 100vh;
   background-color: #4682b4;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 5vh;
+  }
 `;
 
 const StyledButtons = styled.button`
@@ -23,6 +33,9 @@ const StyledButtons = styled.button`
   background-color: #cb4a6f;
   border-color: #ffffff;
   cursor: pointer;
+  @media screen and (max-width: 460px) {
+    width: 100%;
+  }
 `;
 
 const UserAccount = () => {

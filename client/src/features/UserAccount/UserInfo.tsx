@@ -10,6 +10,10 @@ const StyledUserInfoWrapper = styled.div`
   flex-direction: row;
   margin: 2rem;
   padding: 0.5rem 5rem;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledUserInfoDiv = styled.div`
@@ -18,6 +22,11 @@ const StyledUserInfoDiv = styled.div`
   margin-left: 5rem;
   padding: 0.5rem 5rem;
   width: 100%;
+  @media screen and (max-width: 460px) {
+    display: flex;
+    flex-direction: column;
+    margin: .1rem 0rem .1rem 0rem;
+    padding: .1rem 0rem .1rem 0rem;
 `;
 const StyledUserLoginInfo = styled.div`
   display: flex;
@@ -38,6 +47,7 @@ const StyledAddressTitle = styled.h2`
 
 const StyledParagraphAddress = styled.p`
   width: 20rem;
+  font-weight: bold;
 `;
 
 const StyledEditAddress = styled.button`
@@ -56,6 +66,17 @@ const StyledPaymentDiv = styled.div`
 
 const StyledPaymentTitle = styled.h2`
   color: #4682b4;
+`;
+
+const StyledPaymentParagraph = styled.p`
+  width: 15rem;
+  font-weight: bold;
+`;
+
+const StyledEditPayment = styled.button`
+  background-color: #cb4a6f;
+  padding: 0.5rem;
+  border-radius: 8px;
 `;
 
 const UserInfo = () => {
@@ -133,14 +154,22 @@ const UserInfo = () => {
         ) : (
           <StyledPaymentDiv>
             <StyledPaymentTitle>Payment</StyledPaymentTitle>
-            <p>
+            <StyledPaymentParagraph>
               CardNumber:
               {user.paymentInfo.cardNumber}
-            </p>
-            <p>Name on card: {user.paymentInfo.nameOnCard}</p>
-            <p>Card Expiration: {user.paymentInfo.cardExpiration}</p>
-            <p>Security Code: {user.paymentInfo.securityCode}</p>
-            <button onClick={handleEditPayment}>Edit Payment</button>
+            </StyledPaymentParagraph>
+            <StyledPaymentParagraph>
+              Name on card: {user.paymentInfo.nameOnCard}
+            </StyledPaymentParagraph>
+            <StyledPaymentParagraph>
+              Card Expiration: {user.paymentInfo.cardExpiration}
+            </StyledPaymentParagraph>
+            <StyledPaymentParagraph>
+              Security Code: {user.paymentInfo.securityCode}
+            </StyledPaymentParagraph>
+            <StyledEditPayment onClick={handleEditPayment}>
+              Edit Payment
+            </StyledEditPayment>
           </StyledPaymentDiv>
         )}
       </StyledUserInfoDiv>
