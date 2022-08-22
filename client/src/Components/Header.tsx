@@ -32,17 +32,20 @@ const StyledHeader = styled.header`
     display: flex;
     padding: 0.1rem;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
     width: 100vw;
-    height: 18vh;
+    height: 12vh;
   }
 `;
 const StyledLogoTitle = styled(Link)`
   font-size: 1.2rem;
   color: #000000;
   font-weight: bold;
+  @media screen and (max-width: 460px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const StyledLinksDiv = styled.div`
@@ -66,8 +69,9 @@ const StyledLinks = styled(Link)`
     text-decoration: underline;
   }
   @media screen and (max-width: 460px) {
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
+    font-size: 0.8rem;
   }
 `;
 
