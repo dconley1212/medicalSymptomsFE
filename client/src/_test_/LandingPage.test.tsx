@@ -15,7 +15,9 @@ describe("testing the landing page componet", () => {
 
   test("stat shows up in the landing page", () => {
     render(<LandingPage />);
-    const buttonText = screen.getByText(/want a doctors recomendation/i);
+    const buttonText = screen.getByRole("button", {
+      name: /want a doctors recomendation/i,
+    });
 
     expect(buttonText).toBeInTheDocument();
   });
