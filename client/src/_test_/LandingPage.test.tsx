@@ -12,4 +12,11 @@ describe("testing the landing page componet", () => {
     const title = screen.getByText(/tired of back pain/i);
     expect(title).toBeInTheDocument();
   });
+
+  test("stat shows up in the landing page", () => {
+    render(<LandingPage />);
+    const buttonText = screen.getByText(/want a doctors recomendation/i);
+
+    expect(buttonText).toBeInTheDocument();
+  });
 });
