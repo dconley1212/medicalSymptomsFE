@@ -53,5 +53,11 @@ describe("testing the DOM aspects of Products component", () => {
         <Products />
       </Provider>
     );
+    const addButtons = screen.getAllByRole("button", { name: "+" });
+    addButtons.forEach((button) => {
+      fireEvent.click(button);
+    });
+    const orderSummary = screen.getByRole("heading", { name: "Order Summary" });
+    expect(orderSummary).toBeInTheDocument();
   });
 });
