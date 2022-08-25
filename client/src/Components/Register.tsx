@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 
 const FormWrapper = styled.div`
   display: flex;
@@ -60,9 +61,9 @@ const StyledButton = styled.button`
 
 const Register = () => {
   const [account, setAccount] = useState<{ [x: string]: string }>({
-    email: "",
+    username: "",
     password: "",
-    phone_number: "",
+    phoneNumber: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,6 +75,10 @@ const Register = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    axios
+      .post("http://localhost:9000/auth/register", account)
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
     navigate("/");
   };
 
@@ -85,9 +90,9 @@ const Register = () => {
           <h3>Create an Account</h3>
           <FormInputsStyle
             type="email"
-            name="email"
+            name="username"
             placeholder="Email"
-            value={account.email}
+            value={account.username}
             onChange={handleChange}
           />
           <FormInputsStyle
@@ -99,9 +104,9 @@ const Register = () => {
           />
           <FormInputsStyle
             type="tel"
-            name="phone_number"
+            name="phoneNumber"
             placeholder="Phone Number"
-            value={account.phone_number}
+            value={account.phoneNumber}
             onChange={handleChange}
           />
           <StyledButton>Submit</StyledButton>
