@@ -20,7 +20,7 @@ const CheckoutItems = () => {
       <h3>Order Summary</h3>
       {cartProducts.itemsInCart.cartItems.map((item) => {
         return (
-          <div>
+          <div key={Date.now()}>
             {item.id === 1 && cartProducts.itemsInCart.itemOne > 0 ? (
               <div>
                 <p>{item.name}</p>

@@ -60,17 +60,22 @@ describe("testing the DOM aspects of Products component", () => {
     const orderSummary = screen.getByRole("heading", { name: "Order Summary" });
     expect(orderSummary).toBeInTheDocument();
   });
-  test("when hovering over add button it changes color", () => {
+
+  test("the quantity updates with each button click", () => {
     render(
       <Provider store={store}>
         <Products />
       </Provider>
     );
-    const cardAddButtons = screen.getAllByRole("button", { name: "+" });
 
-    cardAddButtons.forEach((button) => {
-      fireEvent.mouseOver(button);
-      expect(button).toHaveStyle(`background-color: white`);
+    const addButtons = screen.getAllByRole("button", { name: "+" });
+
+    addButtons.forEach((button) => {
+      fireEvent.click(button);
     });
+
+    const totalQuantity = screen.getByText("Total Quantity");
+
+    expect(totalQuantity).toBeInTheDocument();
   });
 });
