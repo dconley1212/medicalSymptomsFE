@@ -61,7 +61,7 @@ describe("testing the DOM aspects of Products component", () => {
     expect(orderSummary).toBeInTheDocument();
   });
 
-  test("the quantity updates with each button click", () => {
+  test("the correct Item is shown with each button click", () => {
     render(
       <Provider store={store}>
         <Products />
@@ -74,7 +74,9 @@ describe("testing the DOM aspects of Products component", () => {
       fireEvent.click(button);
     });
 
-    const totalQuantity = screen.getByText("Total Quantity");
+    const totalQuantity = screen.getByRole("heading", {
+      name: "Total Quantity",
+    });
 
     expect(totalQuantity).toBeInTheDocument();
   });
