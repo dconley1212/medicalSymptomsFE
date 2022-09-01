@@ -1,7 +1,7 @@
-import Products from "../features/Checkout/Products";
+import Products from "../../features/Checkout/Products";
 import { Provider } from "react-redux";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { store } from "../app/store";
+import { store } from "../../app/store";
 import "@testing-library/jest-dom";
 
 describe("testing the DOM aspects of Products component", () => {
