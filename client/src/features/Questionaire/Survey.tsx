@@ -13,37 +13,73 @@ const Survey = () => {
           <input />
         </label>
         <label>
-          Where is the pain located?
+          Where is the back pain located?
           <select>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
+            <option>upper left region</option>
+            <option> upper right region</option>
+            <option>middle region</option>
+            <option>lower left region</option>
+            <option>lower right region</option>
           </select>
-        </label>
-        <label>
-          Have you experience fever or chills?
-          <input />
-        </label>
-        <label>
-          Have you ever experience serious weight loss?
-          <input />
-        </label>
-        <label>
-          Have you ever experienced a traumatic physical event?
-          <input />
         </label>
         <label>
           How often is the pain occuring?
           <input />
         </label>
         <label>
+          Have you experience fever or chills?
+          <label>
+            Yes
+            <input type="radio" />
+          </label>
+          <label>
+            No
+            <input type="radio" />
+          </label>
+        </label>
+        <label>
+          Have you ever experience serious weight loss?
+          <label>
+            Yes
+            <input type="radio" />
+          </label>
+          <label>
+            No
+            <input type="radio" />
+          </label>
+        </label>
+        <label>
+          Have you ever experienced a traumatic physical event?
+          <label>
+            Yes
+            <input type="radio" />
+          </label>
+          <label>
+            No
+            <input type="radio" />
+          </label>
+        </label>
+        <label>
           Are you having trouble urinating?
-          <input />
+          <label>
+            Yes
+            <input type="radio" />
+          </label>
+          <label>
+            No
+            <input type="radio" />
+          </label>
         </label>
         <label>
           Do you have numbness and tingling in you legs?
-          <input />
+          <label>
+            Yes
+            <input type="radio" />
+          </label>
+          <label>
+            No
+            <input type="radio" />
+          </label>
         </label>
       </form>
     </div>

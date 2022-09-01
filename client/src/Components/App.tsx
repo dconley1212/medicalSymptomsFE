@@ -15,6 +15,7 @@ import UserInfo from "../features/UserAccount/UserInfo";
 import EditUserPaymentInfo from "../features/UserAccount/EditUserPaymentInfo";
 import Header from "./Header";
 import styled from "styled-components";
+import Survey from "../features/Questionaire/Survey";
 
 // left off trying to understand how to handle fire events (click, change, etc) when
 // the button my be found in a different component then the function or if the button
@@ -34,6 +35,7 @@ function App() {
     <StyledAppWrapper>
       <Header />
       <Routes>
+        <Route path="/survey" element={<Survey />} />
         <Route path="/user" element={<User />} />
         <Route path="/user/editPayment" element={<EditUserPaymentInfo />} />
         <Route path="/user/info" element={<UserInfo />} />
