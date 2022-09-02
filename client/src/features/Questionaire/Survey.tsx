@@ -26,19 +26,17 @@ const Survey = () => {
           How often is the pain occuring?
           <input />
         </label>
+        <label>Have you experienced fever or chills?</label>
         <label>
-          Have you experience fever or chills?
-          <label>
-            Yes
-            <input type="radio" />
-          </label>
-          <label>
-            No
-            <input type="radio" />
-          </label>
+          Yes
+          <input type="radio" />
         </label>
         <label>
-          Have you ever experience serious weight loss?
+          No
+          <input type="radio" />
+        </label>
+        <label>
+          Have you ever experienced serious weight loss?
           <label>
             Yes
             <input type="radio" />
