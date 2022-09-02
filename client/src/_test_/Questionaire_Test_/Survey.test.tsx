@@ -29,4 +29,32 @@ describe("testing the survey component", () => {
     expect(thirdQ).toBeInTheDocument();
     expect(fourthQ).toBeInTheDocument();
   });
+
+  test("questions in paragraph elements", () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+    const firstParagraphQ = screen.getByText(
+      "Have you experienced fever or chills?"
+    );
+    const secondParagraphQ = screen.getByText(
+      "Have you ever experienced serious weight loss?"
+    );
+    const thirdParagraphQ = screen.getByText(
+      "Have you ever experienced a traumatic physical event?"
+    );
+    const fourthParagraphQ = screen.getByText(
+      "Are you having trouble urinating?"
+    );
+    const fifthParagraphQ = screen.getByText(
+      "Do you have numbness and tingling in your legs?"
+    );
+    expect(firstParagraphQ).toBeInTheDocument();
+    expect(secondParagraphQ).toBeInTheDocument();
+    expect(thirdParagraphQ).toBeInTheDocument();
+    expect(fourthParagraphQ).toBeInTheDocument();
+    expect(fifthParagraphQ).toBeInTheDocument();
+  });
 });

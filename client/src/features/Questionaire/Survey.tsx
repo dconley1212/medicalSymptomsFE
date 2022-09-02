@@ -26,7 +26,7 @@ const Survey = () => {
           How often is the pain occuring?
           <input />
         </label>
-        <label>Have you experienced fever or chills?</label>
+        <p>Have you experienced fever or chills?</p>
         <label>
           Yes
           <input type="radio" />
@@ -35,49 +35,41 @@ const Survey = () => {
           No
           <input type="radio" />
         </label>
+        <p>Have you ever experienced serious weight loss?</p>
         <label>
-          Have you ever experienced serious weight loss?
-          <label>
-            Yes
-            <input type="radio" />
-          </label>
-          <label>
-            No
-            <input type="radio" />
-          </label>
+          Yes
+          <input type="radio" />
         </label>
         <label>
-          Have you ever experienced a traumatic physical event?
-          <label>
-            Yes
-            <input type="radio" />
-          </label>
-          <label>
-            No
-            <input type="radio" />
-          </label>
+          No
+          <input type="radio" />
+        </label>
+        <p>Have you ever experienced a traumatic physical event?</p>
+        <label>
+          Yes
+          <input type="radio" />
         </label>
         <label>
-          Are you having trouble urinating?
-          <label>
-            Yes
-            <input type="radio" />
-          </label>
-          <label>
-            No
-            <input type="radio" />
-          </label>
+          No
+          <input type="radio" />
+        </label>
+        <p>Are you having trouble urinating?</p>
+        <label>
+          Yes
+          <input type="radio" />
         </label>
         <label>
-          Do you have numbness and tingling in you legs?
-          <label>
-            Yes
-            <input type="radio" />
-          </label>
-          <label>
-            No
-            <input type="radio" />
-          </label>
+          No
+          <input type="radio" />
+        </label>
+        <p>Do you have numbness and tingling in your legs?</p>
+        <label>
+          Yes
+          <input type="radio" />
+        </label>
+        <label>
+          No
+          <input type="radio" />
         </label>
       </form>
     </div>
