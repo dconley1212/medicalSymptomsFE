@@ -1,5 +1,5 @@
 import Survey from "../../features/Questionaire/Survey";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../app/store";
 import "@testing-library/jest-dom";
@@ -56,5 +56,21 @@ describe("testing the survey component", () => {
     expect(thirdParagraphQ).toBeInTheDocument();
     expect(fourthParagraphQ).toBeInTheDocument();
     expect(fifthParagraphQ).toBeInTheDocument();
+  });
+  test("user can type into text inputs", () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+    const userHeight = 6;
+    const userWeight = 190;
+    const firstQuestion = screen.getByLabelText("What is your height?");
+    const secondQ = screen.getByLabelText("What is your weight?");
+    fireEvent.change(firstQuestion, { target: { value: userHeight } });
+    fireEvent.change(secondQ, { target: { value: userWeight } });
+
+    expect(firstQuestion).toBe(6);
+    expect(secondQ).toBe(190);
   });
 });
