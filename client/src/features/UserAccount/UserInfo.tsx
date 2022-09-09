@@ -25,8 +25,9 @@ const StyledUserInfoDiv = styled.div`
   @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: column;
-    margin: .1rem 0rem .1rem 0rem;
-    padding: .1rem 0rem .1rem 0rem;
+    margin: 0.1rem 0rem 0.1rem 0rem;
+    padding: 0.1rem 0rem 0.1rem 0rem;
+  }
 `;
 const StyledUserLoginInfo = styled.div`
   display: flex;
