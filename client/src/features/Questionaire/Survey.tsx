@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+
+interface BackObject {
+  height: number;
+  weight: number;
+  painLocation: string;
+  occurence: string;
+  feverSymptoms: boolean;
+  weightLoss: boolean;
+  traumaEvent: boolean;
+  troubleUrinating: boolean;
+  legSymptoms: boolean;
+}
 
 const Survey = () => {
+  const [backInfo, setBackInfo] = useState<BackObject>({
+    height: 0,
+    weight: 0,
+    painLocation: "",
+    occurence: "",
+    feverSymptoms: false,
+    weightLoss: false,
+    traumaEvent: false,
+    troubleUrinating: false,
+    legSymptoms: false,
+  });
   return (
     <div>
       <form>
