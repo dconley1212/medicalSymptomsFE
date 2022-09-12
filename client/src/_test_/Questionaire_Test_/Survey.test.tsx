@@ -73,4 +73,22 @@ describe("testing the survey component", () => {
     expect(firstQuestion).toBe(6);
     expect(secondQ).toBe(190);
   });
+  test("user can click on radio button inputs", () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+    const radioYesInputs = screen.getAllByRole("radio", { name: "Yes" });
+    const radionNoInputs = screen.getAllByRole("radio", { name: "No" });
+
+    radionNoInputs.forEach((button) => {
+      fireEvent.click(button);
+      expect(button).toEqual("No");
+    });
+    radioYesInputs.forEach((button) => {
+      fireEvent.click(button);
+      expect(button).toEqual("Yes");
+    });
+  });
 });
