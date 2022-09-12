@@ -5,11 +5,11 @@ interface BackObject {
   weight: number;
   painLocation: string;
   occurence: string;
-  feverSymptoms: boolean;
-  weightLoss: boolean;
-  traumaEvent: boolean;
-  troubleUrinating: boolean;
-  legSymptoms: boolean;
+  feverSymptoms: string;
+  weightLoss: string;
+  traumaEvent: string;
+  troubleUrinating: string;
+  legSymptoms: string;
 }
 
 const Survey = () => {
@@ -18,16 +18,17 @@ const Survey = () => {
     weight: 0,
     painLocation: "",
     occurence: "",
-    feverSymptoms: false,
-    weightLoss: false,
-    traumaEvent: false,
-    troubleUrinating: false,
-    legSymptoms: false,
+    feverSymptoms: "",
+    weightLoss: "",
+    traumaEvent: "",
+    troubleUrinating: "",
+    legSymptoms: "",
   });
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setBackInfo({ ...backInfo, [e.target.name]: e.target.value });
   };
+
   const handleDropDownChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setBackInfo({
       ...backInfo,
@@ -64,51 +65,106 @@ const Survey = () => {
           <option value="lower right region">lower right region</option>
         </select>
         <label>How often is the pain occuring?</label>
-        <input />
+        <input
+          type="text"
+          onChange={handleInputChange}
+          value={backInfo.occurence}
+          name="occurence"
+        />
         <p>Have you experienced fever or chills?</p>
         <label>
           Yes
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="Yes"
+            type="radio"
+            name="feverSymptoms"
+          />
         </label>
         <label>
           No
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="No"
+            type="radio"
+            name="feverSymptoms"
+          />
         </label>
         <p>Have you ever experienced serious weight loss?</p>
         <label>
           Yes
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="Yes"
+            type="radio"
+            name="weightLoss"
+          />
         </label>
         <label>
           No
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="No"
+            type="radio"
+            name="weightLoss"
+          />
         </label>
         <p>Have you ever experienced a traumatic physical event?</p>
         <label>
           Yes
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="Yes"
+            type="radio"
+            name="traumaEvent"
+          />
         </label>
         <label>
           No
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="No"
+            type="radio"
+            name="traumaEvent"
+          />
         </label>
         <p>Are you having trouble urinating?</p>
         <label>
           Yes
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="Yes"
+            type="radio"
+            name="troubleUrinating"
+          />
         </label>
         <label>
           No
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="No"
+            type="radio"
+            name="troubleUrinating"
+          />
         </label>
         <p>Do you have numbness and tingling in your legs?</p>
         <label>
           Yes
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="Yes"
+            type="radio"
+            name="legSymptoms"
+          />
         </label>
         <label>
           No
-          <input type="radio" />
+          <input
+            onChange={handleInputChange}
+            value="No"
+            type="radio"
+            name="legSymptoms"
+          />
         </label>
       </form>
     </div>
