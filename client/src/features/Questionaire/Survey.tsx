@@ -9,8 +9,8 @@ const SurveyWrapper = styled.div`
 
 const SurveyForm = styled.form`
   display: flex;
-  flex-direction: column;
-  width: 50%;
+  flex-direction: row;
+  width: 90%;
   margin: 2rem auto;
   border: 2px solid black;
   border-radius: 10px;
@@ -21,16 +21,21 @@ const StyledInputLabel = styled.label`
   margin: 0.5rem 0rem;
 `;
 
+const StyledUpperFormDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const StyledRadioButtonsDiv = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  padding: 5rem;
+  padding: 2rem 3rem;
 `;
 
 const StyledRadioButtonDiv = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 0rem 1rem;
 `;
 interface BackObject {
   height: number;
@@ -70,42 +75,53 @@ const Survey = () => {
   return (
     <SurveyWrapper>
       <SurveyForm>
-        <StyledInputLabel>What is your height?</StyledInputLabel>
-        <input
-          name="height"
-          onChange={handleInputChange}
-          type="text"
-          value={backInfo.height}
-        />
-        <StyledInputLabel>What is your weight?</StyledInputLabel>
-        <input
-          name="weight"
-          onChange={handleInputChange}
-          type="text"
-          value={backInfo.weight}
-        />
-        <StyledInputLabel>Where is the back pain located?</StyledInputLabel>
-        <select
-          name="painLocation"
-          onChange={handleDropDownChange}
-          value={backInfo.painLocation}
-        >
-          <option value="select a region on your back">
-            Select a region on your back
-          </option>
-          <option value="upper left region">upper left region</option>
-          <option value="upper right region"> upper right region</option>
-          <option value="middle region">middle region</option>
-          <option value="lower left region">lower left region</option>
-          <option value="lower right region">lower right region</option>
-        </select>
-        <label>How often is the pain occuring?</label>
-        <input
-          type="text"
-          onChange={handleInputChange}
-          value={backInfo.occurence}
-          name="occurence"
-        />
+        <StyledUpperFormDiv>
+          <StyledInputLabel>What is your height?</StyledInputLabel>
+          <input
+            name="height"
+            onChange={handleInputChange}
+            type="text"
+            value={backInfo.height}
+          />
+          <StyledInputLabel>What is your weight?</StyledInputLabel>
+          <input
+            name="weight"
+            onChange={handleInputChange}
+            type="text"
+            value={backInfo.weight}
+          />
+          <StyledInputLabel>Where is the back pain located?</StyledInputLabel>
+          <select
+            name="painLocation"
+            onChange={handleDropDownChange}
+            value={backInfo.painLocation}
+          >
+            <option value="select a region on your back">
+              Select a region on your back
+            </option>
+            <option value="upper left region">upper left region</option>
+            <option value="upper right region"> upper right region</option>
+            <option value="middle region">middle region</option>
+            <option value="lower left region">lower left region</option>
+            <option value="lower right region">lower right region</option>
+          </select>
+          <label>How often is the pain occuring?</label>
+          <select
+            name="occurence"
+            onChange={handleDropDownChange}
+            value={backInfo.occurence}
+          >
+            <option value="Make a selection">Make a selection</option>
+            <option value="Daily">Daily</option>
+            <option value="Two to Three times a week">
+              Two to Three times a week
+            </option>
+            <option value="Once a week">Once a week</option>
+            <option value="A couple instances a month">
+              A couple instances a month
+            </option>
+          </select>
+        </StyledUpperFormDiv>
         <StyledRadioButtonsDiv>
           <StyledRadioButtonDiv>
             <p>Have you experienced fever or chills?</p>
