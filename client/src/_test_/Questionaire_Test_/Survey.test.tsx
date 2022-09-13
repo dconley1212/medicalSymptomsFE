@@ -91,6 +91,19 @@ describe("testing the survey component", () => {
       expect(button).toEqual("Yes");
     });
   });
+  test("default option is showing and all options are available to use", () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+    const defaultOption = screen.getByRole("option", {
+      name: "Select a region on your back",
+    });
+    expect(defaultOption.ariaSelected).toBe(true);
+    const allOptions = screen.getAllByRole("option");
+    expect(allOptions.length).toBe(6);
+  });
   test("dropdown is working and user can make selection", () => {
     render(
       <Provider store={store}>
@@ -114,5 +127,14 @@ describe("testing the survey component", () => {
     });
 
     fireEvent.click(upperLeftRegionOption);
+    expect(upperLeftRegionOption.ariaSelected).toBe(true);
+    fireEvent.click(upperRightRegionOption);
+    expect(upperRightRegionOption.ariaSelected).toBe(true);
+    fireEvent.click(middleRegionOption);
+    expect(middleRegionOption.ariaSelected).toBe(true);
+    fireEvent.click(lowerLeftRegionOption);
+    expect(lowerLeftRegionOption.ariaSelected).toBe(true);
+    fireEvent.click(lowerRightRegionOption);
+    expect(lowerRightRegionOption.ariaSelected).toBe(true);
   });
 });

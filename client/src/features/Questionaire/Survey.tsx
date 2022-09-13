@@ -90,6 +90,9 @@ const Survey = () => {
           onChange={handleDropDownChange}
           value={backInfo.painLocation}
         >
+          <option value="select a region on your back">
+            Select a region on your back
+          </option>
           <option value="upper left region">upper left region</option>
           <option value="upper right region"> upper right region</option>
           <option value="middle region">middle region</option>
