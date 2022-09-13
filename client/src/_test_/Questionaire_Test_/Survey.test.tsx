@@ -57,7 +57,7 @@ describe("testing the survey component", () => {
     expect(fourthParagraphQ).toBeInTheDocument();
     expect(fifthParagraphQ).toBeInTheDocument();
   });
-  test("user can type into text inputs", () => {
+  test("user can type into height and wieght text inputs", () => {
     render(
       <Provider store={store}>
         <Survey />
@@ -90,5 +90,29 @@ describe("testing the survey component", () => {
       fireEvent.click(button);
       expect(button).toEqual("Yes");
     });
+  });
+  test("dropdown is working and user can make selection", () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+    const upperLeftRegionOption = screen.getByRole("option", {
+      name: "upper left region",
+    });
+    const upperRightRegionOption = screen.getByRole("option", {
+      name: "upper right region",
+    });
+    const middleRegionOption = screen.getByRole("option", {
+      name: "middle region",
+    });
+    const lowerLeftRegionOption = screen.getByRole("option", {
+      name: "lower left region",
+    });
+    const lowerRightRegionOption = screen.getByRole("option", {
+      name: "lower right region",
+    });
+
+    fireEvent.click(upperLeftRegionOption);
   });
 });
