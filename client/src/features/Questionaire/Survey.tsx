@@ -52,8 +52,9 @@ const StyledRadioButtonDiv = styled.div`
   flex-direction: column;
 `;
 interface BackObject {
-  height: number;
-  weight: number;
+  heightFeet: string;
+  inches: string;
+  weight: string;
   painLocation: string;
   occurence: string;
   feverSymptoms: string;
@@ -65,8 +66,9 @@ interface BackObject {
 
 const Survey = () => {
   const [backInfo, setBackInfo] = useState<BackObject>({
-    height: 0,
-    weight: 0,
+    heightFeet: "",
+    inches: "",
+    weight: "",
     painLocation: "",
     occurence: "",
     feverSymptoms: "",
@@ -92,10 +94,18 @@ const Survey = () => {
         <StyledUpperFormDiv>
           <StyledInputLabel>What is your height?</StyledInputLabel>
           <StyledInputs
-            name="height"
+            name="heightFeet"
             onChange={handleInputChange}
             type="text"
-            value={backInfo.height}
+            value={backInfo.heightFeet}
+            placeholder="feet"
+          />
+          <StyledInputs
+            name="inches"
+            onChange={handleInputChange}
+            type="text"
+            value={backInfo.inches}
+            placeholder="inches"
           />
           <StyledInputLabel>What is your weight?</StyledInputLabel>
           <StyledInputs

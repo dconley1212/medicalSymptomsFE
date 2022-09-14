@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import products from "../../data/items.json";
 import Product from "./Product";
 import { addToCart, removeFromCart } from "./ProductToCheckoutSlice";
@@ -163,6 +164,8 @@ const Products = () => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (cartProducts.itemsInCart.totalQuantity > 0) {
       setIsActive(true);
@@ -170,6 +173,10 @@ const Products = () => {
       setIsActive(false);
     }
   }, [cartProducts.itemsInCart.totalQuantity]);
+
+  const handleButtonSurvey = () => {
+    navigate("/survey");
+  };
 
   const handleAdd = (product: ProductsInCheckout) => {
     dispatch(addToCart(product));
@@ -185,7 +192,9 @@ const Products = () => {
           <StyledSurveyHeading title="Products Title">
             What Products make sense for you?
           </StyledSurveyHeading>
-          <StyledSurveyButton>Find out here</StyledSurveyButton>
+          <StyledSurveyButton onClick={handleButtonSurvey}>
+            Find out here
+          </StyledSurveyButton>
           <StyledSurveyParagraphs title="review">
             "There is nothing worse than purchasing the wrong product because
             you don't completely understand the nuances of your symptoms!

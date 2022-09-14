@@ -47,6 +47,14 @@ describe("testing the DOM aspects of Products component", () => {
     expect(productCardTwo).toBeInTheDocument();
   });
 
+  test("find out here button navigates to survey component when clicked", () => {
+    const surveyButton = screen.getByRole("button", { name: "Find out here" });
+
+    fireEvent.click(surveyButton);
+    const heightLabel = screen.getByLabelText("What is your height?");
+    expect(heightLabel).toBeInTheDocument();
+  });
+
   test("checkoutItems component renders when add product button is clicked", () => {
     render(
       <Provider store={store}>
