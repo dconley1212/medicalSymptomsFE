@@ -12,21 +12,22 @@ const SurveyWrapper = styled.div`
 const SurveyForm = styled.form`
   display: flex;
   flex-direction: row;
-  width: 90%;
-  margin: 2rem auto;
+  width: 50%;
+  margin: 3rem auto;
   border: 2px solid black;
   border-radius: 10px;
-  padding: 3rem 2rem;
-  background-color: #f5f5f5;
+  padding: 1.5rem 2rem;
+  background-color: #e6e6fa;
 `;
 
 const StyledUpperFormDiv = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 1rem;
 `;
 
 const StyledInputLabel = styled.label`
-  margin: 0.7rem 0rem;
+  margin: 0.9rem 0rem;
 `;
 
 const StyledInputs = styled.input`
@@ -40,25 +41,15 @@ const StyledSelectorLabel = styled.label`
   margin: 0.8rem 0rem;
 `;
 
-const StyledRadioButtonsDiv = styled.div`
+const StyledLowerFormDiv = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem 3rem;
-`;
-
-const StyledUpperRadioButtonDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-const StyledLowerRadioButtonDiv = styled.div`
-  display: flex;
-  flex-direction: row;
+  margin-left: 5rem;
 `;
 
 const StyledRadioButtonDiv = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0rem 1rem;
 `;
 interface BackObject {
   height: number;
@@ -148,118 +139,114 @@ const Survey = () => {
               A couple instances a month
             </option>
           </select>
+          <StyledRadioButtonDiv>
+            <p>Have you experienced fever or chills?</p>
+            <label>
+              Yes
+              <input
+                onChange={handleInputChange}
+                value="Yes"
+                type="radio"
+                name="feverSymptoms"
+              />
+            </label>
+            <label>
+              No
+              <input
+                onChange={handleInputChange}
+                value="No"
+                type="radio"
+                name="feverSymptoms"
+              />
+            </label>
+          </StyledRadioButtonDiv>
         </StyledUpperFormDiv>
-        <StyledRadioButtonsDiv>
-          <StyledUpperRadioButtonDiv>
-            <StyledRadioButtonDiv>
-              <p>Have you experienced fever or chills?</p>
-              <label>
-                Yes
-                <input
-                  onChange={handleInputChange}
-                  value="Yes"
-                  type="radio"
-                  name="feverSymptoms"
-                />
-              </label>
-              <label>
-                No
-                <input
-                  onChange={handleInputChange}
-                  value="No"
-                  type="radio"
-                  name="feverSymptoms"
-                />
-              </label>
-            </StyledRadioButtonDiv>
-            <StyledRadioButtonDiv>
-              <p>Have you ever experienced serious weight loss?</p>
-              <label>
-                Yes
-                <input
-                  onChange={handleInputChange}
-                  value="Yes"
-                  type="radio"
-                  name="weightLoss"
-                />
-              </label>
-              <label>
-                No
-                <input
-                  onChange={handleInputChange}
-                  value="No"
-                  type="radio"
-                  name="weightLoss"
-                />
-              </label>
-            </StyledRadioButtonDiv>
-            <StyledRadioButtonDiv>
-              <p>Have you ever experienced a traumatic physical event?</p>
-              <label>
-                Yes
-                <input
-                  onChange={handleInputChange}
-                  value="Yes"
-                  type="radio"
-                  name="traumaEvent"
-                />
-              </label>
-              <label>
-                No
-                <input
-                  onChange={handleInputChange}
-                  value="No"
-                  type="radio"
-                  name="traumaEvent"
-                />
-              </label>
-            </StyledRadioButtonDiv>
-          </StyledUpperRadioButtonDiv>
-          <StyledLowerRadioButtonDiv>
-            <StyledRadioButtonDiv>
-              <p>Are you having trouble urinating?</p>
-              <label>
-                Yes
-                <input
-                  onChange={handleInputChange}
-                  value="Yes"
-                  type="radio"
-                  name="troubleUrinating"
-                />
-              </label>
-              <label>
-                No
-                <input
-                  onChange={handleInputChange}
-                  value="No"
-                  type="radio"
-                  name="troubleUrinating"
-                />
-              </label>
-            </StyledRadioButtonDiv>
-            <StyledRadioButtonDiv>
-              <p>Do you have numbness and tingling in your legs?</p>
-              <label>
-                Yes
-                <input
-                  onChange={handleInputChange}
-                  value="Yes"
-                  type="radio"
-                  name="legSymptoms"
-                />
-              </label>
-              <label>
-                No
-                <input
-                  onChange={handleInputChange}
-                  value="No"
-                  type="radio"
-                  name="legSymptoms"
-                />
-              </label>
-            </StyledRadioButtonDiv>
-          </StyledLowerRadioButtonDiv>
-        </StyledRadioButtonsDiv>
+        <StyledLowerFormDiv>
+          <StyledRadioButtonDiv>
+            <p>Have you ever experienced serious weight loss?</p>
+            <label>
+              Yes
+              <input
+                onChange={handleInputChange}
+                value="Yes"
+                type="radio"
+                name="weightLoss"
+              />
+            </label>
+            <label>
+              No
+              <input
+                onChange={handleInputChange}
+                value="No"
+                type="radio"
+                name="weightLoss"
+              />
+            </label>
+          </StyledRadioButtonDiv>
+          <StyledRadioButtonDiv>
+            <p>Have you ever experienced a traumatic physical event?</p>
+            <label>
+              Yes
+              <input
+                onChange={handleInputChange}
+                value="Yes"
+                type="radio"
+                name="traumaEvent"
+              />
+            </label>
+            <label>
+              No
+              <input
+                onChange={handleInputChange}
+                value="No"
+                type="radio"
+                name="traumaEvent"
+              />
+            </label>
+          </StyledRadioButtonDiv>
+          <StyledRadioButtonDiv>
+            <p>Are you having trouble urinating?</p>
+            <label>
+              Yes
+              <input
+                onChange={handleInputChange}
+                value="Yes"
+                type="radio"
+                name="troubleUrinating"
+              />
+            </label>
+            <label>
+              No
+              <input
+                onChange={handleInputChange}
+                value="No"
+                type="radio"
+                name="troubleUrinating"
+              />
+            </label>
+          </StyledRadioButtonDiv>
+          <StyledRadioButtonDiv>
+            <p>Do you have numbness and tingling in your legs?</p>
+            <label>
+              Yes
+              <input
+                onChange={handleInputChange}
+                value="Yes"
+                type="radio"
+                name="legSymptoms"
+              />
+            </label>
+            <label>
+              No
+              <input
+                onChange={handleInputChange}
+                value="No"
+                type="radio"
+                name="legSymptoms"
+              />
+            </label>
+          </StyledRadioButtonDiv>
+        </StyledLowerFormDiv>
       </SurveyForm>
     </SurveyWrapper>
   );
