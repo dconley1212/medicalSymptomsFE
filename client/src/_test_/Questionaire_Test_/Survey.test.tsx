@@ -137,4 +137,17 @@ describe("testing the survey component", () => {
     fireEvent.click(lowerRightRegionOption);
     expect(lowerRightRegionOption.ariaSelected).toBe(true);
   });
+  test("consult your doctor message is showing", () => {
+    const yesButton = screen.getAllByLabelText("Yes");
+
+    yesButton.forEach((button) => {
+      fireEvent.click(button);
+    });
+
+    const paragraph = screen.getByText(
+      "Please, consult with your doctor because the nature of your symptoms need more expertise"
+    );
+
+    expect(paragraph).toBeInTheDocument();
+  });
 });
