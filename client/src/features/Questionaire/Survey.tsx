@@ -1,5 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import styled from "styled-components";
+import sprayImg from "../../Assets/nati-melnychuk-SGmgCPxv8OI-unsplash.jpg";
+import products from "../../data/items.json";
 
 const SurveyWrapper = styled.div`
   display: flex;
@@ -81,6 +83,9 @@ const Survey = () => {
   const [recommendPills, setRecommendPills] = useState<boolean>(false);
   const [recommendSpray, setRecommendSpray] = useState<boolean>(false);
 
+  const sprayProduct = products[0];
+  const pillsProduct = products[1];
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setBackInfo({ ...backInfo, [e.target.name]: e.target.value });
   };
@@ -96,8 +101,9 @@ const Survey = () => {
     e.preventDefault();
     const heightInInches: number =
       parseInt(backInfo.heightFeet) * 12 + parseInt(backInfo.inches);
+
     const BMI: number =
-      (parseInt(backInfo.weight) / (heightInInches ^ 2)) * 703;
+      (parseInt(backInfo.weight) / Math.pow(heightInInches, 2)) * 703;
 
     if (
       backInfo.feverSymptoms === "Yes" ||
@@ -288,6 +294,18 @@ const Survey = () => {
       {seeDoctor === true ? (
         <div>
           <p>We recommend seeing your Doctor based on your symptoms.</p>
+        </div>
+      ) : null}
+      {recommendSpray === true ? (
+        <div>
+          <p>
+            Based on your response, we recommend spraying your back with our
+            product below. This spray works best for acute pain, which based on
+            your symptoms seems like the best route to take.
+          </p>
+          <img src={sprayImg} alt="spray bottle" />
+          <p>{sprayProduct.price}</p>
+          <button>Add to Cart</button>
         </div>
       ) : null}
     </SurveyWrapper>
