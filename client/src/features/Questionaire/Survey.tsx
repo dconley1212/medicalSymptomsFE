@@ -190,6 +190,7 @@ const Survey = () => {
                 value="Yes"
                 type="radio"
                 name="feverSymptoms"
+                data-testid="feverSymptoms-Yes"
               />
             </label>
             <label>
@@ -199,6 +200,7 @@ const Survey = () => {
                 value="No"
                 type="radio"
                 name="feverSymptoms"
+                data-testid="feverSymptoms-No"
               />
             </label>
           </StyledRadioButtonDiv>
@@ -213,6 +215,7 @@ const Survey = () => {
                 value="Yes"
                 type="radio"
                 name="weightLoss"
+                data-testid="weightLoss-Yes"
               />
             </label>
             <label>
@@ -222,6 +225,7 @@ const Survey = () => {
                 value="No"
                 type="radio"
                 name="weightLoss"
+                data-testid="weightLoss-No"
               />
             </label>
           </StyledRadioButtonDiv>
@@ -234,6 +238,7 @@ const Survey = () => {
                 value="Yes"
                 type="radio"
                 name="traumaEvent"
+                data-testid="traumaEvent-Yes"
               />
             </label>
             <label>
@@ -243,6 +248,7 @@ const Survey = () => {
                 value="No"
                 type="radio"
                 name="traumaEvent"
+                data-testid="traumaEvent-No"
               />
             </label>
           </StyledRadioButtonDiv>
@@ -255,6 +261,7 @@ const Survey = () => {
                 value="Yes"
                 type="radio"
                 name="troubleUrinating"
+                data-testid="troubleUrinating-Yes"
               />
             </label>
             <label>
@@ -264,6 +271,7 @@ const Survey = () => {
                 value="No"
                 type="radio"
                 name="troubleUrinating"
+                data-testid="troubleUrinating-No"
               />
             </label>
           </StyledRadioButtonDiv>
@@ -276,6 +284,7 @@ const Survey = () => {
                 value="Yes"
                 type="radio"
                 name="legSymptoms"
+                data-testid="legSymptoms-Yes"
               />
             </label>
             <label>
@@ -285,6 +294,7 @@ const Survey = () => {
                 value="No"
                 type="radio"
                 name="legSymptoms"
+                data-testid="legSymptoms-No"
               />
             </label>
           </StyledRadioButtonDiv>

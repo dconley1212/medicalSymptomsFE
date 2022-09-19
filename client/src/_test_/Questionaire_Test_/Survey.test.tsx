@@ -137,20 +137,30 @@ describe("testing the survey component", () => {
     fireEvent.click(lowerRightRegionOption);
     expect(lowerRightRegionOption.ariaSelected).toBe(true);
   });
-  test("consult your doctor message is showing", () => {
+  test("consult your doctor message is showing when only fever sympotm is selected", async () => {
     render(
       <Provider store={store}>
         <Survey />
       </Provider>
     );
-    const yesButton = screen.getAllByLabelText("Yes");
+    const feverRadioButton = screen.getByTestId("feverSymptoms-Yes");
+    const weightLossRadioButton = screen.getByTestId("weightLoss-No");
+    const traumaEventRadioButton = screen.getByTestId("traumaEvent-No");
+    const troubleUrinatingRadioButton = screen.getByTestId(
+      "troubleUrinating-No"
+    );
+    const legSymptomsRadioButton = screen.getByTestId("legSymptoms-No");
+    fireEvent.click(feverRadioButton);
+    fireEvent.click(weightLossRadioButton);
+    fireEvent.click(traumaEventRadioButton);
+    fireEvent.click(troubleUrinatingRadioButton);
+    fireEvent.click(legSymptomsRadioButton);
 
-    yesButton.forEach((button) => {
-      fireEvent.click(button);
-    });
+    const submitButton = screen.getByRole("button", { name: "submit" });
+    fireEvent.click(submitButton);
 
-    const paragraph = screen.getByText(
-      "Please, consult with your doctor because the nature of your symptoms need more expertise"
+    const paragraph = await screen.findByText(
+      "We recommend seeing your Doctor based on your symptoms"
     );
 
     expect(paragraph).toBeInTheDocument();
