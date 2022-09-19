@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 
 const SurveyWrapper = styled.div`
@@ -81,13 +81,26 @@ const Survey = () => {
   const [recommendPills, setRecommendPills] = useState<boolean>(false);
   const [recommendSpray, setRecommendSpray] = useState<boolean>(false);
 
-  useEffect(() => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setBackInfo({ ...backInfo, [e.target.name]: e.target.value });
+  };
+
+  const handleDropDownChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setBackInfo({
+      ...backInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const heightInInches: number =
       parseInt(backInfo.heightFeet) * 12 + parseInt(backInfo.inches);
     const BMI: number =
       (parseInt(backInfo.weight) / (heightInInches ^ 2)) * 703;
 
     if (
+      backInfo.feverSymptoms === "Yes" ||
       backInfo.legSymptoms === "Yes" ||
       backInfo.troubleUrinating === "Yes" ||
       backInfo.traumaEvent === "Yes" ||
@@ -99,21 +112,11 @@ const Survey = () => {
     } else {
       setRecommendSpray(true);
     }
-  }, [backInfo]);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setBackInfo({ ...backInfo, [e.target.name]: e.target.value });
   };
 
-  const handleDropDownChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setBackInfo({
-      ...backInfo,
-      [e.target.name]: e.target.value,
-    });
-  };
   return (
     <SurveyWrapper>
-      <SurveyForm>
+      <SurveyForm onSubmit={handleSubmit}>
         <StyledUpperFormDiv>
           <StyledInputLabel>What is your height?</StyledInputLabel>
           <StyledInputs
@@ -279,6 +282,7 @@ const Survey = () => {
               />
             </label>
           </StyledRadioButtonDiv>
+          <button>Submit</button>
         </StyledLowerFormDiv>
       </SurveyForm>
       {seeDoctor === true ? (
