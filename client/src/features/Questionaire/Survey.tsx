@@ -281,6 +281,11 @@ const Survey = () => {
           </StyledRadioButtonDiv>
         </StyledLowerFormDiv>
       </SurveyForm>
+      {seeDoctor === true ? (
+        <div>
+          <p>We recommend seeing your Doctor based on your symptoms.</p>
+        </div>
+      ) : null}
     </SurveyWrapper>
   );
 };

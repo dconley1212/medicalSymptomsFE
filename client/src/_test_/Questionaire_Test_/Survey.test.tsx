@@ -138,6 +138,11 @@ describe("testing the survey component", () => {
     expect(lowerRightRegionOption.ariaSelected).toBe(true);
   });
   test("consult your doctor message is showing", () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
     const yesButton = screen.getAllByLabelText("Yes");
 
     yesButton.forEach((button) => {
