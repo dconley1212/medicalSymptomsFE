@@ -84,11 +84,11 @@ describe("testing the survey component", () => {
 
     radionNoInputs.forEach((button) => {
       fireEvent.click(button);
-      expect(button).toEqual("No");
+      expect(button).toBeChecked();
     });
     radioYesInputs.forEach((button) => {
       fireEvent.click(button);
-      expect(button).toEqual("Yes");
+      expect(button).toBeChecked();
     });
   });
   test("default option is showing and all options are available to use", () => {
@@ -97,12 +97,9 @@ describe("testing the survey component", () => {
         <Survey />
       </Provider>
     );
-    const defaultOption = screen.getByRole("option", {
-      name: "Select a region on your back",
-    });
-    expect(defaultOption.ariaSelected).toBe(true);
-    const allOptions = screen.getAllByRole("option");
-    expect(allOptions.length).toBe(6);
+    const options = screen.getAllByTestId("Back Options");
+    expect(options[0]).toBeInTheDocument();
+    expect(options.length).toBe(6);
   });
   test("dropdown is working and user can make selection", () => {
     render(
@@ -110,36 +107,11 @@ describe("testing the survey component", () => {
         <Survey />
       </Provider>
     );
-    const upperLeftRegionOption = screen.getByRole("option", {
-      name: "upper left region",
-    });
-    // const upperRightRegionOption = screen.getByRole("option", {
-    //   name: "upper right region",
-    // });
-    // const middleRegionOption = screen.getByRole("option", {
-    //   name: "middle region",
-    // });
-    // const lowerLeftRegionOption = screen.getByRole("option", {
-    //   name: "lower left region",
-    // });
-    // const lowerRightRegionOption = screen.getByRole("option", {
-    //   name: "lower right region",
-    // });
 
-    const selectedItem = screen.getByRole("combobox", { name: "painLocation" });
-
-    fireEvent.click(selectedItem);
-    fireEvent.click(upperLeftRegionOption);
-
-    expect(selectedItem).toBe("upper left region");
-    // fireEvent.click(upperRightRegionOption);
-    // expect(upperRightRegionOption.ariaSelected).toEqual(true);
-    // fireEvent.click(middleRegionOption);
-    // expect(middleRegionOption.ariaSelected).toEqual(true);
-    // fireEvent.click(lowerLeftRegionOption);
-    // expect(lowerLeftRegionOption.ariaSelected).toEqual(true);
-    // fireEvent.click(lowerRightRegionOption);
-    // expect(lowerRightRegionOption.ariaSelected).toEqual(true);
+    const selectElement = screen.getByTestId("Back Pain");
+    fireEvent.change(selectElement, { target: { value: "upper left region" } });
+    const options = screen.getAllByTestId("Back Options");
+    expect(options[1]).toBeInTheDocument();
   });
   test("consult your doctor message is showing when only fever sympotm is selected", async () => {
     render(

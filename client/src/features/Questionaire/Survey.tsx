@@ -173,18 +173,33 @@ const Survey = () => {
             Where is the back pain located?
           </StyledSelectorLabel>
           <select
+            data-testid="Back Pain"
             name="painLocation"
             onChange={handleDropDownChange}
             value={backInfo.painLocation}
           >
-            <option value="select a region on your back">
+            <option
+              data-testid="Back Options"
+              value="select a region on your back"
+            >
               Select a region on your back
             </option>
-            <option value="upper left region">upper left region</option>
-            <option value="upper right region"> upper right region</option>
-            <option value="middle region">middle region</option>
-            <option value="lower left region">lower left region</option>
-            <option value="lower right region">lower right region</option>
+            <option data-testid="Back Options" value="upper left region">
+              upper left region
+            </option>
+            <option data-testid="Back Options" value="upper right region">
+              {" "}
+              upper right region
+            </option>
+            <option data-testid="Back Options" value="middle region">
+              middle region
+            </option>
+            <option data-testid="Back Options" value="lower left region">
+              lower left region
+            </option>
+            <option data-testid="Back Options" value="lower right region">
+              lower right region
+            </option>
           </select>
           <StyledSelectorLabel>
             How often is the pain occuring?
