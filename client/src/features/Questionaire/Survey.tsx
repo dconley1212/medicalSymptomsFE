@@ -3,12 +3,13 @@ import styled from "styled-components";
 import sprayImg from "../../Assets/nati-melnychuk-SGmgCPxv8OI-unsplash.jpg";
 import products from "../../data/items.json";
 import pills from "../../Assets/kateryna-hliznitsova-hEX5R8u7gCI-unsplash.jpg";
+import { formatCurrency } from "../../utilities/formatCurrency";
 
 const SurveyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   background-color: #db7093;
 `;
 
@@ -53,6 +54,27 @@ const StyledLowerFormDiv = styled.div`
 const StyledRadioButtonDiv = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const StyledSprayDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin-bottom: 3rem;
+`;
+const StyledSprayRecommendation = styled.p`
+  width: 30%;
+`;
+
+const StyledImg = styled.img`
+  width: 20%;
+`;
+
+const StyledSprayButton = styled.button`
+  padding: 1em;
+  border-radius: 8px;
+  background-color: #4682b4;
 `;
 interface BackObject {
   heightFeet: string;
@@ -308,16 +330,16 @@ const Survey = () => {
         </div>
       ) : null}
       {recommendSpray === true ? (
-        <div>
-          <p>
+        <StyledSprayDiv>
+          <StyledSprayRecommendation>
             Based on your response, we recommend spraying your back with our
             product below. This spray works best for acute pain, which based on
             your symptoms seems like the best route to take.
-          </p>
-          <img src={sprayImg} alt="spray bottle" />
-          <p>{sprayProduct.price}</p>
-          <button>Add to Cart</button>
-        </div>
+          </StyledSprayRecommendation>
+          <StyledImg src={sprayImg} alt="spray bottle" />
+          <p>{`Price: ${formatCurrency(sprayProduct.price)}`}</p>
+          <StyledSprayButton>Add to Cart</StyledSprayButton>
+        </StyledSprayDiv>
       ) : null}
       {recommendPills === true ? (
         <div>
@@ -326,7 +348,7 @@ const Survey = () => {
             lose weight because your body mass index is too high. These pills
             will help you curb your apetite and make it easier to loose weight.
           </p>
-          <img src={pills} alt="pills products"></img>
+          <StyledImg src={pills} alt="pills products"></StyledImg>
           <p>{pillsProduct.price}</p>
           <button>Add to Cart</button>
         </div>
