@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import sprayImg from "../../Assets/nati-melnychuk-SGmgCPxv8OI-unsplash.jpg";
 import products from "../../data/items.json";
+import pills from "../../Assets/kateryna-hliznitsova-hEX5R8u7gCI-unsplash.jpg";
 
 const SurveyWrapper = styled.div`
   display: flex;
@@ -315,6 +316,18 @@ const Survey = () => {
           </p>
           <img src={sprayImg} alt="spray bottle" />
           <p>{sprayProduct.price}</p>
+          <button>Add to Cart</button>
+        </div>
+      ) : null}
+      {recommendPills === true ? (
+        <div>
+          <p>
+            Based on your response, we recommend taking these pills to help you
+            lose weight because your body mass index is too high. These pills
+            will help you curb your apetite and make it easier to loose weight.
+          </p>
+          <img src={pills} alt="pills products"></img>
+          <p>{pillsProduct.price}</p>
           <button>Add to Cart</button>
         </div>
       ) : null}
