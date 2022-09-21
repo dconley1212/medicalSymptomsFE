@@ -154,6 +154,7 @@ const Survey = () => {
             type="text"
             value={backInfo.heightFeet}
             placeholder="feet"
+            data-testid="heightFeet"
           />
           <StyledInputs
             name="inches"
@@ -161,6 +162,7 @@ const Survey = () => {
             type="text"
             value={backInfo.inches}
             placeholder="inches"
+            data-testid="inches"
           />
           <StyledInputLabel>What is your weight?</StyledInputLabel>
           <StyledInputs
@@ -168,6 +170,7 @@ const Survey = () => {
             onChange={handleInputChange}
             type="text"
             value={backInfo.weight}
+            data-testid="weight"
           />
           <StyledSelectorLabel>
             Where is the back pain located?

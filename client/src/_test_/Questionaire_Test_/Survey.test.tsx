@@ -19,10 +19,10 @@ describe("testing the survey component", () => {
         <Survey />
       </Provider>
     );
-    const firstQuestion = screen.getByLabelText("What is your height?");
-    const secondQ = screen.getByLabelText("What is your weight?");
-    const thirdQ = screen.getByLabelText("Where is the back pain located?");
-    const fourthQ = screen.getByLabelText("How often is the pain occuring?");
+    const firstQuestion = screen.getByText("What is your height?");
+    const secondQ = screen.getByText("What is your weight?");
+    const thirdQ = screen.getByText("Where is the back pain located?");
+    const fourthQ = screen.getByText("How often is the pain occuring?");
 
     expect(firstQuestion).toBeInTheDocument();
     expect(secondQ).toBeInTheDocument();
@@ -63,15 +63,19 @@ describe("testing the survey component", () => {
         <Survey />
       </Provider>
     );
-    const userHeight = 6;
-    const userWeight = 190;
-    const firstQuestion = screen.getByLabelText("What is your height?");
-    const secondQ = screen.getByLabelText("What is your weight?");
+    const userHeight = "6";
+    const userHeightInches = "3";
+    const userWeight = "190";
+    const firstQuestion = screen.getByTestId("heightFeet");
+    const secondQ = screen.getByTestId("inches");
+    const thirdQ = screen.getByTestId("weight");
     fireEvent.change(firstQuestion, { target: { value: userHeight } });
-    fireEvent.change(secondQ, { target: { value: userWeight } });
+    fireEvent.change(secondQ, { target: { value: userHeightInches } });
+    fireEvent.change(thirdQ, { target: { value: userWeight } });
 
-    expect(firstQuestion).toBe(6);
-    expect(secondQ).toBe(190);
+    expect(firstQuestion).toHaveValue("6");
+    expect(secondQ).toHaveValue("3");
+    expect(thirdQ).toHaveValue("190");
   });
   test("user can click on radio button inputs", () => {
     render(
@@ -113,7 +117,7 @@ describe("testing the survey component", () => {
     const options = screen.getAllByTestId("Back Options");
     expect(options[1]).toBeInTheDocument();
   });
-  test("consult your doctor message is showing when only fever sympotm is selected", async () => {
+  test("consult your doctor message is showing when only fever symptom is selected", async () => {
     render(
       <Provider store={store}>
         <Survey />
@@ -139,6 +143,38 @@ describe("testing the survey component", () => {
       "We recommend seeing your Doctor based on your symptoms."
     );
 
+    expect(paragraph).toBeInTheDocument();
+  });
+
+  test("consult your doctor is showing when weight loss question is answered with a yes", async () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+
+    const weightLossYesRadio = screen.getByTestId("weightLoss-Yes");
+    fireEvent.click(weightLossYesRadio);
+    const submitButton = screen.getByRole("button", { name: "Submit" });
+    fireEvent.click(submitButton);
+    const paragraph = await screen.findByText(
+      "We recommend seeing your Doctor based on your symptoms."
+    );
+    expect(paragraph).toBeInTheDocument();
+  });
+  test("consult your doctor is showing when yes is put for experiencing traumatic evet", async () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+    const yesRadioButtonTraumaEvent = screen.getByTestId("traumaEvent-Yes");
+    fireEvent.click(yesRadioButtonTraumaEvent);
+    const submitButton = screen.getByRole("button", { name: "Submit" });
+    fireEvent.click(submitButton);
+    const paragraph = screen.getByText(
+      "We recommend seeing your Doctor based on your symptoms."
+    );
     expect(paragraph).toBeInTheDocument();
   });
 });
