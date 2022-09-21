@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import getPayloadData from "../utilities/tokenPayload";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -71,7 +72,7 @@ const StyledButton = styled.button`
 
 const Login = () => {
   const [login, setLogin] = useState<{ [x: string]: string }>({
-    email: "",
+    username: "",
     password: "",
   });
   const navigate = useNavigate();
@@ -85,10 +86,10 @@ const Login = () => {
     axios
       .post("http://localhost:9000/auth/login", login)
       .then((resp) => {
-        console.log(resp);
+        getPayloadData(resp.data.token);
+        return navigate("/", { replace: true });
       })
       .catch((err) => console.log(err));
-    navigate("/", { replace: true });
   };
 
   return (
@@ -99,8 +100,8 @@ const Login = () => {
           <StyledDirections>Please Sign In</StyledDirections>
           <StyledInput
             placeholder="email"
-            name="email"
-            value={login.email}
+            name="username"
+            value={login.username}
             onChange={handleChange}
           />
           <StyledInput
