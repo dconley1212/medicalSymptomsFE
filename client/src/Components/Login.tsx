@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -81,6 +82,12 @@ const Login = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    axios
+      .post("http://localhost:9000/auth/login", login)
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => console.log(err));
     navigate("/", { replace: true });
   };
 
