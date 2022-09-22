@@ -177,4 +177,41 @@ describe("testing the survey component", () => {
     );
     expect(paragraph).toBeInTheDocument();
   });
+  test("consult your doctor message is showing if user selects yes to trouble urinating", () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+
+    const troubleUrinatingRadioButtonYes = screen.getByTestId(
+      "troubleUrinating-Yes"
+    );
+    fireEvent.click(troubleUrinatingRadioButtonYes);
+    const submitButton = screen.getByRole("button", { name: "Submit" });
+    fireEvent.click(submitButton);
+
+    const paragraph = screen.getByText(
+      "We recommend seeing your Doctor based on your symptoms."
+    );
+    expect(paragraph).toBeInTheDocument();
+  });
+
+  test("consult your doctor message shows when user submits yes to tingling in legs", () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+
+    const legSymptomsYesRadioButton = screen.getByTestId("legSymptoms-Yes");
+    fireEvent.click(legSymptomsYesRadioButton);
+    const submitButton = screen.getByRole("button", { name: "Submit" });
+    fireEvent.click(submitButton);
+
+    const paragraph = screen.getByText(
+      "We recommend seeing your Doctor based on your symptoms."
+    );
+    expect(paragraph).toBeInTheDocument();
+  });
 });
