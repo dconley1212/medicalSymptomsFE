@@ -4,6 +4,7 @@ import { add } from "./ReviewsSlice";
 import { useAppDispatch } from "../../app/hooks";
 import Star from "./Star";
 import styled from "styled-components";
+import axios from "axios";
 
 const StyledAddReviewWrapper = styled.div`
   @media screen and (max-width: 460px) {
@@ -131,14 +132,21 @@ const AddReview = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(
-      add({
-        reviewerName: reviewerName,
-        itemName: itemName,
-        rating: rating,
-        comments: comment,
-      })
-    );
+    const review = {
+      reviewerName: reviewerName,
+      itemName: itemName,
+      rating: rating,
+      comments: comment,
+    };
+    // const token = localStorage.getItem('token')
+    // the token above is giving a typescript error for the authrization property
+    // in the header can only be a string not string || null like it is showing
+    dispatch(add(review));
+
+    axios.post("http://localhost:9000/reviews", review).then((resp) => {
+      console.log(resp);
+    });
+
     navigate("/reviews");
   };
   return (
