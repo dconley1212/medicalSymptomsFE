@@ -214,5 +214,32 @@ describe("testing the survey component", () => {
     );
     expect(paragraph).toBeInTheDocument();
   });
-  test("spray recommendation shows if the right information is submited", () => {});
+  test("spray recommendation shows if the right information is submited", async () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+
+    const heightFeet = screen.getByTestId("heightFeet");
+    const inches = screen.getByTestId("inches");
+    const weight = screen.getByTestId("weight");
+
+    fireEvent.change(heightFeet, { target: { value: "5" } });
+    fireEvent.change(inches, { target: { value: "11" } });
+    fireEvent.change(weight, { target: { value: "170" } });
+
+    const noRadioSelection = screen.getAllByRole("radio", { name: "No" });
+    noRadioSelection.forEach((button) => {
+      fireEvent.click(button);
+      expect(button).toBeChecked();
+    });
+    const button = screen.getByRole("button", { name: "Submit" });
+    fireEvent.click(button);
+
+    const paragraph = await screen.findByText(
+      "Based on your response, we recommend spraying your back with our product below. This spray works best for acute pain, which based on your symptoms seems like the best route to take."
+    );
+    expect(paragraph).toBeInTheDocument();
+  });
 });

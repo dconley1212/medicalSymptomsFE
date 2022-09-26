@@ -138,8 +138,10 @@ const AddReview = () => {
       rating: rating,
       comments: comment,
     };
-    const token = JSON.parse(localStorage.getItem("token") || "");
-   
+    const token = localStorage.getItem("token") || "";
+
+    console.log(token);
+
     dispatch(add(review));
 
     axios
@@ -150,9 +152,9 @@ const AddReview = () => {
       })
       .then((resp) => {
         console.log(resp);
-      });
-
-    navigate("/reviews");
+        navigate("/reviews");
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <StyledAddReviewWrapper>
