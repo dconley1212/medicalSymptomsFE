@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { add } from "./ReviewsSlice";
 import { useAppDispatch } from "../../app/hooks";
@@ -138,14 +138,19 @@ const AddReview = () => {
       rating: rating,
       comments: comment,
     };
-    // const token = localStorage.getItem('token')
-    // the token above is giving a typescript error for the authrization property
-    // in the header can only be a string not string || null like it is showing
+    const token = JSON.parse(localStorage.getItem("token") || "");
+   
     dispatch(add(review));
 
-    axios.post("http://localhost:9000/reviews", review).then((resp) => {
-      console.log(resp);
-    });
+    axios
+      .post("http://localhost:9000/reviews", review, {
+        headers: {
+          authorization: token,
+        },
+      })
+      .then((resp) => {
+        console.log(resp);
+      });
 
     navigate("/reviews");
   };

@@ -214,4 +214,5 @@ describe("testing the survey component", () => {
     );
     expect(paragraph).toBeInTheDocument();
   });
+  test("spray recommendation shows if the right information is submited", () => {});
 });
