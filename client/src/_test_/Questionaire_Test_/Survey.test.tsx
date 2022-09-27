@@ -242,4 +242,33 @@ describe("testing the survey component", () => {
     );
     expect(paragraph).toBeInTheDocument();
   });
+  test("pills recommendation shows when right information is submitted", async () => {
+    render(
+      <Provider store={store}>
+        <Survey />
+      </Provider>
+    );
+
+    const heightInFeet = screen.getByTestId("heightFeet");
+    const inches = screen.getByTestId("inches");
+    const weight = screen.getByTestId("weight");
+
+    fireEvent.change(heightInFeet, { target: { value: "5" } });
+    fireEvent.change(inches, { target: { value: "10" } });
+    fireEvent.change(weight, { target: { value: "200" } });
+
+    const radioButtonsNoValue = screen.getAllByRole("radio", { name: "No" });
+    radioButtonsNoValue.forEach((radioButton) => {
+      fireEvent.click(radioButton);
+      expect(radioButton).toBeChecked();
+    });
+
+    const button = screen.getByRole("button", { name: "Submit" });
+    fireEvent.click(button);
+
+    const pillsParagraph = await screen.findByText(
+      "Based on your response, we recommend taking these pills to help you lose weight because your body mass index is too high. These pills will help you curb your apetite and make it easier to loose weight."
+    );
+    expect(pillsParagraph).toBeInTheDocument();
+  });
 });
