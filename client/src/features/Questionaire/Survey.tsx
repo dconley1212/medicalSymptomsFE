@@ -56,6 +56,21 @@ const StyledRadioButtonDiv = styled.div`
   flex-direction: column;
 `;
 
+const StyledSubmitButton = styled.button`
+  margin-top: 0.5rem;
+  padding: 0.8em;
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 50%;
+  background-color: #4682b4;
+  color: #ffffff;
+  font: 1.2rem;
+`;
+
+const StyledDoctorRecommendParagraph = styled.p`
+  font-size: 1.5rem;
+`;
+
 const StyledSprayDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,6 +87,24 @@ const StyledImg = styled.img`
 `;
 
 const StyledSprayButton = styled.button`
+  padding: 1em;
+  border-radius: 8px;
+  background-color: #4682b4;
+`;
+
+const StyledPillsDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin-bottom: 3rem;
+`;
+
+const StyledPillsRecommendation = styled.p`
+  width: 50%;
+`;
+
+const StyledPillsButton = styled.button`
   padding: 1em;
   border-radius: 8px;
   background-color: #4682b4;
@@ -339,12 +372,14 @@ const Survey = () => {
               />
             </label>
           </StyledRadioButtonDiv>
-          <button>Submit</button>
+          <StyledSubmitButton>Submit</StyledSubmitButton>
         </StyledLowerFormDiv>
       </SurveyForm>
       {seeDoctor === true ? (
         <div>
-          <p>We recommend seeing your Doctor based on your symptoms.</p>
+          <StyledDoctorRecommendParagraph>
+            We recommend seeing your Doctor based on your symptoms.
+          </StyledDoctorRecommendParagraph>
         </div>
       ) : null}
       {recommendSpray === true ? (
@@ -360,16 +395,16 @@ const Survey = () => {
         </StyledSprayDiv>
       ) : null}
       {recommendPills === true ? (
-        <div>
-          <p>
+        <StyledPillsDiv>
+          <StyledPillsRecommendation>
             Based on your response, we recommend taking these pills to help you
             lose weight because your body mass index is too high. These pills
             will help you curb your apetite and make it easier to loose weight.
-          </p>
+          </StyledPillsRecommendation>
           <StyledImg src={pills} alt="pills products"></StyledImg>
-          <p>{pillsProduct.price}</p>
-          <button>Add to Cart</button>
-        </div>
+          <p>{`Price: ${formatCurrency(pillsProduct.price)}`}</p>
+          <StyledPillsButton>Add to Cart</StyledPillsButton>
+        </StyledPillsDiv>
       ) : null}
     </SurveyWrapper>
   );
