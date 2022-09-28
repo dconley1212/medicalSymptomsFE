@@ -20,4 +20,34 @@ describe("testing the Review component", () => {
     );
     expect(title).toBeInTheDocument();
   });
+  test("first item card is in the document and has appropriate color, title", () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <Reviews />
+        </Provider>
+      </Router>
+    );
+
+    const itemOneCard = screen.getByTestId("itemOneCard");
+    const itemOne = screen.getByText("Item One");
+    expect(itemOneCard).toBeInTheDocument();
+    expect(itemOneCard).toHaveStyle("background-color: #cb4a6f");
+    expect(itemOne).toBeInTheDocument();
+  });
+  test("second item card is in the document, has the right background color, title", () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <Reviews />
+        </Provider>
+      </Router>
+    );
+    const itemTwoCard = screen.getByTestId("itemTwoCard");
+    const itemTwo = screen.getByText("Item Two");
+
+    expect(itemTwoCard).toBeInTheDocument();
+    expect(itemTwoCard).toHaveStyle("background-color: #cb4a6f");
+    expect(itemTwo).toBeInTheDocument();
+  });
 });

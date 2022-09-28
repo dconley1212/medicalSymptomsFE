@@ -123,7 +123,7 @@ const Reviews = () => {
           <h2>What are people saying about our products?</h2>
         </StyledTitleDiv>
         <StyledItemsDiv>
-          <StyledItemOneColumn>
+          <StyledItemOneColumn data-testid="itemOneCard">
             <StyledItemNames>Item One</StyledItemNames>
             <StyledButtonDiv>
               <StyledButton onClick={handleClick}>Add a Review</StyledButton>
@@ -144,7 +144,7 @@ const Reviews = () => {
               );
             })}
           </StyledItemOneColumn>
-          <StyledItemTwoColumn>
+          <StyledItemTwoColumn data-testid="itemTwoCard">
             <StyledItemNames>Item Two</StyledItemNames>
             <StyledButtonDiv>
               <StyledButton onClick={handleClick}>Add a Review</StyledButton>
