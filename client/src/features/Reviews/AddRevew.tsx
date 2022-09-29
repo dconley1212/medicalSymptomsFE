@@ -198,6 +198,7 @@ const AddReview = () => {
             value={comment}
             type="text"
             onChange={handleTextFieldChange}
+            data-testid="comments"
           />
           <StyledRadioButtons>
             <label>
@@ -224,6 +225,7 @@ const AddReview = () => {
             value={reviewerName}
             placeholder="First Name"
             onChange={handleNameInputChange}
+            data-testid="name"
           />
           <StyledSubmitButton>Submit Review</StyledSubmitButton>
         </StyledForm>
