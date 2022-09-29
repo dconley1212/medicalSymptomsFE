@@ -58,7 +58,7 @@ const UserAccount = () => {
 
   return (
     <StyledUserWrapper>
-      <StyledDivButtons>
+      <StyledDivButtons data-testid="menu-bar">
         <StyledButtons onClick={handleUserInfoClick}>
           {button === false ? "Add info for a faster checkout!" : "My Info"}
         </StyledButtons>
