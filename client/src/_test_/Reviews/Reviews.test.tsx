@@ -50,4 +50,22 @@ describe("testing the Review component", () => {
     expect(itemTwoCard).toHaveStyle("background-color: #cb4a6f");
     expect(itemTwo).toBeInTheDocument();
   });
+  test("both add review buttons for each item are on the page and have right style", () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <Reviews />
+        </Provider>
+      </Router>
+    );
+
+    const addReviewButtons = screen.getAllByRole("button", {
+      name: "Add a Review",
+    });
+
+    addReviewButtons.forEach((button) => {
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveStyle("background-color: #4682b4");
+    });
+  });
 });
