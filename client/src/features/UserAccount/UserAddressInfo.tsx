@@ -79,6 +79,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
     <StyledAddressWrapper>
       <StyledForm onSubmit={handleUserInfoSubmit}>
         <StyledInput
+          data-testid="firstName"
           value={userInfo.firstName}
           onChange={handleChange}
           name="firstName"
@@ -91,6 +92,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           name="lastName"
           type="text"
           placeholder="Last name"
+          data-testid="lastName"
         />
         <StyledInput
           value={userInfo.address}
@@ -98,6 +100,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           name="address"
           type="text"
           placeholder="Address"
+          data-testid="address"
         />
         <StyledInput
           onChange={handleChange}
@@ -105,6 +108,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           type="text"
           value={userInfo.apartment_suite_etc}
           placeholder="Apt., Suite, etc."
+          data-testid="apartment_suite_etc"
         />
         <StyledInput
           name="city"
@@ -112,9 +116,14 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           onChange={handleChange}
           value={userInfo.city}
           placeholder="City"
+          data-testid="city"
         />
         <StyledLabel>Use dropdown to pick your state</StyledLabel>
-        <StyledSelect onChange={handleSelectChange} value={userInfo.state}>
+        <StyledSelect
+          data-testid="dropdown"
+          onChange={handleSelectChange}
+          value={userInfo.state}
+        >
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
@@ -173,6 +182,7 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
           onChange={handleChange}
           value={userInfo.zipcode}
           placeholder="Zipcode"
+          data-testid="zipcode"
         />
         <StyledButton>Submit Billing Address</StyledButton>
       </StyledForm>
