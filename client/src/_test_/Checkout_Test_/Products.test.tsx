@@ -5,7 +5,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { store } from "../../app/store";
 import "@testing-library/jest-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AsyncLocalStorage } from "async_hooks";
 
 describe("testing the DOM aspects of Products component", () => {
   test("checking if the Products App renders correctly", () => {
@@ -98,7 +97,7 @@ describe("testing the DOM aspects of Products component", () => {
     expect(orderSummary).toBeInTheDocument();
   });
 
-  test("checkout component is showing after add button is clicked", async () => {
+  test("checkout component is showing after add button is clicked and correct quantity is being displayed", async () => {
     render(
       <Router>
         <Provider store={store}>
@@ -116,5 +115,47 @@ describe("testing the DOM aspects of Products component", () => {
     const checkoutComponent = screen.getByTestId("checkoutComponent");
 
     expect(checkoutComponent).toBeInTheDocument();
+    const totalQuantity = screen.getByText(`Total Quantity: ${4}`);
+    expect(totalQuantity).toHaveTextContent(`Total Quantity: ${4}`);
+  });
+  test("click add itemOne and correct item, price, and quantity show up", () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      </Router>
+    );
+    const addButtons = screen.getAllByRole("button", { name: "+" });
+    fireEvent.click(addButtons[0]);
+    const orderSummary = screen.getByRole("heading", { name: "Order Summary" });
+    const productName = screen.getByTestId("ItemOne");
+    const productPrice = screen.getByTestId("productPriceOne");
+    const totalQuantity = screen.getByText(`Total Quantity: ${5}`);
+    const totalPrice = screen.getByText(`Total Price: ${165.95}`);
+
+    expect(orderSummary).toBeInTheDocument();
+    expect(productName).toBeInTheDocument();
+    expect(productPrice).toBeInTheDocument();
+    expect(totalQuantity).toBeInTheDocument();
+    expect(totalPrice).toBeInTheDocument();
+  });
+  test("delete buttons will delete each item from Order Summary", () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      </Router>
+    );
+
+    const deleteButtons = screen.getAllByRole("button", { name: "-" });
+    deleteButtons.forEach((button) => {
+      fireEvent.click(button);
+    });
+
+    const totalQuantity = screen.getByText(`Total Quantity: ${3}`);
+    expect(totalQuantity).toBeInTheDocument();
+    expect(totalQuantity).toHaveTextContent(`Total Quantity: ${3}`);
   });
 });

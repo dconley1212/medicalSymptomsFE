@@ -23,15 +23,15 @@ const CheckoutItems = () => {
           <div key={Math.random()}>
             {item.id === 1 && cartProducts.itemsInCart.itemOne > 0 ? (
               <div>
-                <p>{item.name}</p>
-                <p>{item.price}</p>
+                <p data-testid="ItemOne">{item.name}</p>
+                <p data-testid="productPriceOne">{item.price}</p>
                 <p>{cartProducts.itemsInCart.itemOne}</p>
               </div>
             ) : null}
             {item.id === 2 && cartProducts.itemsInCart.itemTwo > 0 ? (
               <div>
-                <p>{item.name}</p>
-                <p>{item.price}</p>
+                <p data-testid="ItemTwo">{item.name}</p>
+                <p data-testid="productPriceTwo">{item.price}</p>
                 <p>{cartProducts.itemsInCart.itemTwo}</p>
               </div>
             ) : null}
