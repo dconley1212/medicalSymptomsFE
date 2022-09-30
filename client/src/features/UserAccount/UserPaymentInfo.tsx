@@ -63,6 +63,7 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
           onChange={handlePaymentInfoChange}
           value={paymentInfo.cardNumber}
           placeholder="Card Number"
+          data-testid="cardNumber"
         />
         <StyledInput
           name="nameOnCard"
@@ -70,6 +71,7 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
           onChange={handlePaymentInfoChange}
           value={paymentInfo.nameOnCard}
           placeholder="Name on Card"
+          data-testid="nameOnCard"
         />
         <StyledInput
           name="cardExpiration"
@@ -77,6 +79,7 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
           onChange={handlePaymentInfoChange}
           value={paymentInfo.cardExpiration}
           placeholder="Expiration date"
+          data-testid="cardExpiration"
         />
         <StyledInput
           name="securityCode"
@@ -84,6 +87,7 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
           onChange={handlePaymentInfoChange}
           value={paymentInfo.securityCode}
           placeholder="Security Code"
+          data-testid="securityCode"
         />
         <StyledButton>Add Payment</StyledButton>
       </StyledForm>
