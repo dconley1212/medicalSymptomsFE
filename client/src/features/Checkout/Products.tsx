@@ -220,9 +220,13 @@ const Products = () => {
                     +
                   </ProductButtonAdd>
                   {product.id === 1 ? (
-                    <p>{cartProducts.itemsInCart.itemOne}</p>
+                    <p data-testid="itemOneQuantity">
+                      {cartProducts.itemsInCart.itemOne}
+                    </p>
                   ) : (
-                    <p>{cartProducts.itemsInCart.itemTwo}</p>
+                    <p data-testid="itemTwoQuantity">
+                      {cartProducts.itemsInCart.itemTwo}
+                    </p>
                   )}
                   <ProductButtonDelete onClick={() => handleDelete(product)}>
                     -
@@ -233,7 +237,10 @@ const Products = () => {
           })}
         </StyledProductsSection>
         {isActive === true ? (
-          <StyledCheckoutComponent title="Checkout dropdown">
+          <StyledCheckoutComponent
+            data-testid="checkoutComponent"
+            title="Checkout dropdown"
+          >
             <CheckoutItems />
           </StyledCheckoutComponent>
         ) : null}

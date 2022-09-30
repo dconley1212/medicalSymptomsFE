@@ -1,23 +1,30 @@
 import Products from "../../features/Checkout/Products";
+import Survey from "../../features/Questionaire/Survey";
 import { Provider } from "react-redux";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { store } from "../../app/store";
 import "@testing-library/jest-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { AsyncLocalStorage } from "async_hooks";
 
 describe("testing the DOM aspects of Products component", () => {
   test("checking if the Products App renders correctly", () => {
     render(
-      <Provider store={store}>
-        <Products />
-      </Provider>
+      <Router>
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      </Router>
     );
   });
 
   test("Products title shows up", () => {
     render(
-      <Provider store={store}>
-        <Products />
-      </Provider>
+      <Router>
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      </Router>
     );
 
     const productsTitle = screen.getByTitle("Products Title");
@@ -26,9 +33,11 @@ describe("testing the DOM aspects of Products component", () => {
 
   test("Products review shows up on page", () => {
     render(
-      <Provider store={store}>
-        <Products />
-      </Provider>
+      <Router>
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      </Router>
     );
     const review = screen.getByTitle("review");
     expect(review).toBeInTheDocument();
@@ -36,9 +45,11 @@ describe("testing the DOM aspects of Products component", () => {
 
   test("renders both product cards", () => {
     render(
-      <Provider store={store}>
-        <Products />
-      </Provider>
+      <Router>
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      </Router>
     );
     const productCardOne = screen.getByTestId(1);
     const productCardTwo = screen.getByTestId(2);
@@ -47,20 +58,38 @@ describe("testing the DOM aspects of Products component", () => {
     expect(productCardTwo).toBeInTheDocument();
   });
 
-  test("find out here button navigates to survey component when clicked", () => {
+  test("find out here button navigates to survey component when clicked", async () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      </Router>
+    );
     const surveyButton = screen.getByRole("button", { name: "Find out here" });
 
     fireEvent.click(surveyButton);
-    const heightLabel = screen.getByLabelText("What is your height?");
-    expect(heightLabel).toBeInTheDocument();
+
+    render(
+      <Router>
+        <Provider store={store}>
+          <Survey />
+        </Provider>
+      </Router>
+    );
+    const heightInput = await screen.findByText("What is your height?");
+    expect(heightInput).toBeInTheDocument();
   });
 
   test("checkoutItems component renders when add product button is clicked", () => {
     render(
-      <Provider store={store}>
-        <Products />
-      </Provider>
+      <Router>
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      </Router>
     );
+
     const addButtons = screen.getAllByRole("button", { name: "+" });
     addButtons.forEach((button) => {
       fireEvent.click(button);
@@ -69,11 +98,13 @@ describe("testing the DOM aspects of Products component", () => {
     expect(orderSummary).toBeInTheDocument();
   });
 
-  test("the correct Item is shown with each button click", () => {
+  test("checkout component is showing after add button is clicked", async () => {
     render(
-      <Provider store={store}>
-        <Products />
-      </Provider>
+      <Router>
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      </Router>
     );
 
     const addButtons = screen.getAllByRole("button", { name: "+" });
@@ -82,10 +113,8 @@ describe("testing the DOM aspects of Products component", () => {
       fireEvent.click(button);
     });
 
-    const totalQuantity = screen.getByRole("heading", {
-      name: "Total Quantity",
-    });
+    const checkoutComponent = screen.getByTestId("checkoutComponent");
 
-    expect(totalQuantity).toBeInTheDocument();
+    expect(checkoutComponent).toBeInTheDocument();
   });
 });
