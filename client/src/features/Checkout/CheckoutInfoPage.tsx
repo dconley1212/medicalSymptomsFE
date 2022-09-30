@@ -143,7 +143,10 @@ const CheckoutInfoPage = () => {
             <StyledStateLabel>
               Choose a state from the Dropdown
             </StyledStateLabel>
-            <StyledStateSelector value={userCheckoutInfo.state}>
+            <StyledStateSelector
+              data-testid="dropdown"
+              value={userCheckoutInfo.state}
+            >
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
