@@ -119,7 +119,7 @@ const CheckoutCreditCardPage = () => {
             />
             <StyledRadioLabel>
               Same as Shipping address
-              <StyledRadioInput name="Billing Address" type="radio" />
+              <StyledRadioInput name="Same Billing Address" type="radio" />
             </StyledRadioLabel>
             <StyledRadioLabel>
               Used a different billing address
