@@ -5,6 +5,8 @@ import { Review } from "./ReviewsSlice";
 import ReviewStars from "./ReviewStars";
 import styled from "styled-components";
 import axios from "axios";
+import { useAppDispatch } from "../../app/hooks";
+import { add } from "./ReviewsSlice";
 
 const StyledComponentWrapper = styled.div`
   background-color: #f5f5f5;
@@ -110,9 +112,18 @@ const StyledReviewerName = styled.p`
   color: #000000;
 `;
 
+interface DataBaseReview {
+  comments: string;
+  itemName: string;
+  rating: number;
+  review_id: number;
+  reviewerName: string;
+}
+
 const Reviews = () => {
   const reviews = useAppSelector((state) => state.reviews);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (
@@ -121,7 +132,10 @@ const Reviews = () => {
     ) {
       axios
         .get("http://localhost:9000/reviews")
-        .then((resp) => console.log(resp))
+        .then((resp) => {
+          console.log(resp);
+          resp.data.forEach((review: DataBaseReview) => dispatch(add(review)));
+        })
         .catch((err) => console.log(err));
     }
   }, []);
