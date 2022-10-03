@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "../../app/hooks";
 import { Review } from "./ReviewsSlice";
 import ReviewStars from "./ReviewStars";
 import styled from "styled-components";
+import axios from "axios";
 
 const StyledComponentWrapper = styled.div`
   background-color: #f5f5f5;
@@ -112,6 +113,18 @@ const StyledReviewerName = styled.p`
 const Reviews = () => {
   const reviews = useAppSelector((state) => state.reviews);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (
+      reviews.itemOneReviews.length === 0 ||
+      reviews.itemTwoReviews.length === 0
+    ) {
+      axios
+        .get("http://localhost:9000/reviews")
+        .then((resp) => console.log(resp))
+        .catch((err) => console.log(err));
+    }
+  }, []);
 
   const handleClick = () => {
     navigate("/addreview");
