@@ -78,7 +78,11 @@ const EditUserAddressInfo = () => {
           placeholder="City"
         />
         <label>Choose A State</label>
-        <select onChange={handleEditSelectChange} value={userInfo.state}>
+        <select
+          data-testid="dropdown"
+          onChange={handleEditSelectChange}
+          value={userInfo.state}
+        >
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
