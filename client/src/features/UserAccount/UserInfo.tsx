@@ -88,7 +88,6 @@ const UserInfo = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(user.userInfo.address);
     if (user.userInfo.address === "") {
       setAddAddress(false);
     }

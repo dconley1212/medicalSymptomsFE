@@ -77,16 +77,33 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
   const handleUserInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(addUserInfo(userInfo));
-    axios.post(`http://localhost:9000/user/${id}/address`, userInfo, {
-      headers: {
-        authorization: token,
-      },
-    });
+    axios
+      .post(`http://localhost:9000/user/${id}/address`, userInfo, {
+        headers: {
+          authorization: token,
+        },
+      })
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
     handleSubmit();
   };
   return (
     <StyledAddressWrapper>
       <StyledForm onSubmit={handleUserInfoSubmit}>
+        <StyledInput
+          value={userInfo.username}
+          onChange={handleChange}
+          name="username"
+          type="text"
+          placeholder="Username"
+        />
+        <StyledInput
+          value={userInfo.phone}
+          onChange={handleChange}
+          name="phone"
+          type="text"
+          placeholder="Phone Number"
+        />
         <StyledInput
           data-testid="firstName"
           value={userInfo.firstName}
