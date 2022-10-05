@@ -3,6 +3,7 @@ import { userInformation, addUserInfo } from "./UserAccountSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import axios from "axios";
 
 const StyledAddressWrapper = styled.div`
   display: flex;
@@ -57,6 +58,9 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const id = localStorage.getItem("id") || "";
+  const token = localStorage.getItem("token") || "";
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInfo({
       ...userInfo,
@@ -73,6 +77,11 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
   const handleUserInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(addUserInfo(userInfo));
+    axios.post(`http://localhost:9000/user/${id}/address`, userInfo, {
+      headers: {
+        authorization: token,
+      },
+    });
     handleSubmit();
   };
   return (

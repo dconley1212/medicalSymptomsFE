@@ -1,14 +1,19 @@
 import Header from "../Components/Header";
+import App from "../Components/App";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "../app/store";
 import "@testing-library/jest-dom";
 
 describe("testing the header component", () => {
   test("check every link is showing in the header document", async () => {
     render(
-      <Router>
-        <Header />
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Header />
+        </Router>
+      </Provider>
     );
     const createAccountLink = screen.getByRole("link", {
       name: "Create Account",
