@@ -3,10 +3,13 @@ import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { userInformation } from "./UserAccountSlice";
 import { addUserInfo } from "./UserAccountSlice";
 import { useNavigate } from "react-router";
+import { CheckoutInfo } from "../Checkout/CheckoutInfoPage";
+import { UserInfo } from "os";
 
 const EditUserAddressInfo = () => {
   const userInfo = useAppSelector((state) => state.user.userInfo);
   const dispatch = useAppDispatch();
+  const id = localStorage.getItem("id") || "";
 
   const navigate = useNavigate();
 
@@ -20,6 +23,7 @@ const EditUserAddressInfo = () => {
     city: userInfo.city,
     state: userInfo.state,
     zipcode: userInfo.zipcode,
+    user_id: parseInt(id),
   });
 
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {

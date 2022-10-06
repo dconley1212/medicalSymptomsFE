@@ -81,8 +81,20 @@ const StyledButton = styled.button`
   }
 `;
 
+export interface CheckoutInfo {
+  username: string;
+  phone: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  apartment_suite_etc: string;
+  city: string;
+  state: string;
+  zipcode: string;
+}
+
 const CheckoutInfoPage = () => {
-  const [userCheckoutInfo, setUserCheckoutInfo] = useState<userInformation>({
+  const [userCheckoutInfo, setUserCheckoutInfo] = useState<CheckoutInfo>({
     username: "",
     phone: "",
     firstName: "",

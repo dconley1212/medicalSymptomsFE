@@ -43,6 +43,9 @@ interface props {
 }
 
 const UserAddressInfo = ({ handleSubmit }: props) => {
+  const id = localStorage.getItem("id") || "";
+  const user_id = parseInt(id);
+
   const [userInfo, setUserInfo] = useState<userInformation>({
     username: "",
     phone: "",
@@ -53,12 +56,12 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
     city: "",
     state: "",
     zipcode: "",
+    user_id: user_id,
   });
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const id = localStorage.getItem("id") || "";
   const token = localStorage.getItem("token") || "";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,14 +79,17 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
 
   const handleUserInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addUserInfo(userInfo));
+
     axios
       .post(`http://localhost:9000/user/${id}/address`, userInfo, {
         headers: {
           authorization: token,
         },
       })
-      .then((resp) => console.log(resp))
+      .then((resp) => {
+        console.log(resp);
+        dispatch(addUserInfo(resp.data));
+      })
       .catch((err) => console.log(err));
     handleSubmit();
   };

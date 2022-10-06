@@ -18,6 +18,7 @@ export interface userInformation {
   city: string;
   state: string;
   zipcode: string;
+  user_id: number;
 }
 
 interface user {
@@ -36,6 +37,7 @@ const initialState: user = {
     city: "",
     state: "",
     zipcode: "",
+    user_id: 0,
   },
   paymentInfo: {
     cardNumber: "",
