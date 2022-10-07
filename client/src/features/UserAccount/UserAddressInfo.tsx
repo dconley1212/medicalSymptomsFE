@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { userInformation, addUserInfo } from "./UserAccountSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { useNavigate } from "react-router";
@@ -64,6 +64,19 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
 
   const token = localStorage.getItem("token") || "";
 
+  useEffect(() => {
+    if (!userInfo.firstName) {
+      axios
+        .get(`http://localhost:9000/user/${id}/address`, {
+          headers: {
+            authorization: token,
+          },
+        })
+        .then((resp) => dispatch(addUserInfo(resp.data)))
+        .catch((err) => console.log(err));
+    }
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInfo({
       ...userInfo,
@@ -87,7 +100,6 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
         },
       })
       .then((resp) => {
-        console.log(resp);
         dispatch(addUserInfo(resp.data));
       })
       .catch((err) => console.log(err));
