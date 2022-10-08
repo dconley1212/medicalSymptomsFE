@@ -5,6 +5,11 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import axios from "axios";
 
+// left off trying to figure out how to display the users data if they have already submitted
+// their user address information but have it dispatched to the redux store when the login
+// the next time and hit the user account page. Don't want it to send back an error if the user
+// address information doesn't exist.
+
 const StyledAddressWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,7 +77,12 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
             authorization: token,
           },
         })
-        .then((resp) => dispatch(addUserInfo(resp.data)))
+        .then((resp) => {
+          console.log(resp.data);
+          if (resp.data.firstName) {
+            dispatch(addUserInfo(resp.data));
+          }
+        })
         .catch((err) => console.log(err));
     }
   }, []);

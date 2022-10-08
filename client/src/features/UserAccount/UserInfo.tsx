@@ -55,6 +55,7 @@ const StyledEditAddress = styled.button`
   background-color: #cb4a6f;
   padding: 0.5rem;
   border-radius: 8px;
+  cursor: pointer;
 `;
 
 const StyledPaymentDiv = styled.div`
@@ -78,6 +79,7 @@ const StyledEditPayment = styled.button`
   background-color: #cb4a6f;
   padding: 0.5rem;
   border-radius: 8px;
+  cursor: pointer;
 `;
 
 const UserInfo = () => {
