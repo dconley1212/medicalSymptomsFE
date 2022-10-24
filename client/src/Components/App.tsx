@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ToDo from "./ToDo";
 import LandingPage from "./LandingPage";
 import { Route, Routes } from "react-router-dom";
@@ -16,6 +16,7 @@ import EditUserPaymentInfo from "../features/UserAccount/EditUserPaymentInfo";
 import Header from "./Header";
 import styled from "styled-components";
 import Survey from "../features/Questionaire/Survey";
+import { PrivateRouteProps } from "./PrivateRoute";
 
 // left off trying to understand how to handle fire events (click, change, etc) when
 // the button my be found in a different component then the function or if the button
@@ -30,7 +31,24 @@ const StyledAppWrapper = styled.div`
   } */
 `;
 
+interface AppStatePrivateRoute {
+  isAuthenticated: boolean;
+  path: string;
+}
+
 function App() {
+  const [privateRoute, setPrivateRoute] = useState<AppStatePrivateRoute>({
+    isAuthenticated: false,
+    path: "/",
+  });
+
+  useEffect(() => {
+    let token = localStorage.getItem("token") || "";
+    if (token) {
+      setPrivateRoute({ ...privateRoute, isAuthenticated: true });
+    }
+  }, []);
+
   return (
     <StyledAppWrapper>
       <Header />

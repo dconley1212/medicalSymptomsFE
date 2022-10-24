@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-type PrivateRouteProps = {
+export type PrivateRouteProps = {
   isAuthenticated: boolean;
   path: string;
   outlet: JSX.Element;
