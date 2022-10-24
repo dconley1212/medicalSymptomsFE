@@ -2,13 +2,13 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 export type PrivateRouteProps = {
-  isAuthenticated: boolean;
+  token: string;
   path: string;
   outlet: JSX.Element;
 };
 
-const PrivateRoute = ({ isAuthenticated, path, outlet }: PrivateRouteProps) => {
-  if (isAuthenticated) {
+const PrivateRoute = ({ token, path, outlet }: PrivateRouteProps) => {
+  if (token !== "") {
     return outlet;
   } else {
     return <Navigate to={{ pathname: path }} />;
