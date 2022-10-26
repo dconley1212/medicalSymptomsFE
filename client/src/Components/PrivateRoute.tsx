@@ -1,11 +1,5 @@
-import React, { Children } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
-
-// export type PrivateRouteProps = {
-//   token: string;
-//   path: string;
-//   outlet: JSX.Element;
-// };
 
 interface ChildrenType {
   children: JSX.Element;
@@ -16,7 +10,7 @@ const PrivateRoute = ({ children }: ChildrenType) => {
   if (token !== "") {
     return children;
   } else {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 };
 

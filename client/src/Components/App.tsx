@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ToDo from "./ToDo";
 import LandingPage from "./LandingPage";
 import { Route, Routes } from "react-router-dom";
@@ -16,7 +16,6 @@ import EditUserPaymentInfo from "../features/UserAccount/EditUserPaymentInfo";
 import Header from "./Header";
 import styled from "styled-components";
 import Survey from "../features/Questionaire/Survey";
-import { PrivateRouteProps } from "./PrivateRoute";
 import PrivateRoute from "./PrivateRoute";
 
 // left off trying to understand how to handle fire events (click, change, etc) when
@@ -25,11 +24,6 @@ import PrivateRoute from "./PrivateRoute";
 // Part of me feels like I should just upgrade to the userEvent version 14 to handle these
 // types of events that I am dealing with
 
-/*
-Tried to start on the private route and for some reason my private route logic is not
-working but I feel like I am close so that is another thing to work on.
-*/
-
 const StyledAppWrapper = styled.div`
   /* @media screen and (max-width: 460px) {
     display: flex;
@@ -37,40 +31,22 @@ const StyledAppWrapper = styled.div`
   } */
 `;
 
-interface AppStatePrivateRoute {
-  isAuthenticated: boolean;
-  path: string;
-}
-
 function App() {
-  // let token: string = localStorage.getItem("token") || "";
-  // const [protectedRoute, setPrivateRoute] = useState<AppStatePrivateRoute>({
-  //   isAuthenticated: false,
-  //   path: "/",
-  // });
-
-  // useEffect(() => {
-  //   let token = localStorage.getItem("token") || "";
-  //   if (token !== "") {
-  //     setPrivateRoute({ ...protectedRoute, isAuthenticated: true });
-  //   }
-  // }, []);
-
   return (
     <StyledAppWrapper>
       <Header />
       <Routes>
         <Route path="/survey" element={<Survey />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/user/editPayment" element={<EditUserPaymentInfo />} />
         <Route
-          path="/user/info"
+          path="/user"
           element={
             <PrivateRoute>
-              <UserInfo />
+              <User />
             </PrivateRoute>
           }
         />
+        <Route path="/user/editPayment" element={<EditUserPaymentInfo />} />
+        <Route path="/user/info" element={<UserInfo />} />
         <Route path="/user/editAddress" element={<EditUserAddressInfo />} />
         <Route path="/checkoutpayment" element={<CheckoutCreditCardPage />} />
         <Route path="/addreview" element={<AddReview />} />
