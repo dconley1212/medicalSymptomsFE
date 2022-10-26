@@ -43,7 +43,7 @@ interface AppStatePrivateRoute {
 }
 
 function App() {
-  let token: string = localStorage.getItem("token") || "";
+  // let token: string = localStorage.getItem("token") || "";
   // const [protectedRoute, setPrivateRoute] = useState<AppStatePrivateRoute>({
   //   isAuthenticated: false,
   //   path: "/",
@@ -66,7 +66,9 @@ function App() {
         <Route
           path="/user/info"
           element={
-            <PrivateRoute token={token} path={"/"} outlet={<UserInfo />} />
+            <PrivateRoute>
+              <UserInfo />
+            </PrivateRoute>
           }
         />
         <Route path="/user/editAddress" element={<EditUserAddressInfo />} />
