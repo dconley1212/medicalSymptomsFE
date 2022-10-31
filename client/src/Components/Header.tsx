@@ -28,6 +28,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   padding: 1.2rem;
   background: #4682b4;
+  width: 100%;
   @media screen and (max-width: 460px) {
     display: flex;
     padding: 0.1rem;

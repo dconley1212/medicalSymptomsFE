@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "../../app/hooks";
-import { Review } from "./ReviewsSlice";
+import { DataBaseReview } from "./ReviewsSlice";
 import ReviewStars from "./ReviewStars";
 import styled from "styled-components";
 import axios from "axios";
@@ -112,14 +112,6 @@ const StyledReviewerName = styled.p`
   color: #000000;
 `;
 
-interface DataBaseReview {
-  comments: string;
-  itemName: string;
-  rating: number;
-  review_id: number;
-  reviewerName: string;
-}
-
 const Reviews = () => {
   const reviews = useAppSelector((state) => state.reviews);
   const navigate = useNavigate();
@@ -155,9 +147,9 @@ const Reviews = () => {
             <StyledButtonDiv>
               <StyledButton onClick={handleClick}>Add a Review</StyledButton>
             </StyledButtonDiv>
-            {reviews.itemOneReviews.map((item: Review) => {
+            {reviews.itemOneReviews.map((item: DataBaseReview) => {
               return (
-                <StyledReviewWrapper>
+                <StyledReviewWrapper key={item.review_id}>
                   <StyledStarWrapper>
                     {[1, 2, 3, 4, 5].map((itemOne) => {
                       return (

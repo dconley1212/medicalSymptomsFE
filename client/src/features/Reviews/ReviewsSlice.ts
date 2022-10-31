@@ -1,16 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface Review {
+export interface DataBaseReview {
+  review_id: number;
   reviewerName: string;
   itemName: string;
   rating: number;
   comments: string;
 }
 
+// interface Review {
+//   reviewerName: string;
+//   itemName: string;
+//   rating: number;
+//   comments: string;
+// }
+
 interface ReviewsData {
-  itemOneReviews: Review[];
-  itemTwoReviews: Review[];
+  itemOneReviews: DataBaseReview[];
+  itemTwoReviews: DataBaseReview[];
 }
 
 const initialState: ReviewsData = {
@@ -22,7 +30,7 @@ export const reviewsSlice = createSlice({
   name: "Reviews",
   initialState: initialState,
   reducers: {
-    add: (state, action: PayloadAction<Review>) => {
+    add: (state, action: PayloadAction<DataBaseReview>) => {
       if (action.payload.itemName === "ItemOne") {
         state.itemOneReviews.push(action.payload);
       } else {
