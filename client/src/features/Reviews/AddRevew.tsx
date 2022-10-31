@@ -93,7 +93,7 @@ const AddReview = () => {
   const [color, setColor] = useState<boolean>(false);
   const [hoverStars, setHoverStars] = useState<number>(0);
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
@@ -140,10 +140,6 @@ const AddReview = () => {
     };
     const token = localStorage.getItem("token") || "";
 
-    console.log(token);
-
-    dispatch(add(review));
-
     axios
       .post("http://localhost:9000/reviews", review, {
         headers: {
@@ -151,7 +147,6 @@ const AddReview = () => {
         },
       })
       .then((resp) => {
-        console.log(resp);
         navigate("/reviews");
       })
       .catch((err) => console.log(err));

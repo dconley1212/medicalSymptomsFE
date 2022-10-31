@@ -118,6 +118,7 @@ const Reviews = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    console.log(reviews.itemOneReviews);
     if (
       reviews.itemOneReviews.length === 0 ||
       reviews.itemTwoReviews.length === 0
