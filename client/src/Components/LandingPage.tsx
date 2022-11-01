@@ -100,6 +100,12 @@ const LandingPage = () => {
   const reviews = useAppSelector((state) => state.reviews);
   const dispatch = useAppDispatch();
 
+  function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
   useEffect(() => {
     let isCancelled = false;
     if (
@@ -114,9 +120,9 @@ const LandingPage = () => {
             resp.data.forEach((review: DataBaseReview) =>
               dispatch(add(review))
             );
-            const specificReview = resp.data.find(
-              (review: DataBaseReview) => review.review_id === 1
-            );
+            const specificReview =
+              resp.data[Math.floor(Math.random() * resp.data.length)];
+            console.log(specificReview);
             setReview(specificReview);
           }
         })
