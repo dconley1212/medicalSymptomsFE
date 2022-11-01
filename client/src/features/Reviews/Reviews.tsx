@@ -112,6 +112,9 @@ const StyledReviewerName = styled.p`
   color: #000000;
 `;
 
+// it might be best to have a loading state or if then statement in the jsx
+// for when the component is inititally rendered.
+
 const Reviews = () => {
   const reviews = useAppSelector((state) => state.reviews);
   const navigate = useNavigate();
@@ -119,18 +122,24 @@ const Reviews = () => {
 
   useEffect(() => {
     console.log(reviews.itemOneReviews);
-    if (
-      reviews.itemOneReviews.length === 0 ||
-      reviews.itemTwoReviews.length === 0
-    ) {
-      axios
-        .get("http://localhost:9000/reviews")
-        .then((resp) => {
+    // if (
+    //   reviews.itemOneReviews.length === 0 ||
+    //   reviews.itemTwoReviews.length === 0
+    // ) {
+    let isCancelled = false;
+    axios
+      .get("http://localhost:9000/reviews")
+      .then((resp) => {
+        if (!isCancelled) {
           console.log(resp);
           resp.data.forEach((review: DataBaseReview) => dispatch(add(review)));
-        })
-        .catch((err) => console.log(err));
-    }
+        }
+      })
+      .catch((err) => console.log(err));
+    // }
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   const handleClick = () => {
