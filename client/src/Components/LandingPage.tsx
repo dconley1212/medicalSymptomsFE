@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
+import { useAppSelector } from "../app/hooks";
 
 const StyledWrapper = styled.div`
   @media screen and (max-width: 450px) {
@@ -92,6 +93,10 @@ const SurveyButton = styled.button`
 `;
 
 const LandingPage = () => {
+  const reviews = useAppSelector((state) => state.reviews);
+
+  console.log(reviews);
+
   return (
     <StyledWrapper>
       <StyledMainDiv>

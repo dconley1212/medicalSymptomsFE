@@ -122,21 +122,23 @@ const Reviews = () => {
 
   useEffect(() => {
     console.log(reviews.itemOneReviews);
-    // if (
-    //   reviews.itemOneReviews.length === 0 ||
-    //   reviews.itemTwoReviews.length === 0
-    // ) {
     let isCancelled = false;
-    axios
-      .get("http://localhost:9000/reviews")
-      .then((resp) => {
-        if (!isCancelled) {
-          console.log(resp);
-          resp.data.forEach((review: DataBaseReview) => dispatch(add(review)));
-        }
-      })
-      .catch((err) => console.log(err));
-    // }
+    if (
+      reviews.itemOneReviews.length === 0 ||
+      reviews.itemTwoReviews.length === 0
+    ) {
+      axios
+        .get("http://localhost:9000/reviews")
+        .then((resp) => {
+          if (!isCancelled) {
+            console.log(resp);
+            resp.data.forEach((review: DataBaseReview) =>
+              dispatch(add(review))
+            );
+          }
+        })
+        .catch((err) => console.log(err));
+    }
     return () => {
       isCancelled = true;
     };
