@@ -118,31 +118,6 @@ const StyledReviewerName = styled.p`
 const Reviews = () => {
   const reviews = useAppSelector((state) => state.reviews);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    console.log(reviews.itemOneReviews);
-    let isCancelled = false;
-    if (
-      reviews.itemOneReviews.length === 0 ||
-      reviews.itemTwoReviews.length === 0
-    ) {
-      axios
-        .get("http://localhost:9000/reviews")
-        .then((resp) => {
-          if (!isCancelled) {
-            console.log(resp);
-            resp.data.forEach((review: DataBaseReview) =>
-              dispatch(add(review))
-            );
-          }
-        })
-        .catch((err) => console.log(err));
-    }
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
 
   const handleClick = () => {
     navigate("/addreview");

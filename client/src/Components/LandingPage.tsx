@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
+import { DataBaseReview } from "../features/Reviews/ReviewsSlice";
 import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
-import { useAppSelector } from "../app/hooks";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
+import { add } from "../features/Reviews/ReviewsSlice";
 
 const StyledWrapper = styled.div`
   @media screen and (max-width: 450px) {
@@ -93,9 +96,36 @@ const SurveyButton = styled.button`
 `;
 
 const LandingPage = () => {
+  const [review, setReview] = useState<DataBaseReview | undefined>();
   const reviews = useAppSelector((state) => state.reviews);
+  const dispatch = useAppDispatch();
 
-  console.log(reviews);
+  useEffect(() => {
+    let isCancelled = false;
+    if (
+      reviews.itemOneReviews.length === 0 ||
+      reviews.itemTwoReviews.length === 0
+    ) {
+      axios
+        .get("http://localhost:9000/reviews")
+        .then((resp) => {
+          if (!isCancelled) {
+            console.log(resp.data);
+            resp.data.forEach((review: DataBaseReview) =>
+              dispatch(add(review))
+            );
+            const specificReview = resp.data.find(
+              (review: DataBaseReview) => review.review_id === 1
+            );
+            setReview(specificReview);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
 
   return (
     <StyledWrapper>
@@ -107,6 +137,9 @@ const LandingPage = () => {
           </LandingPageStat>
           <SurveyButton>Want a doctors recomendation?</SurveyButton>
         </StyledLowerDiv>
+        <div>
+          <p>{review === undefined ? "Loading" : review.comments}</p>
+        </div>
       </StyledMainDiv>
     </StyledWrapper>
   );
