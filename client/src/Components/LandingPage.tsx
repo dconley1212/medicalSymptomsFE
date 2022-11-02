@@ -105,6 +105,14 @@ const SurveyButton = styled.button`
 const StyledReviewDiv = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 15rem;
+  padding: 5rem;
+`;
+
+const StyledReviewQuote = styled.p`
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
 `;
 
 const LandingPage = () => {
@@ -150,7 +158,11 @@ const LandingPage = () => {
           </StyledLowerDiv>
         </StyledLeftDiv>
         <StyledReviewDiv>
-          <p>{review === undefined ? "Loading" : review.comments}</p>
+          <p>{review !== undefined ? review.itemName : null}:</p>
+          <StyledReviewQuote>
+            <q>{review !== undefined ? review.comments : null}</q>
+          </StyledReviewQuote>
+          <p>- {review !== undefined ? review.reviewerName : null}</p>
         </StyledReviewDiv>
       </StyledMainDiv>
     </StyledWrapper>
