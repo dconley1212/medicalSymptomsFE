@@ -139,7 +139,14 @@ const LandingPage = () => {
           }
         })
         .catch((err) => console.log(err));
+    } else {
+      setReview(
+        reviews.itemOneReviews[
+          Math.floor(Math.random() * reviews.itemOneReviews.length)
+        ]
+      );
     }
+
     return () => {
       isCancelled = true;
     };
