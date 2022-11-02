@@ -5,6 +5,8 @@ import { DataBaseReview } from "../features/Reviews/ReviewsSlice";
 import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
 import { useAppSelector, useAppDispatch } from "../app/hooks";
 import { add } from "../features/Reviews/ReviewsSlice";
+import SprayImage from "../Assets/nati-melnychuk-SGmgCPxv8OI-unsplash.jpg";
+import PillsImage from "../Assets/kateryna-hliznitsova-hEX5R8u7gCI-unsplash.jpg";
 
 const StyledWrapper = styled.div`
   @media screen and (max-width: 450px) {
@@ -23,8 +25,8 @@ const StyledMainDiv = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid black;
-  width: 100vw;
-  height: 75vh;
+  width: 100%;
+  height: 100%;
   @media screen and (max-width: 450px) {
     display: flex;
     flex-direction: column;
@@ -66,7 +68,7 @@ const LandingPageStat = styled.p`
   padding: 3rem;
   position: relative;
   bottom: 10rem;
-  width: 23%;
+  width: 40%;
   font-size: 1.5rem;
   color: white;
   @media screen and (max-width: 460px) {
@@ -86,7 +88,7 @@ const SurveyButton = styled.button`
   border-radius: 10px;
   color: white;
   background-color: black;
-  width: 15%;
+  width: 30%;
   position: relative;
   left: 5rem;
   bottom: 7rem;
@@ -105,8 +107,14 @@ const SurveyButton = styled.button`
 const StyledReviewDiv = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: 10%;
+  height: 20%;
   margin-left: 15rem;
-  padding: 5rem;
+  padding: 0rem 2.5rem 0rem 2.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #4682b4;
 `;
 
 const StyledReviewQuote = styled.p`
@@ -165,7 +173,7 @@ const LandingPage = () => {
           </StyledLowerDiv>
         </StyledLeftDiv>
         <StyledReviewDiv>
-          <p>{review !== undefined ? review.itemName : null}:</p>
+          <p>Product: {review !== undefined ? review.itemName : null}</p>
           <StyledReviewQuote>
             <q>{review !== undefined ? review.comments : null}</q>
           </StyledReviewQuote>
