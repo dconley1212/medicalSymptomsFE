@@ -16,6 +16,8 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledMainDiv = styled.div`
+  display: flex;
+  flex-direction: row;
   padding: 12rem 5rem;
   background-image: url(${backgroundImg});
   background-size: cover;
@@ -33,6 +35,11 @@ const StyledMainDiv = styled.div`
     height: 100vh;
     overflow: hidden;
   }
+`;
+
+const StyledLeftDiv = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const LandingPageHook = styled.h2`
@@ -95,16 +102,15 @@ const SurveyButton = styled.button`
   } ;
 `;
 
+const StyledReviewDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const LandingPage = () => {
   const [review, setReview] = useState<DataBaseReview | undefined>();
   const reviews = useAppSelector((state) => state.reviews);
   const dispatch = useAppDispatch();
-
-  function getRandomInt(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-  }
 
   useEffect(() => {
     let isCancelled = false;
@@ -116,13 +122,11 @@ const LandingPage = () => {
         .get("http://localhost:9000/reviews")
         .then((resp) => {
           if (!isCancelled) {
-            console.log(resp.data);
             resp.data.forEach((review: DataBaseReview) =>
               dispatch(add(review))
             );
             const specificReview =
               resp.data[Math.floor(Math.random() * resp.data.length)];
-            console.log(specificReview);
             setReview(specificReview);
           }
         })
@@ -136,16 +140,18 @@ const LandingPage = () => {
   return (
     <StyledWrapper>
       <StyledMainDiv>
-        <LandingPageHook>Tired of back pain?</LandingPageHook>
-        <StyledLowerDiv>
-          <LandingPageStat>
-            You're in good company too. 1 in 3 Adults experience back pain!
-          </LandingPageStat>
-          <SurveyButton>Want a doctors recomendation?</SurveyButton>
-        </StyledLowerDiv>
-        <div>
+        <StyledLeftDiv>
+          <LandingPageHook>Tired of back pain?</LandingPageHook>
+          <StyledLowerDiv>
+            <LandingPageStat>
+              You're in good company too. 1 in 3 Adults experience back pain!
+            </LandingPageStat>
+            <SurveyButton>Want a doctors recomendation?</SurveyButton>
+          </StyledLowerDiv>
+        </StyledLeftDiv>
+        <StyledReviewDiv>
           <p>{review === undefined ? "Loading" : review.comments}</p>
-        </div>
+        </StyledReviewDiv>
       </StyledMainDiv>
     </StyledWrapper>
   );
