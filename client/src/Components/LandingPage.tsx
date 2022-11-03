@@ -5,6 +5,7 @@ import { DataBaseReview } from "../features/Reviews/ReviewsSlice";
 import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
 import { useAppSelector, useAppDispatch } from "../app/hooks";
 import { add } from "../features/Reviews/ReviewsSlice";
+import { useNavigate } from "react-router";
 
 const StyledWrapper = styled.div`
   @media screen and (max-width: 450px) {
@@ -139,6 +140,7 @@ const LandingPage = () => {
   const [review, setReview] = useState<DataBaseReview | undefined>();
   const reviews = useAppSelector((state) => state.reviews);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let isCancelled = false;
@@ -172,6 +174,14 @@ const LandingPage = () => {
     };
   }, []);
 
+  const handleRecommendationButton = () => {
+    navigate("/survey");
+  };
+
+  const handleProductButton = () => {
+    navigate("/products");
+  };
+
   return (
     <StyledWrapper>
       <StyledMainDiv>
@@ -181,7 +191,9 @@ const LandingPage = () => {
             <LandingPageStat>
               You're in good company too. 1 in 3 Adults experience back pain!
             </LandingPageStat>
-            <SurveyButton>Want a doctors recomendation?</SurveyButton>
+            <SurveyButton onClick={handleRecommendationButton}>
+              Want a doctors recomendation?
+            </SurveyButton>
           </StyledLowerDiv>
         </StyledLeftDiv>
         <StyledReviewDiv>
@@ -196,7 +208,9 @@ const LandingPage = () => {
           <StyledReviewerNameParagraph data-testid="reviewerName">
             - {review !== undefined ? review.reviewerName : null}
           </StyledReviewerNameParagraph>
-          <StyledReviewButton>Find Product</StyledReviewButton>
+          <StyledReviewButton onClick={handleProductButton}>
+            Find Product
+          </StyledReviewButton>
         </StyledReviewDiv>
       </StyledMainDiv>
     </StyledWrapper>

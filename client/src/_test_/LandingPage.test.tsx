@@ -51,7 +51,9 @@ describe("testing the landing page component", () => {
         </Provider>
       </Router>
     );
-    const button = screen.getByRole("button");
+    const button = screen.getByRole("button", {
+      name: /want a doctors recomendation/i,
+    });
 
     expect(button).toHaveStyle({ backgroundColor: "black" });
   });
@@ -76,5 +78,30 @@ describe("testing the landing page component", () => {
     );
     const quote = await screen.findByTestId("comment");
     expect(quote).toBeInTheDocument();
+  });
+  test("reviewer name shows up in the document", async () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <LandingPage />
+        </Provider>
+      </Router>
+    );
+    const reviewerNameParagraph = await screen.findByTestId("reviewerName");
+    expect(reviewerNameParagraph).toBeInTheDocument();
+  });
+  test("find product button", () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <LandingPage />
+        </Provider>
+      </Router>
+    );
+    const findProductButton = screen.getByRole("button", {
+      name: "Find Product",
+    });
+    expect(findProductButton).toBeInTheDocument();
+    expect(findProductButton).toHaveStyle({ backgroundColor: "#ffffff" });
   });
 });
