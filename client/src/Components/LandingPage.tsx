@@ -5,8 +5,6 @@ import { DataBaseReview } from "../features/Reviews/ReviewsSlice";
 import backgroundImg from "../Assets/austin-distel-7bMdiIqz_J4-unsplash.jpg";
 import { useAppSelector, useAppDispatch } from "../app/hooks";
 import { add } from "../features/Reviews/ReviewsSlice";
-import SprayImage from "../Assets/nati-melnychuk-SGmgCPxv8OI-unsplash.jpg";
-import PillsImage from "../Assets/kateryna-hliznitsova-hEX5R8u7gCI-unsplash.jpg";
 
 const StyledWrapper = styled.div`
   @media screen and (max-width: 450px) {
@@ -110,8 +108,8 @@ const StyledReviewDiv = styled.div`
   justify-content: center;
   width: 10%;
   margin-left: 15rem;
-  margin-bottom: 12rem;
-  padding: 0rem 2.5rem 0rem 2.5rem;
+  margin-bottom: 15rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
   border: 1px solid black;
   border-radius: 5px;
   background-color: #4682b4;
@@ -120,7 +118,11 @@ const StyledReviewDiv = styled.div`
 const StyledReviewQuote = styled.p`
   display: flex;
   flex-direction: column;
+  margin-top: 0rem;
   font-size: 1.5rem;
+`;
+const StyledReviewerNameParagraph = styled.p`
+  margin-top: 0rem;
 `;
 
 const StyledReviewButton = styled.button`
@@ -191,9 +193,9 @@ const LandingPage = () => {
               {review !== undefined ? review.comments : null}
             </q>
           </StyledReviewQuote>
-          <p data-testid="reviewerName">
+          <StyledReviewerNameParagraph data-testid="reviewerName">
             - {review !== undefined ? review.reviewerName : null}
-          </p>
+          </StyledReviewerNameParagraph>
           <StyledReviewButton>Find Product</StyledReviewButton>
         </StyledReviewDiv>
       </StyledMainDiv>

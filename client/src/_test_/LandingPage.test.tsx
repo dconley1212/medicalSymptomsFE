@@ -66,4 +66,15 @@ describe("testing the landing page component", () => {
     const productNameParagraph = await screen.findByTestId("itemName");
     expect(productNameParagraph).toBeInTheDocument();
   });
+  test("comment quote shows up in document", async () => {
+    render(
+      <Router>
+        <Provider store={store}>
+          <LandingPage />
+        </Provider>
+      </Router>
+    );
+    const quote = await screen.findByTestId("comment");
+    expect(quote).toBeInTheDocument();
+  });
 });
