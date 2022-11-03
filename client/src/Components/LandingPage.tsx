@@ -109,8 +109,8 @@ const StyledReviewDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 10%;
-  height: 20%;
   margin-left: 15rem;
+  margin-bottom: 12rem;
   padding: 0rem 2.5rem 0rem 2.5rem;
   border: 1px solid black;
   border-radius: 5px;
@@ -121,6 +121,16 @@ const StyledReviewQuote = styled.p`
   display: flex;
   flex-direction: column;
   font-size: 1.5rem;
+`;
+
+const StyledReviewButton = styled.button`
+  padding: 0.8em;
+  background-color: #ffffff;
+  border: solid black 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #4682b4;
+  width: 75%;
 `;
 
 const LandingPage = () => {
@@ -173,11 +183,18 @@ const LandingPage = () => {
           </StyledLowerDiv>
         </StyledLeftDiv>
         <StyledReviewDiv>
-          <p>Product: {review !== undefined ? review.itemName : null}</p>
+          <p data-testid="itemName">
+            Product: {review !== undefined ? review.itemName : null}
+          </p>
           <StyledReviewQuote>
-            <q>{review !== undefined ? review.comments : null}</q>
+            <q data-testid="comment">
+              {review !== undefined ? review.comments : null}
+            </q>
           </StyledReviewQuote>
-          <p>- {review !== undefined ? review.reviewerName : null}</p>
+          <p data-testid="reviewerName">
+            - {review !== undefined ? review.reviewerName : null}
+          </p>
+          <StyledReviewButton>Find Product</StyledReviewButton>
         </StyledReviewDiv>
       </StyledMainDiv>
     </StyledWrapper>
