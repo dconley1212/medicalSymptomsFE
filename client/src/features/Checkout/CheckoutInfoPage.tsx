@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router";
 import CheckoutItems from "./CheckoutItems";
 import styled from "styled-components";
@@ -114,6 +114,20 @@ const CheckoutInfoPage = () => {
 
   const navigate = useNavigate();
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUserCheckoutInfo({
+      ...userCheckoutInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleDropdownChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setUserCheckoutInfo({
+      ...userCheckoutInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleClick = () => {
     navigate("/checkoutpayment");
   };
@@ -124,16 +138,18 @@ const CheckoutInfoPage = () => {
         <StyledFormWrappper>
           <StyledForm>
             <StyledInput
-              name="First_name"
+              name="firstName"
               placeholder="First name"
               type="text"
               value={userCheckoutInfo.firstName}
+              onChange={handleChange}
             />
             <StyledInput
-              name="Last_name"
+              name="lastName"
               placeholder="Last name"
               type="text"
               value={userCheckoutInfo.lastName}
+              onChange={handleChange}
             />
             <StyledInput name="Email" placeholder="Email" />
             <StyledInput
@@ -141,24 +157,30 @@ const CheckoutInfoPage = () => {
               placeholder="Address"
               type="text"
               value={userCheckoutInfo.address}
+              onChange={handleChange}
             />
             <StyledInput
-              name="Apartment_Suite_Etc"
+              name="apartment_suite_etc"
               placeholder="Apartment, suite, etc. (optional)"
               value={userCheckoutInfo.apartment_suite_etc}
+              onChange={handleChange}
             />
             <StyledInput
-              name="City"
+              name="city"
               placeholder="City"
               value={userCheckoutInfo.city}
+              onChange={handleChange}
             />
             <StyledStateLabel>
               Choose a state from the Dropdown
             </StyledStateLabel>
             <StyledStateSelector
               data-testid="dropdown"
+              name="state"
               value={userCheckoutInfo.state}
+              onChange={handleDropdownChange}
             >
+              <option value="">Find Your State</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -212,16 +234,18 @@ const CheckoutInfoPage = () => {
               <option value="WY">Wyoming</option>
             </StyledStateSelector>
             <StyledInput
-              name="Zip_code"
+              name="zipcode"
               placeholder="ZIP code"
               type="text"
               value={userCheckoutInfo.zipcode}
+              onChange={handleChange}
             />
             <StyledInput
-              name="Phone"
+              name="phone"
               placeholder="Phone"
               type="text"
               value={userCheckoutInfo.phone}
+              onChange={handleChange}
             />
             <StyledPromotionLabel>
               Check the box if you want to subscribe to promotions and news
