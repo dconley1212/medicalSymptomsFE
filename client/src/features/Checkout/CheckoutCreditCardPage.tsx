@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 
 import CheckoutItems from "./CheckoutItems";
 import { useAppSelector } from "../../app/hooks";
@@ -92,6 +92,13 @@ const CheckoutCreditCardPage = () => {
       setPayment(creditCardInfo);
     }
   }, []);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPayment({
+      ...payment,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div>
       <StyledPaymentWrapper>
@@ -101,21 +108,25 @@ const CheckoutCreditCardPage = () => {
               value={payment.cardNumber}
               name="Card Number"
               placeholder="Card Number"
+              onChange={handleInputChange}
             />
             <StyledTextInput
               value={payment.nameOnCard}
               name="Name on Card"
               placeholder="Name on card"
+              onChange={handleInputChange}
             />
             <StyledTextInput
               name="Card Expiration"
               placeholder="Expiration data (mm/yy)"
               value={payment.cardExpiration}
+              onChange={handleInputChange}
             />
             <StyledTextInput
               value={payment.securityCode}
               name="Security Code"
               placeholder="Security Code"
+              onChange={handleInputChange}
             />
             <StyledRadioLabel>
               Same as Shipping address
