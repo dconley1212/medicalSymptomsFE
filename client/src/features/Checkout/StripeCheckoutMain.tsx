@@ -8,10 +8,6 @@ const stripePromise = loadStripe(
   "pk_test_51M0C2qEWZ0R1qcwzvt3v8LJr6BcP3KMB6a5DpZPQUr5tcgQiBwtitv5sx9LWoIiatbS2dAmHUzwVtuQTyGthUYIr00yLQpxt8s"
 );
 
-// interface AppearanceObject {
-//     theme: string;
-//   }
-
 interface OptionsProp {
   clientSecret: string;
   appearance: {
@@ -40,10 +36,6 @@ const StripeCheckoutMain = () => {
       })
       .catch();
   }, []);
-
-  //   const appearance: AppearanceObject = {
-  //     theme: "stripe",
-  //   };
 
   const options: OptionsProp = {
     clientSecret: clientSecret,
