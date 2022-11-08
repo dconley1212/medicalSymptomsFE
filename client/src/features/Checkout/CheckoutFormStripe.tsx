@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import {
   PaymentElement,
   useStripe,
@@ -9,7 +9,7 @@ const CheckoutFormStripe = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message, setMessage] = useState<string | null>(null);
+  const [message, setMessage] = useState<any>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -44,9 +44,34 @@ const CheckoutFormStripe = () => {
       });
   }, [stripe]);
 
+  const handleSubmitPayment = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!stripe || !elements) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: '"http://localhost:3000"',
+      },
+    });
+
+    if (error.type === "card_error" || error.type === "validation_error") {
+      setMessage(error.message);
+    } else {
+      setMessage("An unexpected error occurred.");
+    }
+
+    setIsLoading(false);
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmitPayment}>
         <PaymentElement />
         <button>
           <span>{isLoading ? <div></div> : "Pay now"}</span>
