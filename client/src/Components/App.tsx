@@ -17,12 +17,7 @@ import Header from "./Header";
 import styled from "styled-components";
 import Survey from "../features/Questionaire/Survey";
 import PrivateRoute from "./PrivateRoute";
-
-// left off trying to understand how to handle fire events (click, change, etc) when
-// the button my be found in a different component then the function or if the button
-// causes an event to change the route. A few things that are holding me up right now in testing
-// Part of me feels like I should just upgrade to the userEvent version 14 to handle these
-// types of events that I am dealing with
+import StripeCheckoutMain from "../features/Checkout/StripeCheckoutMain";
 
 const StyledAppWrapper = styled.div`
   /* @media screen and (max-width: 460px) {
@@ -36,6 +31,7 @@ function App() {
     <StyledAppWrapper>
       <Header />
       <Routes>
+        <Route path="/checkout" element={<StripeCheckoutMain />} />
         <Route path="/survey" element={<Survey />} />
         <Route
           path="/user"
