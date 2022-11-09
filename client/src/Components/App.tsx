@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ToDo from "./ToDo";
 import LandingPage from "./LandingPage";
 import { Route, Routes } from "react-router-dom";
@@ -14,24 +14,74 @@ import EditUserAddressInfo from "../features/UserAccount/EditUserAddressInfo";
 import UserInfo from "../features/UserAccount/UserInfo";
 import EditUserPaymentInfo from "../features/UserAccount/EditUserPaymentInfo";
 import Header from "./Header";
-import styled from "styled-components";
 import Survey from "../features/Questionaire/Survey";
 import PrivateRoute from "./PrivateRoute";
 import StripeCheckoutMain from "../features/Checkout/StripeCheckoutMain";
+import axios, { AxiosRequestHeaders } from "axios";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutFormStripe from "../features/Checkout/CheckoutFormStripe";
+import { useAppSelector } from "../app/hooks";
 
-const StyledAppWrapper = styled.div`
-  /* @media screen and (max-width: 460px) {
-    display: flex;
-    flex-direction: column;
-  } */
-`;
+const stripePromise = loadStripe(
+  "pk_test_51M0C2qEWZ0R1qcwzvt3v8LJr6BcP3KMB6a5DpZPQUr5tcgQiBwtitv5sx9LWoIiatbS2dAmHUzwVtuQTyGthUYIr00yLQpxt8s"
+);
+
+interface OptionsProp {
+  clientSecret: string;
+  appearance: {
+    theme: "stripe";
+  };
+}
 
 function App() {
+  const [clientSecret, setClientSecret] = useState<string>("");
+
+  const items = useAppSelector((state) => state.itemsInCart.cartItems);
+
+  let headers: AxiosRequestHeaders = {
+    "Content-Type": "application/json",
+  };
+  console.log(items);
+
+  useEffect(() => {
+    console.log(items);
+    axios
+      .post(
+        "http://localhost:8080/create-payment-intent",
+        { items },
+        {
+          headers,
+        }
+      )
+      .then((data: any) => {
+        console.log(data);
+        setClientSecret(data.clientSecret);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const options: OptionsProp = {
+    clientSecret: clientSecret,
+    appearance: {
+      theme: "stripe",
+    },
+  };
+
   return (
-    <StyledAppWrapper>
+    <div>
       <Header />
       <Routes>
-        <Route path="/checkoutinfo" element={<StripeCheckoutMain />} />
+        <Route
+          path="/checkoutinfo"
+          element={
+            clientSecret && (
+              <Elements options={options} stripe={stripePromise}>
+                <CheckoutFormStripe />
+              </Elements>
+            )
+          }
+        />
         <Route path="/survey" element={<Survey />} />
         <Route
           path="/user"
@@ -54,7 +104,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<LandingPage />} />
       </Routes>
-    </StyledAppWrapper>
+    </div>
   );
 }
 
