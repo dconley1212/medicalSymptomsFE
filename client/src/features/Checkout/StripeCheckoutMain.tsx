@@ -5,9 +5,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutFormStripe from "./CheckoutFormStripe";
 import { useAppSelector } from "../../app/hooks";
 
-//need to make sure the routes are showing for the new checkout components and that we are getting
-//the right item information sent to the backend server to send back the pricing information and
-//payment
+// need to still figure out how to get the checkoutForm to show up and be able to have a redirect
+// page to say thank you for purchasing the specific item.
 
 const stripePromise = loadStripe(
   "pk_test_51M0C2qEWZ0R1qcwzvt3v8LJr6BcP3KMB6a5DpZPQUr5tcgQiBwtitv5sx9LWoIiatbS2dAmHUzwVtuQTyGthUYIr00yLQpxt8s"
@@ -28,8 +27,10 @@ const StripeCheckoutMain = () => {
   let headers: AxiosRequestHeaders = {
     "Content-Type": "application/json",
   };
+  console.log(items);
 
   useEffect(() => {
+    console.log(items);
     axios
       .post(
         "http://localhost:8080/create-payment-intent",

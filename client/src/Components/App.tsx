@@ -31,7 +31,7 @@ function App() {
     <StyledAppWrapper>
       <Header />
       <Routes>
-        <Route path="/checkout" element={<StripeCheckoutMain />} />
+        <Route path="/checkoutinfo" element={<StripeCheckoutMain />} />
         <Route path="/survey" element={<Survey />} />
         <Route
           path="/user"
@@ -47,7 +47,7 @@ function App() {
         <Route path="/checkoutpayment" element={<CheckoutCreditCardPage />} />
         <Route path="/addreview" element={<AddReview />} />
         <Route path="/reviews" element={<Reviews />} />
-        <Route path="/checkoutinfo" element={<CheckoutInfoPage />} />
+        {/* <Route path="/checkoutinfo" element={<CheckoutInfoPage />} /> */}
         <Route path="/todolist" element={<ToDo />} />
         <Route path="products" element={<Products />} />
         <Route path="/register" element={<Register />} />
