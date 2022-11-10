@@ -4,6 +4,17 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+import CheckoutInfoPage from "./CheckoutInfoPage";
+import styled from "styled-components";
+
+const StyledCardForm = styled.form`
+  border: #f6f9fc solid 1px;
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 10px 10px;
+  box-shadow: 0 30px 50px -20px rgb(50 50 93 / 25%),
+    0 30px 60px -30px rgb(0 0 0 / 30%);
+`;
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -71,13 +82,14 @@ const CheckoutForm = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmitPayment}>
+      <CheckoutInfoPage />
+      <StyledCardForm onSubmit={handleSubmitPayment}>
         <PaymentElement id="payment-element" />
         <button>
           <span>{isLoading ? <div></div> : "Pay now"}</span>
         </button>
         {message && <div>{message}</div>}
-      </form>
+      </StyledCardForm>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const StyledCheckoutWrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 0rem;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@ const StyledCheckoutWrapper = styled.div`
 const StyledFormWrappper = styled.div`
   margin: 0rem 2rem;
   padding: 0 4rem;
-  width: 50%;
+  width: 45%;
   @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: column;
@@ -33,8 +33,14 @@ const StyledFormWrappper = styled.div`
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 4rem;
-  width: 75%;
+  padding: 3rem;
+  width: 70%;
+  border: #f6f9fc solid 1px;
+  border-radius: var(--radius);
+  /* padding: 20px; */
+  margin: 10px 10px;
+  box-shadow: 0 30px 50px -20px rgb(50 50 93 / 25%),
+    0 30px 60px -30px rgb(0 0 0 / 30%);
 `;
 
 const StyledInput = styled.input`
@@ -44,8 +50,9 @@ const StyledInput = styled.input`
 `;
 
 const StyledCheckoutComponent = styled.div`
-  height: 100vh;
-  border-left: 1px solid black;
+  margin-top: 5rem;
+  height: 60vh;
+  /* border-left: 1px solid black; */
 `;
 
 const StyledStateLabel = styled.label`
@@ -68,18 +75,17 @@ const StyledCheckBox = styled.input`
   }
 `;
 
-const StyledButton = styled.button`
-  margin-top: 1rem;
-  width: 50%;
-  padding: 1rem;
-  background-color: #cb4a6f;
-  color: #000000;
-  font-size: 1rem;
-  cursor: pointer;
-  @media screen and (max-width: 460px) {
-    width: 90%;
-  }
-`;
+// const StyledButton = styled.button`
+//   margin-top: 1rem;
+//   width: 50%;
+//   padding: 1rem;
+//   background-color: #cb4a6f;
+//   color: #000000;
+//   font-size: 1rem;
+//   cursor: pointer;
+//   @media screen and (max-width: 460px) {
+//     width: 90%;
+//   }
 
 export interface CheckoutInfo {
   username: string;
@@ -128,9 +134,9 @@ const CheckoutInfoPage = () => {
     });
   };
 
-  const handleClick = () => {
-    navigate("/checkoutpayment");
-  };
+  // const handleClick = () => {
+  //   navigate("/checkoutpayment");
+  // };
 
   return (
     <div>
@@ -251,9 +257,6 @@ const CheckoutInfoPage = () => {
               Check the box if you want to subscribe to promotions and news
               <StyledCheckBox name="Subscriber" type="checkbox" />
             </StyledPromotionLabel>
-            <StyledButton onClick={handleClick}>
-              Continue to Payment
-            </StyledButton>
           </StyledForm>
         </StyledFormWrappper>
         <StyledCheckoutComponent>

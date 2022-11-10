@@ -16,7 +16,6 @@ import EditUserPaymentInfo from "../features/UserAccount/EditUserPaymentInfo";
 import Header from "./Header";
 import Survey from "../features/Questionaire/Survey";
 import PrivateRoute from "./PrivateRoute";
-// import CheckoutForm from "../features/Checkout/CheckoutForm";
 import { BrowserRouter as Router } from "react-router-dom";
 import StripeCheckoutMain from "../features/Checkout/StripeCheckoutMain";
 
