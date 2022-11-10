@@ -72,7 +72,7 @@ const CheckoutForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmitPayment}>
-        <PaymentElement />
+        <PaymentElement id="payment-element" />
         <button>
           <span>{isLoading ? <div></div> : "Pay now"}</span>
         </button>

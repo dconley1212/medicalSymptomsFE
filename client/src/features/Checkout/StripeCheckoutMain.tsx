@@ -27,10 +27,8 @@ const StripeCheckoutMain = () => {
   let headers: AxiosRequestHeaders = {
     "Content-Type": "application/json",
   };
-  console.log(items);
 
   useEffect(() => {
-    console.log(items);
     axios
       .post(
         "http://localhost:8080/create-payment-intent",
@@ -39,9 +37,9 @@ const StripeCheckoutMain = () => {
           headers,
         }
       )
-      .then((data: any) => {
-        console.log(data);
-        setClientSecret(data.clientSecret);
+      .then((resp: any) => {
+        console.log(resp);
+        setClientSecret(resp.data.clientSecret);
       })
       .catch((err) => console.log(err));
   }, []);
