@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios, { AxiosRequestHeaders } from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutFormStripe from "./CheckoutFormStripe";
+import CheckoutForm from "./CheckoutForm";
 import { useAppSelector } from "../../app/hooks";
 
 // need to still figure out how to get the checkoutForm to show up and be able to have a redirect
@@ -46,21 +46,22 @@ const StripeCheckoutMain = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const options: OptionsProp = {
-    clientSecret: clientSecret,
-    appearance: {
-      theme: "stripe",
-    },
-  };
+  // //   const options: OptionsProp = {
+  // //     clientSecret: clientSecret,
+  // //     appearance: {
+  // //       theme: "stripe",
+  // //     },
+  //   };
 
   return (
-    <div>
+    <>
+      <h1>React Stripe and the Payment Element</h1>
       {clientSecret && (
-        <Elements options={options} stripe={stripePromise}>
-          <CheckoutFormStripe />
+        <Elements stripe={stripePromise} options={{ clientSecret }}>
+          <CheckoutForm />
         </Elements>
       )}
-    </div>
+    </>
   );
 };
 
