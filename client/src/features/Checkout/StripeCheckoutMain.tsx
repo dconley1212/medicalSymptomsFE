@@ -5,8 +5,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { useAppSelector } from "../../app/hooks";
 
-// need to still figure out how to get the checkoutForm to show up and be able to have a redirect
-// page to say thank you for purchasing the specific item.
+//tomorrow I need to test the payment option to see if it will display the right page
+// after pay now button is clicked
 
 const stripePromise = loadStripe(
   "pk_test_51M0C2qEWZ0R1qcwzvt3v8LJr6BcP3KMB6a5DpZPQUr5tcgQiBwtitv5sx9LWoIiatbS2dAmHUzwVtuQTyGthUYIr00yLQpxt8s"
