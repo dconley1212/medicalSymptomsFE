@@ -6,8 +6,7 @@ import {
 } from "@stripe/react-stripe-js";
 import CheckoutInfoPage from "./CheckoutInfoPage";
 import styled from "styled-components";
-import { useAppDispatch } from "../../app/hooks";
-import { addPaymentMessage } from "./ProductToCheckoutSlice";
+
 import { useNavigate } from "react-router";
 
 const StyledCardForm = styled.form`
@@ -35,11 +34,9 @@ const StyledPaymentButton = styled.button`
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const navigate = useNavigate();
 
-  const [errorMessage, setErrorMessage] = useState<string | undefined>("");
+  const [message, setMessage] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!stripe) {
@@ -58,24 +55,16 @@ const CheckoutForm = () => {
       .then(({ paymentIntent }: any) => {
         switch (paymentIntent) {
           case "succeeded":
-            dispatch(addPaymentMessage("Payment succeeded!"));
-            console.log("case happened");
+            setMessage("Payment succeeded!");
             break;
           case "processing":
-            dispatch(addPaymentMessage("Your payment is processing"));
-            console.log("case happened");
+            setMessage("Your payment is processing");
             break;
           case "requires_payment_method":
-            dispatch(
-              addPaymentMessage(
-                "Your payment was not successful, please try again"
-              )
-            );
-            console.log("case happened");
+            setMessage("Your payment was not successful, please try again");
             break;
           default:
-            dispatch(addPaymentMessage("Something went wrong."));
-            console.log("case happened");
+            setMessage("Something went wrong.");
             break;
         }
       });
@@ -98,11 +87,9 @@ const CheckoutForm = () => {
     });
 
     if (error.type === "card_error" || error.type === "validation_error") {
-      setErrorMessage(error.message);
-      navigate("/payment/message");
+      setMessage(error.message);
     } else {
-      setErrorMessage("An unexpected error occurred.");
-      navigate("/payment/message");
+      setMessage("An unexpected error occurred.");
     }
 
     setIsLoading(false);
@@ -116,7 +103,7 @@ const CheckoutForm = () => {
         <StyledPaymentButton>
           <span>{isLoading ? <div></div> : "Pay now"}</span>
         </StyledPaymentButton>
-        {errorMessage && <div>{errorMessage}</div>}
+        {message && <div>{message}</div>}
       </StyledCardForm>
     </div>
   );
