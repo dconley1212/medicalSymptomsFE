@@ -1,8 +1,6 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { useNavigate } from "react-router";
 import CheckoutItems from "./CheckoutItems";
 import styled from "styled-components";
-import { userInformation } from "../UserAccount/UserAccountSlice";
 import { useAppSelector } from "../../app/hooks";
 
 const StyledCheckoutWrapper = styled.div`
@@ -119,8 +117,6 @@ const CheckoutInfoPage = () => {
     if (userInfo.firstName) setUserCheckoutInfo(userInfo);
   }, []);
 
-  const navigate = useNavigate();
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUserCheckoutInfo({
       ...userCheckoutInfo,
@@ -134,10 +130,6 @@ const CheckoutInfoPage = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  // const handleClick = () => {
-  //   navigate("/checkoutpayment");
-  // };
 
   return (
     <div>

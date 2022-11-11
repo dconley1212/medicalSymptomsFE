@@ -44,13 +44,6 @@ const StripeCheckoutMain = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // //   const options: OptionsProp = {
-  // //     clientSecret: clientSecret,
-  // //     appearance: {
-  // //       theme: "stripe",
-  // //     },
-  //   };
-
   return (
     <>
       {clientSecret && (

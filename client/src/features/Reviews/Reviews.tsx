@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "../../app/hooks";
 import { DataBaseReview } from "./ReviewsSlice";
 import ReviewStars from "./ReviewStars";
 import styled from "styled-components";
-import axios from "axios";
-import { useAppDispatch } from "../../app/hooks";
-import { add } from "./ReviewsSlice";
 
 const StyledComponentWrapper = styled.div`
   background-color: #f5f5f5;

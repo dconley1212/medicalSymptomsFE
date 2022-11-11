@@ -5,7 +5,6 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
 import Products from "../features/Checkout/Products";
-// import CheckoutInfoPage from "../features/Checkout/CheckoutInfoPage";
 import AddReview from "../features/Reviews/AddRevew";
 import Reviews from "../features/Reviews/Reviews";
 import CheckoutCreditCardPage from "../features/Checkout/CheckoutCreditCardPage";
@@ -18,6 +17,7 @@ import Survey from "../features/Questionaire/Survey";
 import PrivateRoute from "./PrivateRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import StripeCheckoutMain from "../features/Checkout/StripeCheckoutMain";
+import CheckoutMessage from "../features/Checkout/CheckoutMessage";
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
+          <Route path="/payment/message" element={<CheckoutMessage />} />
           <Route path="/checkoutinfo" element={<StripeCheckoutMain />} />
           <Route path="/survey" element={<Survey />} />
           <Route
