@@ -6,6 +6,8 @@ import {
 } from "@stripe/react-stripe-js";
 import CheckoutInfoPage from "./CheckoutInfoPage";
 import styled from "styled-components";
+import { useAppDispatch } from "../../app/hooks";
+import { addPaymentMessage } from "./ProductToCheckoutSlice";
 
 const StyledCardForm = styled.form`
   border: #f6f9fc solid 1px;
@@ -16,12 +18,26 @@ const StyledCardForm = styled.form`
     0 30px 60px -30px rgb(0 0 0 / 30%);
 `;
 
+const StyledPaymentButton = styled.button`
+  background: #cb4a6f;
+  border-radius: 5px;
+  color: white;
+  border: 0;
+  padding: 1em 1.5em;
+  margin-top: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+`;
+
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message, setMessage] = useState<any>(null);
+  // const [message, setMessage] = useState<any>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!stripe) {
@@ -40,16 +56,20 @@ const CheckoutForm = () => {
       .then(({ paymentIntent }: any) => {
         switch (paymentIntent) {
           case "succeeded":
-            setMessage("Payment succeeded!");
+            dispatch(addPaymentMessage("Payment succeeded!"));
             break;
           case "processing":
-            setMessage("Your payment is processing");
+            dispatch(addPaymentMessage("Your payment is processing"));
             break;
           case "requires_payment_method":
-            setMessage("Your payment was not successful, please try again");
+            dispatch(
+              addPaymentMessage(
+                "Your payment was not successful, please try again"
+              )
+            );
             break;
           default:
-            setMessage("Something went wrong.");
+            dispatch(addPaymentMessage("Something went wrong."));
             break;
         }
       });
@@ -72,9 +92,9 @@ const CheckoutForm = () => {
     });
 
     if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
+      dispatch(addPaymentMessage(error.message));
     } else {
-      setMessage("An unexpected error occurred.");
+      dispatch(addPaymentMessage("An unexpected error occurred."));
     }
 
     setIsLoading(false);
@@ -85,10 +105,10 @@ const CheckoutForm = () => {
       <CheckoutInfoPage />
       <StyledCardForm onSubmit={handleSubmitPayment}>
         <PaymentElement id="payment-element" />
-        <button>
+        <StyledPaymentButton>
           <span>{isLoading ? <div></div> : "Pay now"}</span>
-        </button>
-        {message && <div>{message}</div>}
+        </StyledPaymentButton>
+        {/* {message && <div>{message}</div>} */}
       </StyledCardForm>
     </div>
   );

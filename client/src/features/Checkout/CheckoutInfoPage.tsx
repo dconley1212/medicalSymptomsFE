@@ -66,10 +66,11 @@ const StyledStateSelector = styled.select`
 
 const StyledPromotionLabel = styled.label`
   margin-top: 0.5rem;
+  width: 80%;
 `;
 
 const StyledCheckBox = styled.input`
-  margin-left: 2rem;
+  margin-left: 1rem;
   @media screen and (max-width: 460px) {
     margin-left: 0.5rem;
   }
@@ -178,7 +179,7 @@ const CheckoutInfoPage = () => {
               onChange={handleChange}
             />
             <StyledStateLabel>
-              Choose a state from the Dropdown
+              Choose a state from the dropdown
             </StyledStateLabel>
             <StyledStateSelector
               data-testid="dropdown"

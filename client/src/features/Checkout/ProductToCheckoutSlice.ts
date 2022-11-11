@@ -17,6 +17,7 @@ interface InitialState {
   itemTwo: number;
   totalQuantity: number;
   totalPrice: number;
+  paymentMessage: string;
 }
 
 const initialState: InitialState = {
@@ -25,6 +26,7 @@ const initialState: InitialState = {
   itemTwo: 0,
   totalQuantity: 0,
   totalPrice: 0,
+  paymentMessage: "",
 };
 
 export const productToCheckoutSlice = createSlice({
@@ -70,10 +72,14 @@ export const productToCheckoutSlice = createSlice({
       const twoDecimals = state.totalPrice.toFixed(2);
       state.totalPrice = parseFloat(twoDecimals);
     },
+    addPaymentMessage: (state, action) => {
+      state.paymentMessage = action.payload;
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = productToCheckoutSlice.actions;
+export const { addToCart, removeFromCart, addPaymentMessage } =
+  productToCheckoutSlice.actions;
 export const productsInCart = (state: InitialState[]) => {
   return state;
 };
