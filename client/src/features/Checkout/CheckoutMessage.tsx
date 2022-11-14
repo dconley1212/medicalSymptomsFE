@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+// import styled from 'styled-components'
 
 const CheckoutMessage = () => {
-  const [member, setMember] = useState<boolean>(true);
+  const [member, setMember] = useState<boolean>(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) {
-      setMember(false);
+
+    if (token !== null) {
+      setMember(true);
     }
   }, []);
 
