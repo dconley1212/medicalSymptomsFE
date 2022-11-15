@@ -64,7 +64,7 @@ const UserPaymentInfo = ({ handleSubmitInsurance }: InsuranceProp) => {
           onChange={handleInsuranceInfoChange}
           value={insuranceInfo.nameForInsurance}
           placeholder="Name on Insurance Card"
-          data-testid="nameOnCard"
+          data-testid="nameOnInsurance"
         />
         <StyledInput
           name="insuranceCompany"
@@ -72,7 +72,7 @@ const UserPaymentInfo = ({ handleSubmitInsurance }: InsuranceProp) => {
           onChange={handleInsuranceInfoChange}
           value={insuranceInfo.insuranceCompany}
           placeholder="Insurance Company"
-          data-testid="cardExpiration"
+          data-testid="insuranceCompany"
         />
         <StyledInput
           name="insuranceFile"
@@ -80,7 +80,7 @@ const UserPaymentInfo = ({ handleSubmitInsurance }: InsuranceProp) => {
           onChange={handleInsuranceInfoChange}
           value={insuranceInfo.insuranceFile}
           placeholder="Add insurance File"
-          data-testid="securityCode"
+          data-testid="insuranceFile"
         />
         <StyledButton>Upload Insurance Information</StyledButton>
       </StyledForm>

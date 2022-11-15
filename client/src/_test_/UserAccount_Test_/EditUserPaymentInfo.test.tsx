@@ -14,16 +14,16 @@ describe("testing the EditUserPaymentInfo component", () => {
         </Provider>
       </Router>
     );
-    const cardNumber = screen.getByPlaceholderText("Card Number");
-    const nameOnCard = screen.getByPlaceholderText("Name on Card");
-    const expirationDate = screen.getByPlaceholderText("Expiration date");
-    const securityCode = screen.getByPlaceholderText("Security Code");
-    const addPayment = screen.getByRole("button", { name: "Add Payment" });
+    const nameOnCard = screen.getByPlaceholderText("Name on Insurance Card");
+    const insuranceCompany = screen.getByPlaceholderText("Insurance Company");
+    const addInsuranceFile = screen.getByPlaceholderText("Add insurance file");
+    const updateInsurance = screen.getByRole("button", {
+      name: "Update Insurance Information",
+    });
 
-    expect(cardNumber).toBeInTheDocument();
     expect(nameOnCard).toBeInTheDocument();
-    expect(expirationDate).toBeInTheDocument();
-    expect(securityCode).toBeInTheDocument();
-    expect(addPayment).toBeInTheDocument();
+    expect(insuranceCompany).toBeInTheDocument();
+    expect(addInsuranceFile).toBeInTheDocument();
+    expect(updateInsurance).toBeInTheDocument();
   });
 });

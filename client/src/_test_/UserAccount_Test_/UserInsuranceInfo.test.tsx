@@ -12,18 +12,16 @@ describe("testing the UserPaymentInfo component", () => {
         <UserInsuranceInfo handleSubmitInsurance={handleSubmitInsurance} />
       </Provider>
     );
-    const cardNumber = screen.getByTestId("cardNumber");
-    const nameOnCard = screen.getByTestId("nameOnCard");
-    const expirationDate = screen.getByTestId("cardExpiration");
-    const securityCode = screen.getByTestId("securityCode");
-    const addPaymentButton = screen.getByRole("button", {
-      name: "Add Payment",
+    const nameOnInsurance = screen.getByTestId("nameOnInsurance");
+    const insuranceCompany = screen.getByTestId("insuranceCompany");
+    const insuranceFile = screen.getByTestId("insuranceFile");
+    const addInsuranceButton = screen.getByRole("button", {
+      name: "Upload Insurance Information",
     });
 
-    expect(cardNumber).toBeInTheDocument();
-    expect(nameOnCard).toBeInTheDocument();
-    expect(expirationDate).toBeInTheDocument();
-    expect(securityCode).toBeInTheDocument();
-    expect(addPaymentButton).toBeInTheDocument();
+    expect(nameOnInsurance).toBeInTheDocument();
+    expect(insuranceCompany).toBeInTheDocument();
+    expect(insuranceFile).toBeInTheDocument();
+    expect(addInsuranceButton).toBeInTheDocument();
   });
 });

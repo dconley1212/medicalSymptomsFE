@@ -36,14 +36,14 @@ const EditUserPaymentInfo = () => {
           type="text"
           onChange={handleEditInsuranceInfo}
           value={insuranceInfo.nameForInsurance}
-          placeholder="Name on Card"
+          placeholder="Name on Insurance Card"
         />
         <input
           name="insuranceCompany"
           type="text"
           onChange={handleEditInsuranceInfo}
           value={insuranceInfo.insuranceCompany}
-          placeholder="Expiration date"
+          placeholder="Insurance Company"
         />
         <input
           name="insuranceFile"
@@ -52,7 +52,7 @@ const EditUserPaymentInfo = () => {
           value={insuranceInfo.insuranceFile}
           placeholder="Add insurance file"
         />
-        <button>Add Payment</button>
+        <button>Update Insurance Information</button>
       </form>
     </div>
   );
