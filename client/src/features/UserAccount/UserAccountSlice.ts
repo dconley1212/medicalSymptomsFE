@@ -52,13 +52,13 @@ export const UserAccount = createSlice({
     addUserInfo: (state, action: PayloadAction<userInformation>) => {
       state.userInfo = action.payload;
     },
-    addPaymentInfo: (state, action: PayloadAction<insurance>) => {
+    addInsuranceInfo: (state, action: PayloadAction<insurance>) => {
       state.insuranceInfo = action.payload;
     },
   },
 });
 
-export const { addUserInfo, addPaymentInfo } = UserAccount.actions;
+export const { addUserInfo, addInsuranceInfo } = UserAccount.actions;
 
 export const User = (state: user) => {
   return state;

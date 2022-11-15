@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserPaymentInfo from "./UserPaymentInfo";
+import UserInsuranceInfo from "./UserInsuranceInfo";
 import { useAppSelector } from "../../app/hooks";
 import UserAddressInfo from "./UserAddressInfo";
 import { useNavigate } from "react-router";
@@ -93,7 +93,7 @@ const UserInfo = () => {
     if (user.userInfo.address === "") {
       setAddAddress(false);
     }
-    if (user.paymentInfo.cardNumber === "") {
+    if (user.insuranceInfo.nameForInsurance === "") {
       setPaymentInfo(false);
     }
   }, []);
@@ -107,12 +107,12 @@ const UserInfo = () => {
     return addAddress;
   };
 
-  const handleSubmitPayment = () => {
+  const handleSubmitInsurance = () => {
     setPaymentInfo(true);
     return paymentInfo;
   };
 
-  const handleEditPayment = () => {
+  const handleEditInsurance = () => {
     navigate("/user/editPayment");
   };
 
@@ -152,25 +152,21 @@ const UserInfo = () => {
           </StyledAddressDiv>
         )}
         {paymentInfo === false ? (
-          <UserPaymentInfo handleSubmitPayment={handleSubmitPayment} />
+          <UserInsuranceInfo handleSubmitPayment={handleSubmitInsurance} />
         ) : (
           <StyledPaymentDiv>
             <StyledPaymentTitle>Payment</StyledPaymentTitle>
             <StyledPaymentParagraph>
-              CardNumber:
-              {user.paymentInfo.cardNumber}
+              Name on Insurance Card: {user.insuranceInfo.nameForInsurance}
             </StyledPaymentParagraph>
             <StyledPaymentParagraph>
-              Name on card: {user.paymentInfo.nameOnCard}
+              Insurance Company: {user.insuranceInfo.insuranceCompany}
             </StyledPaymentParagraph>
             <StyledPaymentParagraph>
-              Card Expiration: {user.paymentInfo.cardExpiration}
+              We have your insurance card on file.
             </StyledPaymentParagraph>
-            <StyledPaymentParagraph>
-              Security Code: {user.paymentInfo.securityCode}
-            </StyledPaymentParagraph>
-            <StyledEditPayment onClick={handleEditPayment}>
-              Edit Payment
+            <StyledEditPayment onClick={handleEditInsurance}>
+              Edit Insurance
             </StyledEditPayment>
           </StyledPaymentDiv>
         )}

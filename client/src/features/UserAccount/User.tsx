@@ -47,7 +47,10 @@ const UserAccount = () => {
     if (user.userInfo.address === "") {
       setButton(false);
     }
-    if (user.userInfo.address !== "" || user.paymentInfo.cardNumber !== "") {
+    if (
+      user.userInfo.address !== "" ||
+      user.insuranceInfo.nameForInsurance !== ""
+    ) {
       setShowUser(true);
     }
   }, []);

@@ -7,8 +7,6 @@ import {
 import CheckoutInfoPage from "./CheckoutInfoPage";
 import styled from "styled-components";
 
-import { useNavigate } from "react-router";
-
 const StyledCardForm = styled.form`
   border: #f6f9fc solid 1px;
   border-radius: var(--radius);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { insurance } from "./UserAccountSlice";
-import { addPaymentInfo } from "./UserAccountSlice";
+import { addInsuranceInfo } from "./UserAccountSlice";
 import { useAppDispatch } from "../../app/hooks";
 import styled from "styled-components";
 
@@ -52,7 +52,7 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
   };
   const handleSubmitInsuranceInfo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // dispatch(addPaymentInfo(paymentInfo));
+    dispatch(addInsuranceInfo(insuranceInfo));
     handleSubmitPayment();
   };
   return (
@@ -82,7 +82,7 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
           placeholder="Add insurance File"
           data-testid="securityCode"
         />
-        <StyledButton>Add Payment</StyledButton>
+        <StyledButton>Upload Insurance Information</StyledButton>
       </StyledForm>
     </StyledPaymentWrapper>
   );

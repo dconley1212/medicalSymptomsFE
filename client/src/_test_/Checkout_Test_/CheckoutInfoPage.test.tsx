@@ -1,5 +1,5 @@
 import CheckoutInfoPage from "../../features/Checkout/CheckoutInfoPage";
-import CheckoutCreditCardPage from "../../features/Checkout/CheckoutCreditCardPage";
+
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../app/store";
@@ -40,25 +40,5 @@ describe("testing the CheckoutInfoPage component", () => {
     expect(phone).toBeInTheDocument();
     expect(checkbox).toBeInTheDocument();
     expect(continueButton).toBeInTheDocument();
-  });
-  test("continue to payment button pushes the user to the payment page", () => {
-    render(
-      <Router>
-        <Provider store={store}>
-          <CheckoutInfoPage />
-        </Provider>
-      </Router>
-    );
-    const continueButton = screen.getByRole("button", {
-      name: "Continue to Payment",
-    });
-    fireEvent.click(continueButton);
-    render(
-      <Router>
-        <Provider store={store}>
-          <CheckoutCreditCardPage />
-        </Provider>
-      </Router>
-    );
   });
 });

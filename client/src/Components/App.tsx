@@ -7,11 +7,11 @@ import Login from "./Login";
 import Products from "../features/Checkout/Products";
 import AddReview from "../features/Reviews/AddRevew";
 import Reviews from "../features/Reviews/Reviews";
-import CheckoutCreditCardPage from "../features/Checkout/CheckoutCreditCardPage";
+// import CheckoutCreditCardPage from "../features/Checkout/CheckoutCreditCardPage";
 import User from "../features/UserAccount/User";
 import EditUserAddressInfo from "../features/UserAccount/EditUserAddressInfo";
 import UserInfo from "../features/UserAccount/UserInfo";
-import EditUserPaymentInfo from "../features/UserAccount/EditUserPaymentInfo";
+import EditUserInsuranceInfo from "../features/UserAccount/EditUserInsuranceInfo";
 import Header from "./Header";
 import Survey from "../features/Questionaire/Survey";
 import PrivateRoute from "./PrivateRoute";
@@ -35,10 +35,10 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/user/editPayment" element={<EditUserPaymentInfo />} />
+        <Route path="/user/editPayment" element={<EditUserInsuranceInfo />} />
         <Route path="/user/info" element={<UserInfo />} />
         <Route path="/user/editAddress" element={<EditUserAddressInfo />} />
-        <Route path="/checkoutpayment" element={<CheckoutCreditCardPage />} />
+        {/* <Route path="/checkoutpayment" element={<CheckoutCreditCardPage />} /> */}
         <Route path="/addreview" element={<AddReview />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/todolist" element={<ToDo />} />
