@@ -29,11 +29,11 @@ const StyledButton = styled.button`
   background-color: #cb4a6f;
 `;
 
-interface paymentProp {
-  handleSubmitPayment: () => {};
+interface InsuranceProp {
+  handleSubmitInsurance: () => {};
 }
 
-const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
+const UserPaymentInfo = ({ handleSubmitInsurance }: InsuranceProp) => {
   const [insuranceInfo, setInsuranceInfo] = useState<insurance>({
     nameForInsurance: "",
     insuranceCompany: "",
@@ -53,7 +53,7 @@ const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
   const handleSubmitInsuranceInfo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(addInsuranceInfo(insuranceInfo));
-    handleSubmitPayment();
+    handleSubmitInsurance();
   };
   return (
     <StyledPaymentWrapper>

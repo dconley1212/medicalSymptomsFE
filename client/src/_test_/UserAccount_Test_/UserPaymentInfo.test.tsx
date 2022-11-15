@@ -1,6 +1,6 @@
 import UserInsuranceInfo from "../../features/UserAccount/UserInsuranceInfo";
 import { render, screen } from "@testing-library/react";
-import handleSubmitPayment from "../../features/UserAccount/UserInfo";
+import handleSubmitInsurance from "../../features/UserAccount/UserInfo";
 import { Provider } from "react-redux";
 import { store } from "../../app/store";
 import "@testing-library/jest-dom";
@@ -9,7 +9,7 @@ describe("testing the UserPaymentInfo component", () => {
   test("every input is in the document and the add payment button", () => {
     render(
       <Provider store={store}>
-        <UserInsuranceInfo handleSubmitPayment={handleSubmitPayment} />
+        <UserInsuranceInfo handleSubmitInsurance={handleSubmitInsurance} />
       </Provider>
     );
     const cardNumber = screen.getByTestId("cardNumber");

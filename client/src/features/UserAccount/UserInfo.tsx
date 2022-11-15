@@ -152,7 +152,7 @@ const UserInfo = () => {
           </StyledAddressDiv>
         )}
         {paymentInfo === false ? (
-          <UserInsuranceInfo handleSubmitPayment={handleSubmitInsurance} />
+          <UserInsuranceInfo handleSubmitInsurance={handleSubmitInsurance} />
         ) : (
           <StyledPaymentDiv>
             <StyledPaymentTitle>Payment</StyledPaymentTitle>
