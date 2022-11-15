@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface payment {
-  cardNumber: string;
-  nameOnCard: string;
-  cardExpiration: string;
-  securityCode: string;
+export interface insurance {
+  nameForInsurance: string;
+  insuranceCompany: string;
+  insuranceFile: string;
 }
 
 export interface userInformation {
@@ -23,7 +22,7 @@ export interface userInformation {
 
 interface user {
   userInfo: userInformation;
-  paymentInfo: payment;
+  insuranceInfo: insurance;
 }
 
 const initialState: user = {
@@ -39,11 +38,10 @@ const initialState: user = {
     zipcode: "",
     user_id: 0,
   },
-  paymentInfo: {
-    cardNumber: "",
-    nameOnCard: "",
-    cardExpiration: "",
-    securityCode: "",
+  insuranceInfo: {
+    nameForInsurance: "",
+    insuranceCompany: "",
+    insuranceFile: "",
   },
 };
 
@@ -54,8 +52,8 @@ export const UserAccount = createSlice({
     addUserInfo: (state, action: PayloadAction<userInformation>) => {
       state.userInfo = action.payload;
     },
-    addPaymentInfo: (state, action: PayloadAction<payment>) => {
-      state.paymentInfo = action.payload;
+    addPaymentInfo: (state, action: PayloadAction<insurance>) => {
+      state.insuranceInfo = action.payload;
     },
   },
 });

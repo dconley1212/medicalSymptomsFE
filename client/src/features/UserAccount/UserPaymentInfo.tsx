@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { payment } from "./UserAccountSlice";
+import { insurance } from "./UserAccountSlice";
 import { addPaymentInfo } from "./UserAccountSlice";
 import { useAppDispatch } from "../../app/hooks";
 import styled from "styled-components";
@@ -34,59 +34,52 @@ interface paymentProp {
 }
 
 const UserPaymentInfo = ({ handleSubmitPayment }: paymentProp) => {
-  const [paymentInfo, setPaymentInfo] = useState<payment>({
-    cardNumber: "",
-    nameOnCard: "",
-    cardExpiration: "",
-    securityCode: "",
+  const [insuranceInfo, setInsuranceInfo] = useState<insurance>({
+    nameForInsurance: "",
+    insuranceCompany: "",
+    insuranceFile: "",
   });
 
   const dispatch = useAppDispatch();
 
-  const handlePaymentInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPaymentInfo({
-      ...paymentInfo,
-      [e.currentTarget.name]: e.currentTarget.value,
+  const handleInsuranceInfoChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setInsuranceInfo({
+      ...insuranceInfo,
+      [e.target.name]: e.target.value,
     });
   };
-  const handleSubmiPaymentInfo = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitInsuranceInfo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addPaymentInfo(paymentInfo));
+    // dispatch(addPaymentInfo(paymentInfo));
     handleSubmitPayment();
   };
   return (
     <StyledPaymentWrapper>
-      <StyledForm onSubmit={handleSubmiPaymentInfo}>
+      <StyledForm onSubmit={handleSubmitInsuranceInfo}>
         <StyledInput
-          name="cardNumber"
+          name="nameForInsurance"
           type="text"
-          onChange={handlePaymentInfoChange}
-          value={paymentInfo.cardNumber}
-          placeholder="Card Number"
-          data-testid="cardNumber"
-        />
-        <StyledInput
-          name="nameOnCard"
-          type="text"
-          onChange={handlePaymentInfoChange}
-          value={paymentInfo.nameOnCard}
-          placeholder="Name on Card"
+          onChange={handleInsuranceInfoChange}
+          value={insuranceInfo.nameForInsurance}
+          placeholder="Name on Insurance Card"
           data-testid="nameOnCard"
         />
         <StyledInput
-          name="cardExpiration"
+          name="insuranceCompany"
           type="text"
-          onChange={handlePaymentInfoChange}
-          value={paymentInfo.cardExpiration}
-          placeholder="Expiration date"
+          onChange={handleInsuranceInfoChange}
+          value={insuranceInfo.insuranceCompany}
+          placeholder="Insurance Company"
           data-testid="cardExpiration"
         />
         <StyledInput
-          name="securityCode"
-          type="text"
-          onChange={handlePaymentInfoChange}
-          value={paymentInfo.securityCode}
-          placeholder="Security Code"
+          name="insuranceFile"
+          type="file"
+          onChange={handleInsuranceInfoChange}
+          value={insuranceInfo.insuranceFile}
+          placeholder="Add insurance File"
           data-testid="securityCode"
         />
         <StyledButton>Add Payment</StyledButton>
