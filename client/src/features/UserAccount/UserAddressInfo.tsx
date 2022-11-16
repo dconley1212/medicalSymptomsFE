@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../app/hooks";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import axios from "axios";
+import { setDefaultResultOrder } from "dns";
 
 // left off trying to figure out how to display the users data if they have already submitted
 // their user address information but have it dispatched to the redux store when the login
@@ -77,12 +78,15 @@ const UserAddressInfo = ({ handleSubmit, setMessage }: props) => {
         },
       })
       .then((resp) => {
-        console.log(resp.data);
+        // console.log(resp.data);
         if (resp.data.firstName) {
           dispatch(addUserInfo(resp.data));
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setMessage(err.response.data.message);
+      });
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
