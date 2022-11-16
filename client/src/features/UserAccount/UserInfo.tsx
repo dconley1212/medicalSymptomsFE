@@ -83,7 +83,7 @@ const StyledEditPayment = styled.button`
 `;
 
 const UserInfo = () => {
-  const [addAddress, setAddAddress] = useState<boolean>(true);
+  const [addAddress, setAddAddress] = useState<boolean>(false);
   const [paymentInfo, setPaymentInfo] = useState<boolean>(true);
   const [message, setMessage] = useState<string>("");
 
@@ -91,9 +91,9 @@ const UserInfo = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user.userInfo.address === "") {
-      setAddAddress(false);
-    }
+    // if (user.userInfo.address === "") {
+    //   setAddAddress(false);
+    // }
     if (user.insuranceInfo.nameForInsurance === "") {
       setPaymentInfo(false);
     }
@@ -103,8 +103,13 @@ const UserInfo = () => {
     navigate("/user/editAddress");
   };
 
-  const handleSubmit = () => {
-    setAddAddress(true);
+  const handleSubmit = (route: string) => {
+    if (route === "error") {
+      setAddAddress(false);
+    } else {
+      setAddAddress(true);
+    }
+
     return addAddress;
   };
 
