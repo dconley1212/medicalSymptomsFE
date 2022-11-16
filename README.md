@@ -81,3 +81,22 @@ Week of August 8th -11th;
 -More Testing;
 -Getting Better at Responsive Design;
 -Setting up first route on the backend.
+
+Programming Languages: Javasript, Typescript
+Libraries/Frameworks: React, React Router, Styling Components, Redux, Axios, JWT-Decode, React Testing Library, Jest 
+
+General Navigation: client folder => src folder
+Assets => Contains images used in project.
+
+Components => files that include basic routing of the app like Header, LandingPage, Login, PrivateRoute, Register, and share a common characteristic of
+not needing to create a redux reducer to share state to the redux store.
+
+_test_ => Testing files for each file in the app.
+
+app => Files for creating the redux store and hooks.
+
+data => Folder for holding the product data.
+
+features => A folder that has additional folders containing different features of the app like Checkout/Products, Questionaire/Survey, Reviews, and UserAccount.
+
+utilities => Holds files for creating the currency format and for setting the JWT token.
