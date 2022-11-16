@@ -45,9 +45,10 @@ const StyledButton = styled.button`
 
 interface props {
   handleSubmit: () => {};
+  setMessage: (value: string) => void;
 }
 
-const UserAddressInfo = ({ handleSubmit }: props) => {
+const UserAddressInfo = ({ handleSubmit, setMessage }: props) => {
   const id = localStorage.getItem("id") || "";
   const user_id = parseInt(id);
 
@@ -65,26 +66,23 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
   });
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const token = localStorage.getItem("token") || "";
 
   useEffect(() => {
-    if (!userInfo.firstName) {
-      axios
-        .get(`http://localhost:9000/user/${id}/address`, {
-          headers: {
-            authorization: token,
-          },
-        })
-        .then((resp) => {
-          console.log(resp.data);
-          if (resp.data.firstName) {
-            dispatch(addUserInfo(resp.data));
-          }
-        })
-        .catch((err) => console.log(err));
-    }
+    axios
+      .get(`http://localhost:9000/user/${id}/address`, {
+        headers: {
+          authorization: token,
+        },
+      })
+      .then((resp) => {
+        console.log(resp.data);
+        if (resp.data.firstName) {
+          dispatch(addUserInfo(resp.data));
+        }
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -113,7 +111,6 @@ const UserAddressInfo = ({ handleSubmit }: props) => {
         dispatch(addUserInfo(resp.data));
       })
       .catch((err) => console.log(err));
-    handleSubmit();
   };
   return (
     <StyledAddressWrapper>

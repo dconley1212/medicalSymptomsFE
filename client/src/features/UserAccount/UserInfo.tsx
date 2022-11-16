@@ -85,6 +85,7 @@ const StyledEditPayment = styled.button`
 const UserInfo = () => {
   const [addAddress, setAddAddress] = useState<boolean>(true);
   const [paymentInfo, setPaymentInfo] = useState<boolean>(true);
+  const [message, setMessage] = useState<string>("");
 
   const user = useAppSelector((state) => state.user);
   const navigate = useNavigate();
@@ -126,7 +127,11 @@ const UserInfo = () => {
       <StyledUserInfoDiv>
         {addAddress === false ? (
           <div>
-            <UserAddressInfo handleSubmit={handleSubmit} />
+            {message}
+            <UserAddressInfo
+              handleSubmit={handleSubmit}
+              setMessage={setMessage}
+            />
           </div>
         ) : (
           <StyledAddressDiv title="address">

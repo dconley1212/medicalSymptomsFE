@@ -1,5 +1,6 @@
 import UserAddressInfo from "../../features/UserAccount/UserAddressInfo";
 import handleSubmit from "../../features/UserAccount/UserInfo";
+import setMessage from "../../features/UserAccount/UserInfo";
 import { BrowserRouter as Router } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import { store } from "../../app/store";
@@ -11,7 +12,10 @@ describe("testing the UserAddresInfo component", () => {
     render(
       <Router>
         <Provider store={store}>
-          <UserAddressInfo handleSubmit={handleSubmit} />
+          <UserAddressInfo
+            handleSubmit={handleSubmit}
+            setMessage={setMessage}
+          />
         </Provider>
       </Router>
     );
