@@ -84,20 +84,11 @@ const StyledEditPayment = styled.button`
 
 const UserInfo = () => {
   const [addAddress, setAddAddress] = useState<boolean>(false);
-  const [paymentInfo, setPaymentInfo] = useState<boolean>(true);
+  const [insurance, setInsurance] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
   const user = useAppSelector((state) => state.user);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // if (user.userInfo.address === "") {
-    //   setAddAddress(false);
-    // }
-    if (user.insuranceInfo.nameForInsurance === "") {
-      setPaymentInfo(false);
-    }
-  }, []);
 
   const handleEditUserInfo = () => {
     navigate("/user/editAddress");
@@ -113,9 +104,13 @@ const UserInfo = () => {
     return addAddress;
   };
 
-  const handleSubmitInsurance = () => {
-    setPaymentInfo(true);
-    return paymentInfo;
+  const handleSubmitInsurance = (route: string) => {
+    if (route === "error") {
+      setInsurance(false);
+    } else {
+      setInsurance(true);
+    }
+    return insurance;
   };
 
   const handleEditInsurance = () => {
@@ -161,7 +156,7 @@ const UserInfo = () => {
             </StyledEditAddress>
           </StyledAddressDiv>
         )}
-        {paymentInfo === false ? (
+        {insurance === false ? (
           <UserInsuranceInfo handleSubmitInsurance={handleSubmitInsurance} />
         ) : (
           <StyledPaymentDiv>

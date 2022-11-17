@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { userInformation, addUserInfo } from "./UserAccountSlice";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -60,26 +60,33 @@ const UserAddressInfo = ({ handleSubmit, setMessage }: props) => {
   });
 
   const dispatch = useAppDispatch();
+  const userAddress = useAppSelector((state) => state.user.userInfo);
 
   const token = localStorage.getItem("token") || "";
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:9000/user/${id}/address`, {
-        headers: {
-          authorization: token,
-        },
-      })
-      .then((resp) => {
-        // console.log(resp.data);
-        if (resp.data.firstName) {
-          dispatch(addUserInfo(resp.data));
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setMessage(err.response.data.message);
-      });
+    if (userAddress.firstName === "") {
+      axios
+        .get(`http://localhost:9000/user/${id}/address`, {
+          headers: {
+            authorization: token,
+          },
+        })
+        .then((resp) => {
+          // console.log(resp.data);
+          if (resp.data.firstName) {
+            dispatch(addUserInfo(resp.data));
+            handleSubmit("bueno");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setMessage(err.response.data.message);
+          handleSubmit("error");
+        });
+    } else {
+      handleSubmit("bueno");
+    }
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

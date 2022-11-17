@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { insurance } from "./UserAccountSlice";
 import { addInsuranceInfo } from "./UserAccountSlice";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import styled from "styled-components";
 
 const StyledPaymentWrapper = styled.div`
@@ -30,7 +30,7 @@ const StyledButton = styled.button`
 `;
 
 interface InsuranceProp {
-  handleSubmitInsurance: () => {};
+  handleSubmitInsurance: (route: string) => {};
 }
 
 const UserPaymentInfo = ({ handleSubmitInsurance }: InsuranceProp) => {
@@ -41,6 +41,13 @@ const UserPaymentInfo = ({ handleSubmitInsurance }: InsuranceProp) => {
   });
 
   const dispatch = useAppDispatch();
+  const userInsuranceInfo = useAppSelector((state) => state.user.insuranceInfo);
+
+  useEffect(() => {
+    if (userInsuranceInfo.nameForInsurance === "") {
+      handleSubmitInsurance("error");
+    }
+  }, []);
 
   const handleInsuranceInfoChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -53,7 +60,7 @@ const UserPaymentInfo = ({ handleSubmitInsurance }: InsuranceProp) => {
   const handleSubmitInsuranceInfo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(addInsuranceInfo(insuranceInfo));
-    handleSubmitInsurance();
+    handleSubmitInsurance("bueno");
   };
   return (
     <StyledPaymentWrapper>
