@@ -2,8 +2,8 @@
 
 Description: Developing my programming skills by creating a project in collaboration with Doctors, who feel certain products could provide relief to back pain.
 
-Programming Languages: Javasript, Typescript
-Libraries/Frameworks: React, React Router, Styling Components, Redux, Axios, JWT-Decode, React Testing Library, Jest, HTML, CSS
+Programming Languages: Javasript, Typescript, HTML, CSS
+Libraries/Frameworks: ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB), React Router, Styling Components, Redux, Axios, JWT-Decode, React Testing Library, Jest, 
 
 General Navigation: 
 
