@@ -38,4 +38,5 @@ High level Highlights:
 
 6. Applied JSON WEB Token technology for authenticating a user and authorizing a user to be able to access certain routes within the app.
 
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=dconley1212)](https://github.com/dconley1212/github-readme-stats)
 
