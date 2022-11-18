@@ -29,6 +29,7 @@ const StyledHeader = styled.header`
   padding: 1.2rem;
   background: #4682b4;
   width: 100%;
+  box-sizing: border-box;
   @media screen and (max-width: 460px) {
     display: flex;
     padding: 0.1rem;

@@ -3,6 +3,7 @@ import { insurance } from "./UserAccountSlice";
 import { addInsuranceInfo } from "./UserAccountSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import styled from "styled-components";
+import axios, { AxiosRequestHeaders } from "axios";
 
 const StyledPaymentWrapper = styled.div`
   display: flex;
@@ -42,6 +43,13 @@ const UserPaymentInfo = ({ handleSubmitInsurance }: InsuranceProp) => {
 
   const dispatch = useAppDispatch();
   const userInsuranceInfo = useAppSelector((state) => state.user.insuranceInfo);
+  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token") || "";
+
+  const header: AxiosRequestHeaders = {
+    authorization: token,
+    "Content-Type": "multipart/form-data",
+  };
 
   useEffect(() => {
     if (userInsuranceInfo.nameForInsurance === "") {
@@ -57,10 +65,20 @@ const UserPaymentInfo = ({ handleSubmitInsurance }: InsuranceProp) => {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmitInsuranceInfo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(addInsuranceInfo(insuranceInfo));
     handleSubmitInsurance("bueno");
+    const formData = new FormData();
+    formData.append("nameForInsurance", insuranceInfo.nameForInsurance);
+    formData.append("insuranceCompany", insuranceInfo.insuranceCompany);
+    formData.append("insuranceFile", insuranceInfo.insuranceFile[0]);
+
+    axios
+      .post(`http://localhost:9000/user/${id}/insuranceInfo`, formData, header)
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
   };
   return (
     <StyledPaymentWrapper>

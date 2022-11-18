@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 100vw;
+    width: 100%;
   }
 `;
 
@@ -26,6 +26,7 @@ const StyledMainDiv = styled.div`
   border: 2px solid black;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   @media screen and (max-width: 450px) {
     display: flex;
     flex-direction: column;
@@ -83,7 +84,7 @@ const LandingPageStat = styled.p`
   }
 `;
 const SurveyButton = styled.button`
-  padding: 1.2rem;
+  padding: 1.2em;
   border-radius: 10px;
   color: white;
   background-color: black;
@@ -91,8 +92,9 @@ const SurveyButton = styled.button`
   position: relative;
   left: 5rem;
   bottom: 7rem;
-  font-size: 1rem;
+  font-size: 1em;
   cursor: pointer;
+  box-sizing: border-box;
   @media screen and (max-width: 460px) {
     position: relative;
     top: 25rem;
