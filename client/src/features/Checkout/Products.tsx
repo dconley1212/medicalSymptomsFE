@@ -12,8 +12,9 @@ const StyledProductsPage = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: #cb4a6f;
-  height: 100vh;
+  background-color: #f5f5f5;
+  width: 100%;
+  box-sizing: border-box;
   @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: column;
@@ -25,10 +26,13 @@ const StyledSurveySection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 7rem 4rem;
-  background-color: #f5f5f5;
+  margin: 9rem 6rem 12rem 1rem;
+  background-color: #ffffff;
   border-radius: 10px;
-  width: 30%;
+  width: 40%;
+  font-size: 1.7em;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 3px 3px #000000;
   @media screen and (max-width: 460px) {
     width: 70vw;
     height: 23vh;
@@ -55,7 +59,6 @@ const StyledSurveyHeading = styled.h2`
 
 const StyledSurveyButton = styled.button`
   border-radius: 10px;
-  margin-top: 1rem;
   padding: 1em;
   cursor: pointer;
   background-color: #cb4a6f;
@@ -72,6 +75,7 @@ const StyledSurveyParagraphs = styled.p`
   margin: 2rem 0rem;
   font-size: 1rem;
   text-align: center;
+  font-weight: bold;
   @media screen and (max-width: 460px) {
     margin: 0.5rem 0rem;
     font-size: 0.8rem;
@@ -81,8 +85,10 @@ const StyledSurveyParagraphs = styled.p`
 const StyledProductsSection = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 4rem 0.5rem 0.3rem 6rem;
+  margin: 1rem 4rem 0.3rem 4rem;
+  font-size: 1.2em;
   width: 20%;
+  box-sizing: border-box;
   @media screen and (max-width: 460px) {
     width: 70vw;
     margin: 0.5rem 3rem 0.5rem 3rem;
@@ -97,8 +103,10 @@ const StyledProductDiv = styled.div`
   align-items: center;
   border-radius: 8px;
   padding: 0.5rem;
+  width: 100%;
   margin: 0.5rem;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 3px 3px #4682b4;
   @media screen and (max-width: 460px) {
     width: 70vw;
     height: 21vh;
@@ -198,8 +206,8 @@ const Products = () => {
           <StyledSurveyParagraphs title="review">
             "There is nothing worse than purchasing the wrong product because
             you don't completely understand the nuances of your symptoms!
-            Following their questionaire helped me feel comfortable that I was
-            making the right choice." -Karen Conley
+            Following their questionaire helped me feel comfortable I was making
+            the right choice." -Karen Conley
           </StyledSurveyParagraphs>
         </StyledSurveySection>
         <StyledProductsSection>
