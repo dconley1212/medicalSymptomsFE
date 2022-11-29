@@ -163,7 +163,13 @@ const ProductButtonDelete = styled.button`
 `;
 
 const StyledCheckoutComponent = styled.div`
-  height: 35vh;
+  /* height: 35vh; */
+  margin: 1rem 1rem 8rem 1rem;
+  box-sizing: border-box;
+  border: 1px solid black;
+  width: 20%;
+  height: 50%;
+  background-color: #ffffff;
 `;
 
 const Products = () => {
@@ -194,66 +200,64 @@ const Products = () => {
   };
 
   return (
-    <div>
-      <StyledProductsPage>
-        <StyledSurveySection>
-          <StyledSurveyHeading title="Products Title">
-            What Products make sense for you?
-          </StyledSurveyHeading>
-          <StyledSurveyButton onClick={handleButtonSurvey}>
-            Find out here
-          </StyledSurveyButton>
-          <StyledSurveyParagraphs title="review">
-            "There is nothing worse than purchasing the wrong product because
-            you don't completely understand the nuances of your symptoms!
-            Following their questionaire helped me feel comfortable I was making
-            the right choice." -Karen Conley
-          </StyledSurveyParagraphs>
-        </StyledSurveySection>
-        <StyledProductsSection>
-          {products.map((product) => {
-            return (
-              <StyledProductDiv data-testid={product.id} key={product.id}>
-                <Product
-                  name={product.name}
-                  price={product.price}
-                  description={product.description}
-                  id={product.id}
-                />
-                <ProductButtonDiv>
-                  <ProductButtonAdd
-                    title="add"
-                    onClick={() => handleAdd(product)}
-                  >
-                    +
-                  </ProductButtonAdd>
-                  {product.id === 1 ? (
-                    <p data-testid="itemOneQuantity">
-                      {cartProducts.itemsInCart.itemOne}
-                    </p>
-                  ) : (
-                    <p data-testid="itemTwoQuantity">
-                      {cartProducts.itemsInCart.itemTwo}
-                    </p>
-                  )}
-                  <ProductButtonDelete onClick={() => handleDelete(product)}>
-                    -
-                  </ProductButtonDelete>
-                </ProductButtonDiv>
-              </StyledProductDiv>
-            );
-          })}
-        </StyledProductsSection>
-        {isActive === true ? (
-          <StyledCheckoutComponent
-            data-testid="checkoutComponent"
-            title="Checkout dropdown"
-          >
-            <CheckoutItems />
-          </StyledCheckoutComponent>
-        ) : null}
-      </StyledProductsPage>
-    </div>
+    <StyledProductsPage>
+      <StyledSurveySection>
+        <StyledSurveyHeading title="Products Title">
+          What Products make sense for you?
+        </StyledSurveyHeading>
+        <StyledSurveyButton onClick={handleButtonSurvey}>
+          Find out here
+        </StyledSurveyButton>
+        <StyledSurveyParagraphs title="review">
+          "There is nothing worse than purchasing the wrong product because you
+          don't completely understand the nuances of your symptoms! Following
+          their questionaire helped me feel comfortable I was making the right
+          choice." -Karen Conley
+        </StyledSurveyParagraphs>
+      </StyledSurveySection>
+      <StyledProductsSection>
+        {products.map((product) => {
+          return (
+            <StyledProductDiv data-testid={product.id} key={product.id}>
+              <Product
+                name={product.name}
+                price={product.price}
+                description={product.description}
+                id={product.id}
+              />
+              <ProductButtonDiv>
+                <ProductButtonAdd
+                  title="add"
+                  onClick={() => handleAdd(product)}
+                >
+                  +
+                </ProductButtonAdd>
+                {product.id === 1 ? (
+                  <p data-testid="itemOneQuantity">
+                    {cartProducts.itemsInCart.itemOne}
+                  </p>
+                ) : (
+                  <p data-testid="itemTwoQuantity">
+                    {cartProducts.itemsInCart.itemTwo}
+                  </p>
+                )}
+                <ProductButtonDelete onClick={() => handleDelete(product)}>
+                  -
+                </ProductButtonDelete>
+              </ProductButtonDiv>
+            </StyledProductDiv>
+          );
+        })}
+      </StyledProductsSection>
+      {isActive === true ? (
+        <StyledCheckoutComponent
+          data-testid="checkoutComponent"
+          title="Checkout dropdown"
+        >
+          <CheckoutItems />
+        </StyledCheckoutComponent>
+      ) : null}
+    </StyledProductsPage>
   );
 };
 

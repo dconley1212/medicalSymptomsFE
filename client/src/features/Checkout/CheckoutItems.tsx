@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { useAppSelector } from "../../app/hooks";
 
 const StyledWrapperDiv = styled.div`
-  background-color: #f5f5f5;
-  position: relative;
-  left: 5rem;
-  padding: 3rem;
-  height: 100%;
-  width: 100%;
+  background-color: #ffffff;
+  font-size: 1.1em;
+  padding: 1em;
+  width: 50%;
+  box-sizing: border-box;
   border-radius: 8px;
 `;
 

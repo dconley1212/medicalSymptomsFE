@@ -32,6 +32,7 @@ const StyledProductInfo = styled.p`
   font-size: 1rem;
   margin: 0.35rem;
   text-align: center;
+  font-weight: bold;
   @media screen and (max-width: 460px) {
     font-size: 0.8rem;
   }
