@@ -19,7 +19,7 @@ const StyledWrapper = styled.div`
 const StyledMainDiv = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 12rem 5rem;
+  padding: 6rem 2rem;
   background-image: url(${backgroundImg});
   background-size: cover;
   background-repeat: no-repeat;
@@ -42,6 +42,7 @@ const StyledMainDiv = styled.div`
 const StyledLeftDiv = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 4rem;
 `;
 
 const LandingPageHook = styled.h2`
@@ -84,11 +85,11 @@ const LandingPageStat = styled.p`
   }
 `;
 const SurveyButton = styled.button`
-  padding: 1.2em;
+  padding: 1em;
   border-radius: 10px;
   color: white;
   background-color: black;
-  width: 30%;
+  width: 25%;
   position: relative;
   left: 5rem;
   bottom: 7rem;
@@ -109,10 +110,11 @@ const StyledReviewDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 10%;
-  margin-left: 15rem;
+  align-items: center;
+  width: 20%;
+  margin-left: 12rem;
   margin-bottom: 15rem;
-  padding: 1rem 1.5rem 1rem 1.5rem;
+  padding: 0em 1em 0em 1em;
   border: 1px solid black;
   border-radius: 5px;
   background-color: #4682b4;
@@ -122,10 +124,10 @@ const StyledReviewQuote = styled.p`
   display: flex;
   flex-direction: column;
   margin-top: 0rem;
-  font-size: 1.5rem;
+  font-size: 1.5em;
 `;
 const StyledReviewerNameParagraph = styled.p`
-  margin-top: 0rem;
+  margin-top: 0em;
 `;
 
 const StyledReviewButton = styled.button`
